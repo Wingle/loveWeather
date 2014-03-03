@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEDE4865EF7424189924365 /* libPods-loveWeather.a */; };
 		981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18C818BE0B7400B0CF75 /* Foundation.framework */; };
 		981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */; };
 		981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CC18BE0B7400B0CF75 /* UIKit.framework */; };
@@ -22,6 +23,13 @@
 		981A18EA18BE0B7500B0CF75 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CE18BE0B7400B0CF75 /* CoreData.framework */; };
 		981A18F218BE0B7500B0CF75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 981A18F018BE0B7500B0CF75 /* InfoPlist.strings */; };
 		981A18F418BE0B7500B0CF75 /* loveWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */; };
+		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
+		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
+		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
+		98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD818C4A3600096D962 /* AGTabBarController.m */; };
+		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
+		98EE2FE218C4B1B00096D962 /* MSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDF18C4B1B00096D962 /* MSMenuCell.m */; };
+		98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FE118C4B1B00096D962 /* MSMenuTableViewHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.xcconfig"; path = "Pods/Pods-loveWeather.xcconfig"; sourceTree = "<group>"; };
 		981A18C518BE0B7400B0CF75 /* loveWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981A18C818BE0B7400B0CF75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +62,21 @@
 		981A18EF18BE0B7500B0CF75 /* loveWeatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "loveWeatherTests-Info.plist"; sourceTree = "<group>"; };
 		981A18F118BE0B7500B0CF75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loveWeatherTests.m; sourceTree = "<group>"; };
+		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
+		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
+		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
+		98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherViewController.m; sourceTree = "<group>"; };
+		98EE2FD518C4A3600096D962 /* AGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGNavigationController.h; sourceTree = "<group>"; };
+		98EE2FD618C4A3600096D962 /* AGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGNavigationController.m; sourceTree = "<group>"; };
+		98EE2FD718C4A3600096D962 /* AGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTabBarController.h; sourceTree = "<group>"; };
+		98EE2FD818C4A3600096D962 /* AGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTabBarController.m; sourceTree = "<group>"; };
+		98EE2FD918C4A3600096D962 /* AGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
+		98EE2FDA18C4A3600096D962 /* AGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
+		98EE2FDE18C4B1B00096D962 /* MSMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMenuCell.h; sourceTree = "<group>"; };
+		98EE2FDF18C4B1B00096D962 /* MSMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuCell.m; sourceTree = "<group>"; };
+		98EE2FE018C4B1B00096D962 /* MSMenuTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMenuTableViewHeader.h; sourceTree = "<group>"; };
+		98EE2FE118C4B1B00096D962 /* MSMenuTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuTableViewHeader.m; sourceTree = "<group>"; };
+		FAEDE4865EF7424189924365 /* libPods-loveWeather.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveWeather.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +88,7 @@
 				981A18CF18BE0B7400B0CF75 /* CoreData.framework in Frameworks */,
 				981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */,
 				981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */,
+				360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +113,7 @@
 				981A18ED18BE0B7500B0CF75 /* loveWeatherTests */,
 				981A18C718BE0B7400B0CF75 /* Frameworks */,
 				981A18C618BE0B7400B0CF75 /* Products */,
+				859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +134,7 @@
 				981A18CC18BE0B7400B0CF75 /* UIKit.framework */,
 				981A18CE18BE0B7400B0CF75 /* CoreData.framework */,
 				981A18E618BE0B7500B0CF75 /* XCTest.framework */,
+				FAEDE4865EF7424189924365 /* libPods-loveWeather.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,6 +142,9 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				98EE2FD418C4A3600096D962 /* Base */,
+				98EE2FD018C4A13A0096D962 /* weather */,
+				98EE2FCC18C4719D0096D962 /* Menu */,
 				981A18D918BE0B7400B0CF75 /* LWAppDelegate.h */,
 				981A18DA18BE0B7400B0CF75 /* LWAppDelegate.m */,
 				981A18DF18BE0B7500B0CF75 /* Images.xcassets */,
@@ -153,6 +183,41 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		98EE2FCC18C4719D0096D962 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				98EE2FDE18C4B1B00096D962 /* MSMenuCell.h */,
+				98EE2FDF18C4B1B00096D962 /* MSMenuCell.m */,
+				98EE2FE018C4B1B00096D962 /* MSMenuTableViewHeader.h */,
+				98EE2FE118C4B1B00096D962 /* MSMenuTableViewHeader.m */,
+				98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */,
+				98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		98EE2FD018C4A13A0096D962 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */,
+				98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		98EE2FD418C4A3600096D962 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				98EE2FD518C4A3600096D962 /* AGNavigationController.h */,
+				98EE2FD618C4A3600096D962 /* AGNavigationController.m */,
+				98EE2FD718C4A3600096D962 /* AGTabBarController.h */,
+				98EE2FD818C4A3600096D962 /* AGTabBarController.m */,
+				98EE2FD918C4A3600096D962 /* AGViewController.h */,
+				98EE2FDA18C4A3600096D962 /* AGViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 981A18F718BE0B7500B0CF75 /* Build configuration list for PBXNativeTarget "loveWeather" */;
 			buildPhases = (
+				F6FF289660144431955EDBA2 /* Check Pods Manifest.lock */,
 				981A18C118BE0B7400B0CF75 /* Sources */,
 				981A18C218BE0B7400B0CF75 /* Frameworks */,
 				981A18C318BE0B7400B0CF75 /* Resources */,
+				99B97B219EFA49F7A510115E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,14 +311,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		99B97B219EFA49F7A510115E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-loveWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6FF289660144431955EDBA2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		981A18C118BE0B7400B0CF75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */,
+				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
 				981A18D718BE0B7400B0CF75 /* main.m in Sources */,
+				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
+				98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */,
+				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
+				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
 				981A18DB18BE0B7400B0CF75 /* LWAppDelegate.m in Sources */,
 				981A18DE18BE0B7400B0CF75 /* loveWeather.xcdatamodeld in Sources */,
+				98EE2FE218C4B1B00096D962 /* MSMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +474,7 @@
 		};
 		981A18F818BE0B7500B0CF75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -380,6 +488,7 @@
 		};
 		981A18F918BE0B7500B0CF75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -452,6 +561,7 @@
 				981A18F918BE0B7500B0CF75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		981A18FA18BE0B7500B0CF75 /* Build configuration list for PBXNativeTarget "loveWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +570,7 @@
 				981A18FC18BE0B7500B0CF75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

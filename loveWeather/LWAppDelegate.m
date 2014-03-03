@@ -7,6 +7,17 @@
 //
 
 #import "LWAppDelegate.h"
+#import "MSDynamicsDrawerViewController.h"
+#import "LWMenuViewController.h"
+
+#import "LWWeatherViewController.h"
+#import <TSMessage.h>
+
+@interface LWAppDelegate () <MSDynamicsDrawerViewControllerDelegate>
+
+@property (nonatomic, strong) UIImageView *windowBackground;
+
+@end
 
 @implementation LWAppDelegate
 
@@ -18,8 +29,26 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
+    self.dynamicsDrawerViewController.delegate = self;
+    
+    // Add some example stylers
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerScaleStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionRight];
+    
+    LWMenuViewController *menuViewController = [LWMenuViewController new];
+    menuViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
+    [self.dynamicsDrawerViewController setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    
+    // Transition to the first view controller
+    [menuViewController transitionToViewController:MSPaneViewControllerTypeWeather];
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.dynamicsDrawerViewController;
     [self.window makeKeyAndVisible];
+    [self.window addSubview:self.windowBackground];
+    [self.window sendSubviewToBack:self.windowBackground];
     return YES;
 }
 
@@ -144,6 +173,15 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - Custom methods
+- (UIImageView *)windowBackground
+{
+    if (!_windowBackground) {
+        _windowBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Window Background"]];
+    }
+    return _windowBackground;
 }
 
 @end
