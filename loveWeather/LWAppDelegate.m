@@ -43,12 +43,14 @@
     // Transition to the first view controller
     [menuViewController transitionToViewController:MSPaneViewControllerTypeWeather];
     
-    
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.dynamicsDrawerViewController;
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.windowBackground];
     [self.window sendSubviewToBack:self.windowBackground];
+    
+    [TSMessage setDefaultViewController:self.window.rootViewController];
+    
     return YES;
 }
 

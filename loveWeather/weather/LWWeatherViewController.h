@@ -8,6 +8,6 @@
 
 #import "AGViewController.h"
 
-@interface LWWeatherViewController : AGViewController
+@interface LWWeatherViewController : AGViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate> 
 
 @end

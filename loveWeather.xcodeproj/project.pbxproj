@@ -23,6 +23,10 @@
 		981A18EA18BE0B7500B0CF75 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CE18BE0B7400B0CF75 /* CoreData.framework */; };
 		981A18F218BE0B7500B0CF75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 981A18F018BE0B7500B0CF75 /* InfoPlist.strings */; };
 		981A18F418BE0B7500B0CF75 /* loveWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */; };
+		985CEAA618C584E600538228 /* LWWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAA518C584E600538228 /* LWWeatherManager.m */; };
+		985CEAA918C5863200538228 /* LWWeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAA818C5863200538228 /* LWWeatherCondition.m */; };
+		985CEAAC18C586CF00538228 /* LWDailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAAB18C586CF00538228 /* LWDailyForecast.m */; };
+		985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAAE18C5A1F900538228 /* LWWeatherClient.m */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
@@ -62,6 +66,14 @@
 		981A18EF18BE0B7500B0CF75 /* loveWeatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "loveWeatherTests-Info.plist"; sourceTree = "<group>"; };
 		981A18F118BE0B7500B0CF75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loveWeatherTests.m; sourceTree = "<group>"; };
+		985CEAA418C584E600538228 /* LWWeatherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherManager.h; sourceTree = "<group>"; };
+		985CEAA518C584E600538228 /* LWWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherManager.m; sourceTree = "<group>"; };
+		985CEAA718C5863200538228 /* LWWeatherCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherCondition.h; sourceTree = "<group>"; };
+		985CEAA818C5863200538228 /* LWWeatherCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherCondition.m; sourceTree = "<group>"; };
+		985CEAAA18C586CF00538228 /* LWDailyForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWDailyForecast.h; sourceTree = "<group>"; };
+		985CEAAB18C586CF00538228 /* LWDailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDailyForecast.m; sourceTree = "<group>"; };
+		985CEAAD18C5A1F900538228 /* LWWeatherClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherClient.h; sourceTree = "<group>"; };
+		985CEAAE18C5A1F900538228 /* LWWeatherClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherClient.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
@@ -201,6 +213,14 @@
 			children = (
 				98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */,
 				98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */,
+				985CEAA418C584E600538228 /* LWWeatherManager.h */,
+				985CEAA518C584E600538228 /* LWWeatherManager.m */,
+				985CEAA718C5863200538228 /* LWWeatherCondition.h */,
+				985CEAA818C5863200538228 /* LWWeatherCondition.m */,
+				985CEAAA18C586CF00538228 /* LWDailyForecast.h */,
+				985CEAAB18C586CF00538228 /* LWDailyForecast.m */,
+				985CEAAD18C5A1F900538228 /* LWWeatherClient.h */,
+				985CEAAE18C5A1F900538228 /* LWWeatherClient.m */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -350,12 +370,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */,
+				985CEAA918C5863200538228 /* LWWeatherCondition.m in Sources */,
 				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
 				981A18D718BE0B7400B0CF75 /* main.m in Sources */,
+				985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */,
 				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
 				98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */,
+				985CEAA618C584E600538228 /* LWWeatherManager.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
 				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
+				985CEAAC18C586CF00538228 /* LWDailyForecast.m in Sources */,
 				981A18DB18BE0B7400B0CF75 /* LWAppDelegate.m in Sources */,
 				981A18DE18BE0B7400B0CF75 /* loveWeather.xcdatamodeld in Sources */,
 				98EE2FE218C4B1B00096D962 /* MSMenuCell.m in Sources */,
