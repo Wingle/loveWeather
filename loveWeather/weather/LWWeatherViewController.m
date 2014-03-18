@@ -10,6 +10,8 @@
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import "LWWeatherManager.h"
 
+#import <ASIHTTPRequest/ASIHTTPRequest.h>
+
 
 static const CGFloat kADViewWidth = 320.f;
 static const CGFloat KADViewHeight = 50.f;
@@ -53,6 +55,21 @@ static const CGFloat KADViewHeight = 50.f;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+//    NSString *strurl = [NSString stringWithFormat:@"%@areaid=101010100&type=observe&date=201403141058", LW_WEATHER_REQUEST_URL];
+//    NSString *strurl = @"http://weather.51juzhai.com/data/getHttpUrl?cityName=茂名";
+//    strurl = [strurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:strurl]];
+//    [request setUserAgent:@"Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"];
+//    
+//    [request startSynchronous];
+//    NSError *error = [request error];
+//    if (!error) {
+//        NSLog(@"%@",request.responseString);
+//    }
+    
+    
+    
     
     UIImage *background = [UIImage imageNamed:@"Weather Background"];
     
@@ -153,18 +170,12 @@ static const CGFloat KADViewHeight = 50.f;
     iconView.backgroundColor = [UIColor clearColor]; 
     [header addSubview:iconView];
     
-    //
-    // 1
     [[RACObserve([LWWeatherManager sharedManager], currentCondition)
-      // 2
       deliverOn:RACScheduler.mainThreadScheduler]
      subscribeNext:^(LWWeatherCondition *newCondition) {
-         // 3
          temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
          conditionsLabel.text = [newCondition.condition capitalizedString];
          cityLabel.text = [newCondition.locationName capitalizedString];
-         
-         // 4
          iconView.image = [UIImage imageNamed:[newCondition imageName]];
      }];
     
@@ -278,7 +289,7 @@ static const CGFloat KADViewHeight = 50.f;
     if (indexPath.section == 0) {
         // 1
         if (indexPath.row == 0) {
-            [self configureHeaderCell:cell title:@"Hourly Forecast"];
+            [self configureHeaderCell:cell title:@"今日预报"];
         }
         else {
             // 2
@@ -289,7 +300,7 @@ static const CGFloat KADViewHeight = 50.f;
     else if (indexPath.section == 1) {
         // 1
         if (indexPath.row == 0) {
-            [self configureHeaderCell:cell title:@"Daily Forecast"];
+            [self configureHeaderCell:cell title:@"未来7天预报"];
         }
         else {
             // 3

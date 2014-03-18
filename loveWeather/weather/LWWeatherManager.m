@@ -47,10 +47,7 @@
         _client = [[LWWeatherClient alloc] init];
         
         // 3
-        [[[[RACObserve(self, currentLocation)
-            // 4
-            ignore:nil]
-           // 5
+        [[[[RACObserve(self, currentLocation) ignore:nil]
            // Flatten and subscribe to all 3 signals when currentLocation updates
            flattenMap:^(CLLocation *newLocation) {
                return [RACSignal merge:@[

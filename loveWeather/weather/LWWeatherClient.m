@@ -70,18 +70,16 @@
 
 - (RACSignal *)fetchCurrentConditionsForLocation:(CLLocationCoordinate2D)coordinate {
     // 1
-    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=imperial",coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&units=imperial&lang=zh_cn",coordinate.latitude, coordinate.longitude];
     NSURL *url = [NSURL URLWithString:urlString];
-    
-    // 2
+
     return [[self fetchJSONFromURL:url] map:^(NSDictionary *json) {
-        // 3
         return [MTLJSONAdapter modelOfClass:[LWWeatherCondition class] fromJSONDictionary:json error:nil];
     }];
 }
 
 - (RACSignal *)fetchHourlyForecastForLocation:(CLLocationCoordinate2D)coordinate {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&units=imperial&cnt=12",coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&units=imperial&cnt=12&lang=zh_cn",coordinate.latitude, coordinate.longitude];
     NSURL *url = [NSURL URLWithString:urlString];
     
     // 1
@@ -95,11 +93,12 @@
             return [MTLJSONAdapter modelOfClass:[LWWeatherCondition class] fromJSONDictionary:item error:nil];
             // 5
         }] array];
-    }]; 
+    }];
+    
 }
 
 - (RACSignal *)fetchDailyForecastForLocation:(CLLocationCoordinate2D)coordinate {
-    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%f&lon=%f&units=imperial&cnt=7",coordinate.latitude, coordinate.longitude];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/daily?lat=%f&lon=%f&units=imperial&cnt=7&lang=zh_cn",coordinate.latitude, coordinate.longitude];
     NSURL *url = [NSURL URLWithString:urlString];
     
     // Use the generic fetch method and map results to convert into an array of Mantle objects

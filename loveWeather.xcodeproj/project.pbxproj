@@ -27,6 +27,9 @@
 		985CEAA918C5863200538228 /* LWWeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAA818C5863200538228 /* LWWeatherCondition.m */; };
 		985CEAAC18C586CF00538228 /* LWDailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAAB18C586CF00538228 /* LWDailyForecast.m */; };
 		985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 985CEAAE18C5A1F900538228 /* LWWeatherClient.m */; };
+		988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */; };
+		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
+		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
@@ -74,6 +77,12 @@
 		985CEAAB18C586CF00538228 /* LWDailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDailyForecast.m; sourceTree = "<group>"; };
 		985CEAAD18C5A1F900538228 /* LWWeatherClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherClient.h; sourceTree = "<group>"; };
 		985CEAAE18C5A1F900538228 /* LWWeatherClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherClient.m; sourceTree = "<group>"; };
+		988089BF18D7FF4600332C6A /* LWPullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPullRefreshTableViewController.h; sourceTree = "<group>"; };
+		988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPullRefreshTableViewController.m; sourceTree = "<group>"; };
+		988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSJSONSerialization.h"; sourceTree = "<group>"; };
+		988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSJSONSerialization.m"; sourceTree = "<group>"; };
+		988089C918D84C9800332C6A /* LWWeaterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeaterModel.h; sourceTree = "<group>"; };
+		988089CA18D84C9800332C6A /* LWWeaterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeaterModel.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
@@ -154,6 +163,7 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				988089C218D814BC00332C6A /* Utility */,
 				98EE2FD418C4A3600096D962 /* Base */,
 				98EE2FD018C4A13A0096D962 /* weather */,
 				98EE2FCC18C4719D0096D962 /* Menu */,
@@ -195,6 +205,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		988089C218D814BC00332C6A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */,
+				988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		98EE2FCC18C4719D0096D962 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +240,8 @@
 				985CEAAB18C586CF00538228 /* LWDailyForecast.m */,
 				985CEAAD18C5A1F900538228 /* LWWeatherClient.h */,
 				985CEAAE18C5A1F900538228 /* LWWeatherClient.m */,
+				988089C918D84C9800332C6A /* LWWeaterModel.h */,
+				988089CA18D84C9800332C6A /* LWWeaterModel.m */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -234,6 +255,8 @@
 				98EE2FD818C4A3600096D962 /* AGTabBarController.m */,
 				98EE2FD918C4A3600096D962 /* AGViewController.h */,
 				98EE2FDA18C4A3600096D962 /* AGViewController.m */,
+				988089BF18D7FF4600332C6A /* LWPullRefreshTableViewController.h */,
+				988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -374,12 +397,15 @@
 				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
 				981A18D718BE0B7400B0CF75 /* main.m in Sources */,
 				985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */,
+				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
 				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
+				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
 				98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */,
 				985CEAA618C584E600538228 /* LWWeatherManager.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
 				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
 				985CEAAC18C586CF00538228 /* LWDailyForecast.m in Sources */,
+				988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */,
 				981A18DB18BE0B7400B0CF75 /* LWAppDelegate.m in Sources */,
 				981A18DE18BE0B7400B0CF75 /* loveWeather.xcdatamodeld in Sources */,
 				98EE2FE218C4B1B00096D962 /* MSMenuCell.m in Sources */,
@@ -506,6 +532,7 @@
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0F4CC1CE-7DAC-40AA-8284-F11D33B3F936";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -520,6 +547,7 @@
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0F4CC1CE-7DAC-40AA-8284-F11D33B3F936";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

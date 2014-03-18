@@ -13,6 +13,7 @@
 #import "MSMenuTableViewHeader.h"
 
 #import "LWWeatherViewController.h"
+#import "LWPullRefreshTableViewController.h"
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
@@ -103,7 +104,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                                       };
     
     self.paneViewControllerClasses = @{
-                                       @(MSPaneViewControllerTypeWeather) : [LWWeatherViewController class]
+                                       @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class]
                                        };
     
     self.sectionTitles = @{

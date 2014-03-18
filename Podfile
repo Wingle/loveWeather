@@ -1,6 +1,6 @@
 # Uncomment this line to define a global platform for your project
 
-platform :ios, "6.0"
+platform :ios, "7.0"
 
 target "loveWeather" do
     
@@ -10,7 +10,10 @@ target "loveWeather" do
     pod 'LBBlurredImage', '~> 0.2.0'
     pod 'TSMessages', '~> 0.9.5'
     pod 'ReactiveCocoa', '~> 2.2.4'
-
+    pod 'GDataXML-HTML', '~> 1.1.0'
+    pod 'ASIHTTPRequest', '~> 1.8.1'
+    pod 'EGOTableViewPullRefresh', '~> 0.1.0'
+    
 end
 
 target "loveWeatherTests" do

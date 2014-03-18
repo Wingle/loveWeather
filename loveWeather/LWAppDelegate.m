@@ -11,6 +11,7 @@
 #import "LWMenuViewController.h"
 
 #import "LWWeatherViewController.h"
+#import "LWPullRefreshTableViewController.h"
 #import <TSMessage.h>
 
 @interface LWAppDelegate () <MSDynamicsDrawerViewControllerDelegate>
