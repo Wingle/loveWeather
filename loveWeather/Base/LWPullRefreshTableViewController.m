@@ -10,16 +10,26 @@
 #import "NSObject+NSJSONSerialization.h"
 #import <GDataXML-HTML/GDataXMLNode.h>
 #import <TSMessages/TSMessage.h>
+#import <LBBlurredImage/UIImageView+LBBlurredImage.h>
+#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import "LWWeaterModel.h"
+#import "LWWeatherConditionView.h"
 
-#define LWDT    @"lwdt"
+#define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
 #define LWAIR       @"lwair"
 #define LWCC        @"lwcc"
+#define LWDW        @"lwdw"
 
 @interface LWPullRefreshTableViewController ()
+
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *blurredImageView;
+@property (nonatomic, strong) LWWeatherConditionView *headView;
+
 @end
 
 @implementation LWPullRefreshTableViewController
@@ -38,7 +48,25 @@
     [super viewDidLoad];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.tableView.pagingEnabled = YES;
+    
+    UIImage *background = [UIImage imageNamed:@"Weather Background"];
+    
+    // 2
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
+    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.backgroundImageView];
+    
+    // 3
+    self.blurredImageView = [[UIImageView alloc] init];
+    self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.blurredImageView.alpha = 0;
+    [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
+    [self.view addSubview:self.blurredImageView];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -54,12 +82,31 @@
 		
 	}
     
+    // 1
+    CGRect headerFrame = [UIScreen mainScreen].bounds;
+    headerFrame.size.height = headerFrame.size.height - 64.f;
+    // 2
+    self.headView = [[LWWeatherConditionView alloc] initWithFrame:headerFrame];
+    self.headView.backgroundColor = [UIColor clearColor];
+    self.tableView.tableHeaderView = self.headView;
+    
+    
     if (self.dataSource == nil) {
         self.dataSource = [NSMutableArray arrayWithCapacity:0];
     }
+    
+    if (self.weatherData == nil) {
+        self.weatherData = [NSMutableDictionary dictionaryWithCapacity:0];
+    }
+    
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
+    
+    CGPoint offset = CGPointMake(0, -65.0);
+    self.tableView.contentOffset = offset;
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +116,35 @@
 }
 
 #pragma mark - Network actions
+
+- (NSDictionary *)imageMap {
+    // 1
+    static NSDictionary *_imageMap = nil;
+    if (! _imageMap) {
+        // 2
+        _imageMap = @{
+                      @"1" : @"weather-clear",
+                      @"2" : @"weather-few",
+                      @"3" : @"weather-few",
+                      @"4" : @"weather-broken",
+                      @"5" : @"weather-shower",
+                      @"6" : @"weather-rain",
+                      @"7" : @"weather-tstorm",
+                      @"8" : @"weather-snow",
+                      @"9" : @"weather-mist",
+                      @"10" : @"weather-moon",
+                      @"11" : @"weather-few-night",
+                      @"12" : @"weather-few-night",
+                      @"13" : @"weather-broken",
+                      @"14" : @"weather-shower",
+                      @"15" : @"weather-rain-night",
+                      @"16" : @"weather-tstorm",
+                      @"17" : @"weather-snow",
+                      @"18" : @"weather-mist",
+                      };
+    }
+    return _imageMap;
+}
 
 - (BOOL)requestWeatherDataByArea:(NSString *)area {
     NSString *strURL = [[NSString stringWithFormat:@"http://weather.51juzhai.com/data/getHttpUrl?cityName=%@",area] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -81,7 +157,7 @@
     if (!error && request.responseStatusCode == 200) {
         LOG(@"%@",request.responseString);
         NSDictionary *respDict = [request.responseString JSONValue];
-        BOOL result = [respDict objectForKey:@"success"];
+        BOOL result = [[respDict objectForKey:@"success"] boolValue];
         if (result) {
             NSString *mojiURL = [respDict objectForKey:@"result"];
             ASIHTTPRequest *mojiRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:mojiURL]];
@@ -95,6 +171,19 @@
     }else {
         return NO;
     }
+}
+
+- (void)reloadWeatherData {
+    LWCc *cc = [self.weatherData objectForKey:LWCC];
+    self.headView.temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",[cc.tmp floatValue]];
+    self.headView.conditionsLabel.text = cc.wd;
+    self.headView.hiloLabel.text = [NSString  stringWithFormat:@"%.0f° / %.0f°",[cc.ltmp floatValue], [cc.htmp floatValue]];
+    self.headView.chieseDateLabel.text = [NSString stringWithFormat:@"%@\n%@", cc.gdt, cc.ldt];
+    [self.headView.chieseDateLabel sizeToFit];
+    self.headView.humLabel.text = [NSString stringWithFormat:@"湿度 : %@ %%", cc.hum];
+    self.headView.iconView.image = [UIImage imageNamed:[self imageMap][cc.wid]];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -151,7 +240,7 @@
 	//  model should call this when its done loading
 	_reloading = NO;
 	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-    [self.tableView reloadData];
+    [self reloadWeatherData];
 	
 }
 
@@ -193,7 +282,6 @@
     }
     [self.weatherData removeAllObjects];
     
-    LOG(@"requestFinished = %@",request.responseString);
     GDataXMLDocument *xmlDoc = [[GDataXMLDocument alloc] initWithData:request.responseData error:nil];
     GDataXMLElement *xmlEle = [xmlDoc rootElement];
     NSLog(@"%@",xmlEle);
@@ -227,6 +315,24 @@
             }
             [self.weatherData setObject:dtData forKey:LWDT];
             
+            // dws
+            NSArray *dwss = [element elementsForName:@"dws"];
+            NSArray *dwTop = [dwss[0] elementsForName:@"dw"];
+            NSMutableArray *dwData = [NSMutableArray arrayWithCapacity:0];
+            for (GDataXMLElement *dw in dwTop) {
+                LWDw *dwModel = [[LWDw alloc] init];
+                
+                dwModel.wdid = [[[dw attributeForName:@"id"] stringValue] integerValue];
+                dwModel.pt = [[dw attributeForName:@"pt"] stringValue];
+                dwModel.et = [[dw attributeForName:@"et"] stringValue];
+                dwModel.desc = [[dw attributeForName:@"desc"] stringValue];
+                dwModel.info = [[dw attributeForName:@"info"] stringValue];
+                dwModel.icon = [[dw attributeForName:@"icon"] stringValue];
+                
+                [dwData addObject:dwModel];
+            }
+            [self.weatherData setObject:dwData forKey:LWDW];
+            
             // cc
             NSArray *ccs = [element elementsForName:@"cc"];
             GDataXMLElement *cc = ccs[0];
@@ -239,8 +345,10 @@
             ccModel.htmp = [[cc attributeForName:@"htmp"] stringValue];
             ccModel.ltmp = [[cc attributeForName:@"ltmp"] stringValue];
             ccModel.wd = [[cc attributeForName:@"wd"] stringValue];
+            ccModel.wid = [[cc attributeForName:@"wid"] stringValue];
             ccModel.wl = [[cc attributeForName:@"wl"] stringValue];
             ccModel.wdir = [[cc attributeForName:@"wdir"] stringValue];
+            ccModel.hum = [[cc attributeForName:@"hum"] stringValue];
             ccModel.sr = [[cc attributeForName:@"sr"] stringValue];
             ccModel.ss = [[cc attributeForName:@"ss"] stringValue];
             

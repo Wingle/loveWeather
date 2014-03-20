@@ -30,6 +30,7 @@
 		988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */; };
 		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
 		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
+		988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CD18D974D000332C6A /* LWWeatherConditionView.m */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
@@ -83,6 +84,8 @@
 		988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSJSONSerialization.m"; sourceTree = "<group>"; };
 		988089C918D84C9800332C6A /* LWWeaterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeaterModel.h; sourceTree = "<group>"; };
 		988089CA18D84C9800332C6A /* LWWeaterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeaterModel.m; sourceTree = "<group>"; };
+		988089CC18D974D000332C6A /* LWWeatherConditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherConditionView.h; sourceTree = "<group>"; };
+		988089CD18D974D000332C6A /* LWWeatherConditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherConditionView.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				985CEAAE18C5A1F900538228 /* LWWeatherClient.m */,
 				988089C918D84C9800332C6A /* LWWeaterModel.h */,
 				988089CA18D84C9800332C6A /* LWWeaterModel.m */,
+				988089CC18D974D000332C6A /* LWWeatherConditionView.h */,
+				988089CD18D974D000332C6A /* LWWeatherConditionView.m */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
 				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
 				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
+				988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */,
 				98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */,
 				985CEAA618C584E600538228 /* LWWeatherManager.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,

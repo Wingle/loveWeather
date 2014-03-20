@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 {
     self.paneViewControllerType = NSUIntegerMax;
     self.paneViewControllerTitles = @{
-                                      @(MSPaneViewControllerTypeWeather) : @"天气",
+                                      @(MSPaneViewControllerTypeWeather) : @"AA",
                                       @(MSPaneViewControllerTypeSetting) : @"设置",
                                       @(MSPaneViewControllerTypeVersion) : @"关于"
                                       };
