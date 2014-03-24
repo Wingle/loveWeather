@@ -16,5 +16,6 @@
 @property (nonatomic, strong) UILabel *conditionsLabel;
 @property (nonatomic, strong) UILabel *chieseDateLabel;
 @property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UITextView *tipsTextView;
 
 @end

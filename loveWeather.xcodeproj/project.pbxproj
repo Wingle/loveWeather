@@ -316,6 +316,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = WingleWong;
 				TargetAttributes = {
+					981A18C418BE0B7400B0CF75 = {
+						DevelopmentTeam = SFJPT2TG3Z;
+					};
 					981A18E418BE0B7500B0CF75 = {
 						TestTargetID = 981A18C418BE0B7400B0CF75;
 					};
@@ -534,11 +537,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linghe Kong (J425N4BXTE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0F4CC1CE-7DAC-40AA-8284-F11D33B3F936";
+				PROVISIONING_PROFILE = "AAC89F20-C938-4BFF-AD07-637A7DE5D786";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -549,11 +553,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linghe Kong (J425N4BXTE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0F4CC1CE-7DAC-40AA-8284-F11D33B3F936";
+				PROVISIONING_PROFILE = "AAC89F20-C938-4BFF-AD07-637A7DE5D786";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

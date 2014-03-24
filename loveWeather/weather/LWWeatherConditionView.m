@@ -7,6 +7,7 @@
 //
 
 #import "LWWeatherConditionView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation LWWeatherConditionView
 
@@ -17,13 +18,20 @@
         // Initialization code
         // 2
         CGFloat inset = 15;
+        CGFloat tipsInset = 60.f;
         // 3
         CGFloat temperatureHeight = 110;
         CGFloat humHeight = 20;
         CGFloat hiloHeight = 40;
         CGFloat iconHeight = 30;
+        CGFloat tipsSize = frame.size.width - 2*tipsInset;
         CGFloat labelWidth = frame.size.width/2 - inset;
         // 4
+        CGRect tipsFrame = CGRectMake(tipsInset,
+                                      20,
+                                      tipsSize,
+                                      tipsSize);
+        
         CGRect hiloFrame = CGRectMake(inset,
                                       frame.size.height - hiloHeight,
                                       labelWidth,
@@ -52,7 +60,19 @@
         CGRect conditionsFrame = iconFrame;
         conditionsFrame.size.width = frame.size.width - (((2 * inset) + iconHeight) + 10);
         conditionsFrame.origin.x = iconFrame.origin.x + (iconHeight + 10);
-
+        
+        // tips
+        _tipsTextView = [[UITextView alloc] initWithFrame:tipsFrame];
+        _tipsTextView.backgroundColor = [UIColor clearColor];
+        _tipsTextView.textColor = [UIColor whiteColor];
+        _tipsTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        _tipsTextView.userInteractionEnabled = NO;
+        
+        _tipsTextView.layer.masksToBounds = YES;
+        _tipsTextView.layer.borderWidth = 2.f;
+        _tipsTextView.layer.borderColor = [LW_MAIN_COLOR CGColor];
+        [self addSubview:_tipsTextView];
+        
         // bottom left
         _temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
         _temperatureLabel.backgroundColor = [UIColor clearColor];

@@ -46,8 +46,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect headerFrame = [UIScreen mainScreen].bounds;
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationController.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
     
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -58,11 +61,13 @@
     
     // 2
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
+    self.backgroundImageView.frame = CGRectMake(0, -64.f, headerFrame.size.width, headerFrame.size.height);
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.backgroundImageView];
     
     // 3
     self.blurredImageView = [[UIImageView alloc] init];
+    self.blurredImageView.frame = CGRectMake(0, -64.f, headerFrame.size.width, headerFrame.size.height);
     self.blurredImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.blurredImageView.alpha = 0;
     [self.blurredImageView setImageToBlur:background blurRadius:10 completionBlock:nil];
@@ -83,7 +88,6 @@
 	}
     
     // 1
-    CGRect headerFrame = [UIScreen mainScreen].bounds;
     headerFrame.size.height = headerFrame.size.height - 64.f;
     // 2
     self.headView = [[LWWeatherConditionView alloc] initWithFrame:headerFrame];
@@ -123,24 +127,14 @@
     if (! _imageMap) {
         // 2
         _imageMap = @{
-                      @"1" : @"weather-clear",
-                      @"2" : @"weather-few",
-                      @"3" : @"weather-few",
-                      @"4" : @"weather-broken",
-                      @"5" : @"weather-shower",
-                      @"6" : @"weather-rain",
-                      @"7" : @"weather-tstorm",
-                      @"8" : @"weather-snow",
-                      @"9" : @"weather-mist",
-                      @"10" : @"weather-moon",
-                      @"11" : @"weather-few-night",
-                      @"12" : @"weather-few-night",
-                      @"13" : @"weather-broken",
-                      @"14" : @"weather-shower",
-                      @"15" : @"weather-rain-night",
-                      @"16" : @"weather-tstorm",
-                      @"17" : @"weather-snow",
-                      @"18" : @"weather-mist",
+                      @"0" : @"weather-clear",
+                      @"1" : @"weather-few",
+                      @"2" : @"weather-broken",
+                      @"?" : @"weather-shower",
+                      @"7" : @"weather-rain",
+                      @"4" : @"weather-tstorm",
+                      @"13" : @"weather-snow",
+                      @"?" : @"weather-mist",
                       };
     }
     return _imageMap;
@@ -182,6 +176,11 @@
     [self.headView.chieseDateLabel sizeToFit];
     self.headView.humLabel.text = [NSString stringWithFormat:@"湿度 : %@ %%", cc.hum];
     self.headView.iconView.image = [UIImage imageNamed:[self imageMap][cc.wid]];
+    
+    NSArray *dts = [self.weatherData objectForKey:LWDT];
+    LWDt *dt = dts[0];
+    NSString *tipsMessage = [NSString stringWithFormat:@"孝心提示:\n%@",dt.newkn ? dt.newkn : dt.kn];
+    self.headView.tipsTextView.text = tipsMessage;
     
     [self.tableView reloadData];
 }
@@ -232,7 +231,7 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
-    [self requestWeatherDataByArea:@"上海"];
+    [self requestWeatherDataByArea:@"成都"];
 }
 
 - (void)doneLoadingTableViewData{
@@ -409,6 +408,5 @@
     [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
 //    [TSMessage sh]
 }
-
 
 @end
