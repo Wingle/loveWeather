@@ -17,8 +17,10 @@
 @property (nonatomic, copy) NSString *wdir;         //风向，如：东北风
 @property (nonatomic, copy) NSString *hwd;          //天气情况，如：小雨
 @property (nonatomic, copy) NSString *lwd;          //天气情况，如：小雨
-@property (nonatomic, copy) NSString *ltmp;         //最高气温
-@property (nonatomic, copy) NSString *htmp;         //最低气温
+@property (nonatomic, copy) NSString *ltmp;         //最低气温
+@property (nonatomic, copy) NSString *htmp;         //最高气温
+@property (nonatomic, copy) NSString *hwid;         //未知
+@property (nonatomic, copy) NSString *lwid;         //未知
 
 @end
 

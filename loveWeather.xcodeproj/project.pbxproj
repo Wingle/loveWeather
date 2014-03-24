@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEDE4865EF7424189924365 /* libPods-loveWeather.a */; };
 		9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9802650B18DFE452000A85EF /* UIImage+Additions.m */; };
+		9802651118DFE628000A85EF /* LWAirTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9802650F18DFE628000A85EF /* LWAirTableViewCell.m */; };
+		9802651218DFE628000A85EF /* LWAirTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9802651018DFE628000A85EF /* LWAirTableViewCell.xib */; };
 		981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18C818BE0B7400B0CF75 /* Foundation.framework */; };
 		981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */; };
 		981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CC18BE0B7400B0CF75 /* UIKit.framework */; };
@@ -32,6 +34,10 @@
 		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
 		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
 		988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CD18D974D000332C6A /* LWWeatherConditionView.m */; };
+		989A89F818E0231200055237 /* LWIndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 989A89F618E0231200055237 /* LWIndexTableViewCell.m */; };
+		989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 989A89F718E0231200055237 /* LWIndexTableViewCell.xib */; };
+		989A89FD18E0303900055237 /* LWForecastTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 989A89FB18E0303900055237 /* LWForecastTableViewCell.m */; };
+		989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
@@ -55,6 +61,9 @@
 		859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.xcconfig"; path = "Pods/Pods-loveWeather.xcconfig"; sourceTree = "<group>"; };
 		9802650A18DFE452000A85EF /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		9802650B18DFE452000A85EF /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
+		9802650E18DFE628000A85EF /* LWAirTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAirTableViewCell.h; sourceTree = "<group>"; };
+		9802650F18DFE628000A85EF /* LWAirTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAirTableViewCell.m; sourceTree = "<group>"; };
+		9802651018DFE628000A85EF /* LWAirTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWAirTableViewCell.xib; sourceTree = "<group>"; };
 		981A18C518BE0B7400B0CF75 /* loveWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981A18C818BE0B7400B0CF75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +98,12 @@
 		988089CA18D84C9800332C6A /* LWWeaterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeaterModel.m; sourceTree = "<group>"; };
 		988089CC18D974D000332C6A /* LWWeatherConditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherConditionView.h; sourceTree = "<group>"; };
 		988089CD18D974D000332C6A /* LWWeatherConditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWeatherConditionView.m; sourceTree = "<group>"; };
+		989A89F518E0231200055237 /* LWIndexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWIndexTableViewCell.h; sourceTree = "<group>"; };
+		989A89F618E0231200055237 /* LWIndexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWIndexTableViewCell.m; sourceTree = "<group>"; };
+		989A89F718E0231200055237 /* LWIndexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWIndexTableViewCell.xib; sourceTree = "<group>"; };
+		989A89FA18E0303900055237 /* LWForecastTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWForecastTableViewCell.h; sourceTree = "<group>"; };
+		989A89FB18E0303900055237 /* LWForecastTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWForecastTableViewCell.m; sourceTree = "<group>"; };
+		989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWForecastTableViewCell.xib; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
@@ -133,6 +148,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9802650D18DFE5E1000A85EF /* modelCell */ = {
+			isa = PBXGroup;
+			children = (
+				9802650E18DFE628000A85EF /* LWAirTableViewCell.h */,
+				9802650F18DFE628000A85EF /* LWAirTableViewCell.m */,
+				9802651018DFE628000A85EF /* LWAirTableViewCell.xib */,
+				989A89F518E0231200055237 /* LWIndexTableViewCell.h */,
+				989A89F618E0231200055237 /* LWIndexTableViewCell.m */,
+				989A89F718E0231200055237 /* LWIndexTableViewCell.xib */,
+				989A89FA18E0303900055237 /* LWForecastTableViewCell.h */,
+				989A89FB18E0303900055237 /* LWForecastTableViewCell.m */,
+				989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */,
+			);
+			name = modelCell;
+			sourceTree = "<group>";
+		};
 		981A18BC18BE0B7400B0CF75 = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +269,7 @@
 		98EE2FD018C4A13A0096D962 /* weather */ = {
 			isa = PBXGroup;
 			children = (
+				9802650D18DFE5E1000A85EF /* modelCell */,
 				98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */,
 				98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */,
 				985CEAA418C584E600538228 /* LWWeatherManager.h */,
@@ -353,7 +385,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				981A18D518BE0B7400B0CF75 /* InfoPlist.strings in Resources */,
+				9802651218DFE628000A85EF /* LWAirTableViewCell.xib in Resources */,
+				989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */,
 				981A18E018BE0B7500B0CF75 /* Images.xcassets in Resources */,
+				989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,13 +443,16 @@
 				98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */,
 				985CEAA918C5863200538228 /* LWWeatherCondition.m in Sources */,
 				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
+				989A89FD18E0303900055237 /* LWForecastTableViewCell.m in Sources */,
 				981A18D718BE0B7400B0CF75 /* main.m in Sources */,
 				985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */,
+				9802651118DFE628000A85EF /* LWAirTableViewCell.m in Sources */,
 				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
 				9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */,
 				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
 				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
 				988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */,
+				989A89F818E0231200055237 /* LWIndexTableViewCell.m in Sources */,
 				98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */,
 				985CEAA618C584E600538228 /* LWWeatherManager.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,

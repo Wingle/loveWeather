@@ -16,6 +16,10 @@
 #import "LWWeatherConditionView.h"
 #import "UIImage+Additions.h"
 
+#import "LWAirTableViewCell.h"
+#import "LWIndexTableViewCell.h"
+#import "LWForecastTableViewCell.h"
+
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
 #define LWAIR       @"lwair"
@@ -57,6 +61,7 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
     self.tableView.pagingEnabled = YES;
+    self.tableView.allowsSelection = NO;
     
     UIImage *background = [UIImage imageWithColor:LW_MAIN_COLOR];
     
@@ -188,42 +193,183 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.dataSource count];
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return [self.dataSource count];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *sectionData = self.dataSource[section];
-    return [sectionData count];
+//    NSArray *sectionData = self.dataSource[section];
+//    return [sectionData count];
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = [indexPath row];
+    CGFloat height = 0;
+    switch (row) {
+        case 0:
+            height = 120.f;
+            break;
+        case 1:
+            height = 313.f;
+            break;
+        case 2:
+            height = 220.f;
+            break;
+            
+        default:
+            break;
+    }
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *airCellIdentifier = @"airCell";
+    static NSString *indexCellIdentifier = @"indexCell";
+    static NSString *forecastCellIdentifier = @"forecastCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    NSInteger row = [indexPath row];
+    
+    if (row == 0) {
+        LWAirTableViewCell *cell = (LWAirTableViewCell *)[tableView dequeueReusableCellWithIdentifier:airCellIdentifier];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LWAirTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        LWAir *air = [self.weatherData objectForKey:LWAIR];
+        cell.indexLabel.text = air.lv;
+        cell.pm25Label.text = [NSString stringWithFormat:@"PM2.5 : %@",air.pmtwoaqi];
+        cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",air.pmtenaqi];
+        cell.so2Label.text = [NSString stringWithFormat:@"二氧化硫 : %@",air.so2];
+        cell.o3Label.text = [NSString stringWithFormat:@"臭氧 : %@",air.o3];
+        NSArray *info = [air.ptime componentsSeparatedByString:@" "];
+        if ([info count] == 2) {
+            NSString *strTime = [info[1] substringToIndex:5];
+            cell.pTimeLabel.text = [NSString stringWithFormat:@"%@ 发布",strTime];
+        }else {
+            cell.pTimeLabel.text = nil;
+        }
+        
+        if ([air.aqigrade isEqualToString:@"重度污染"]) {
+            [cell.descLabel setTextColor:[UIColor colorWithRed:194.f/255 green:49.f/255 blue:49.f/255 alpha:1.0]];
+        }else {
+            [cell.descLabel setTextColor:[UIColor whiteColor]];
+        }
+        
+        cell.descLabel.text = air.aqigrade;
+        return cell;
+    }else if (row == 1) {
+        LWIndexTableViewCell *cell = (LWIndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:indexCellIdentifier];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LWIndexTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        NSArray *idxs = [self.weatherData objectForKey:LWINDEX];
+        for (LWIdxs *index in idxs) {
+            NSString *title = [NSString stringWithFormat:@"%@ :", index.nm];
+            NSString *message = [NSString stringWithFormat:@"%@，%@", index.desc, index.recom];
+            switch (index.type) {
+                case 5:
+                {
+                    cell.line1TitleLabel.text = title;
+                    cell.line1Label.text = message;
+                    [cell.line1Label sizeToFit];
+                    break;
+                }
+                case 11:
+                {
+                    cell.line2TitleLabel.text = title;
+                    cell.line2Label.text = message;
+                    [cell.line2Label sizeToFit];
+                    break;
+                }
+                case 17:
+                {
+                    cell.line3TitleLabel.text = title;
+                    cell.line3Label.text = message;
+                    [cell.line3Label sizeToFit];
+                    break;
+                }
+                case 19:
+                {
+                    cell.line4TitleLabel.text = title;
+                    cell.line4Label.text = message;
+                    [cell.line4Label sizeToFit];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+        return cell;
+        
+    }else if (row == 2) {
+        LWForecastTableViewCell *cell = (LWForecastTableViewCell *)[tableView dequeueReusableCellWithIdentifier:forecastCellIdentifier];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LWForecastTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        NSArray *dts = [self.weatherData objectForKey:LWDT];
+        for (LWDt *dt in dts) {
+            switch (dt.dtid) {
+                case 2:
+                {
+                    cell.line1ImageView.image = [UIImage imageNamed:[self imageMap][dt.hwid]];
+                    cell.l11Label.text = @"明天";
+                    cell.l12Label.text = dt.wdir;
+                    cell.l13Label.text = [NSString stringWithFormat:@"%.0f° / %.0f°", [dt.ltmp floatValue], [dt.htmp floatValue]];
+                    break;
+                }
+                case 3:
+                {
+                    cell.line2ImageView.image = [UIImage imageNamed:[self imageMap][dt.hwid]];
+                    cell.l21Label.text = @"后天";
+                    cell.l22Label.text = dt.wdir;
+                    cell.l23Label.text = [NSString stringWithFormat:@"%.0f° / %.0f°", [dt.ltmp floatValue], [dt.htmp floatValue]];
+                    break;
+                }
+                case 4:
+                {
+                    cell.line3ImageView.image = [UIImage imageNamed:[self imageMap][dt.hwid]];
+                    cell.l31Label.text = [dt.date substringFromIndex:5];
+                    cell.l32Label.text = dt.wdir;
+                    cell.l33Label.text = [NSString stringWithFormat:@"%.0f° / %.0f°", [dt.ltmp floatValue], [dt.htmp floatValue]];
+                    break;
+                }
+                case 5:
+                {
+                    cell.line4ImageView.image = [UIImage imageNamed:[self imageMap][dt.hwid]];
+                    cell.l41Label.text = [dt.date substringFromIndex:5];
+                    cell.l42Label.text = dt.wdir;
+                    cell.l43Label.text = [NSString stringWithFormat:@"%.0f° / %.0f°", [dt.ltmp floatValue], [dt.htmp floatValue]];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+        }
+        return cell;
+        
+        
+    }else {
+        return nil;
     }
     
-	// Configure the cell.
-    NSInteger section = [indexPath section];
-    NSInteger row = [indexPath row];
-    NSArray *sectionData = self.dataSource[section];
-    LWDt *dt = sectionData[row];
-    cell.textLabel.text = dt.date;
-    cell.detailTextLabel.text = dt.kn;
-    
-    return cell;
+
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	
-	return [NSString stringWithFormat:@"Section %ld", (long)section];
-	
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//	
+//	return [NSString stringWithFormat:@"Section %ld", (long)section];
+//	
+//}
 
 #pragma mark - Data Source Loading / Reloading Methods
 
@@ -232,7 +378,7 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
-    [self requestWeatherDataByArea:@"成都"];
+    [self requestWeatherDataByArea:@"北京"];
 }
 
 - (void)doneLoadingTableViewData{
@@ -310,6 +456,8 @@
                 dtModel.lwd = [[dt attributeForName:@"lwd"] stringValue];
                 dtModel.ltmp = [[dt attributeForName:@"ltmp"] stringValue];
                 dtModel.htmp = [[dt attributeForName:@"htmp"] stringValue];
+                dtModel.hwid = [[dt attributeForName:@"hwid"] stringValue];
+                dtModel.lwid = [[dt attributeForName:@"lwid"] stringValue];
                 
                 [dtData addObject:dtModel];
             }
