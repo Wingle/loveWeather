@@ -14,6 +14,7 @@
 #import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import "LWWeaterModel.h"
 #import "LWWeatherConditionView.h"
+#import "UIImage+Additions.h"
 
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
@@ -57,7 +58,7 @@
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
     self.tableView.pagingEnabled = YES;
     
-    UIImage *background = [UIImage imageNamed:@"Weather Background"];
+    UIImage *background = [UIImage imageWithColor:LW_MAIN_COLOR];
     
     // 2
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];

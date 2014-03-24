@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEDE4865EF7424189924365 /* libPods-loveWeather.a */; };
+		9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9802650B18DFE452000A85EF /* UIImage+Additions.m */; };
 		981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18C818BE0B7400B0CF75 /* Foundation.framework */; };
 		981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */; };
 		981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981A18CC18BE0B7400B0CF75 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.xcconfig"; path = "Pods/Pods-loveWeather.xcconfig"; sourceTree = "<group>"; };
+		9802650A18DFE452000A85EF /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		9802650B18DFE452000A85EF /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		981A18C518BE0B7400B0CF75 /* loveWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981A18C818BE0B7400B0CF75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -211,6 +214,8 @@
 		988089C218D814BC00332C6A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9802650A18DFE452000A85EF /* UIImage+Additions.h */,
+				9802650B18DFE452000A85EF /* UIImage+Additions.m */,
 				988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */,
 				988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */,
 			);
@@ -406,6 +411,7 @@
 				981A18D718BE0B7400B0CF75 /* main.m in Sources */,
 				985CEAAF18C5A1F900538228 /* LWWeatherClient.m in Sources */,
 				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
+				9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */,
 				98EE2FDC18C4A3600096D962 /* AGTabBarController.m in Sources */,
 				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
 				988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */,
