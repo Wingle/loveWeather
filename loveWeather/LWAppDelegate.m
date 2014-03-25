@@ -31,6 +31,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     [[UINavigationBar appearance] setBarTintColor:LW_MAIN_COLOR];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                           [UIFont fontWithName:@"Helvetica Neue" size:21.0], NSFontAttributeName, nil]];
     
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     self.dynamicsDrawerViewController.delegate = self;
@@ -44,7 +47,7 @@
     [self.dynamicsDrawerViewController setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     
     // Transition to the first view controller
-    [menuViewController transitionToViewController:MSPaneViewControllerTypeWeather];
+    [menuViewController transitionToViewController:MSPaneViewControllerTypeWeather cityAtIndexPath:nil];
     
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.dynamicsDrawerViewController;

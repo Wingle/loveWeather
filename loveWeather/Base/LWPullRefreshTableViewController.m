@@ -20,13 +20,18 @@
 #import "LWIndexTableViewCell.h"
 #import "LWForecastTableViewCell.h"
 
+#import <Google-AdMob-Ads-SDK/GADBannerView.h>
+#import <Google-AdMob-Ads-SDK/GADRequest.h>
+
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
 #define LWAIR       @"lwair"
 #define LWCC        @"lwcc"
 #define LWDW        @"lwdw"
 
-@interface LWPullRefreshTableViewController ()
+#define kSampleAdUnitID @"a15330ec57678a6"
+
+@interface LWPullRefreshTableViewController () <GADBannerViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -34,6 +39,8 @@
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *blurredImageView;
 @property (nonatomic, strong) LWWeatherConditionView *headView;
+
+@property(nonatomic, strong) GADBannerView *adBanner;
 
 @end
 
@@ -55,8 +62,10 @@
     CGRect headerFrame = [UIScreen mainScreen].bounds;
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor clearColor];
+
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
@@ -109,14 +118,30 @@
         self.weatherData = [NSMutableDictionary dictionaryWithCapacity:0];
     }
     
+    CGPoint origin = CGPointMake(0.0,
+                                headerFrame.size.height);
+    
+    // Use predefined GADAdSize constants to define the GADBannerView.
+    self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+    
+    // Note: Edit SampleConstants.h to provide a definition for kSampleAdUnitID before compiling.
+    self.adBanner.adUnitID = kSampleAdUnitID;
+    self.adBanner.delegate = self;
+    self.adBanner.rootViewController = self;
+    [self.view addSubview:self.adBanner];
+    [self.adBanner loadRequest:[self request]];
+    
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     CGPoint offset = CGPointMake(0, -65.0);
     self.tableView.contentOffset = offset;
     [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,6 +216,21 @@
     [self.tableView reloadData];
 }
 
+- (GADRequest *)request {
+    GADRequest *request = [GADRequest request];
+    
+    // Make the request for a test ad. Put in an identifier for the simulator as well as any devices
+    // you want to receive test ads.
+    request.testDevices = @[
+        // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
+        // the console when the app is launched.
+        GAD_SIMULATOR_ID,
+        @"672e13ff37a8c1e99a51375df44e9f4c9f610d7f",
+        @"5ea83bfbbab6d8e72c936fa4888757666a28a4c0"
+    ];
+    return request;
+}
+
 #pragma mark - Table view data source
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -202,7 +242,7 @@
 {
 //    NSArray *sectionData = self.dataSource[section];
 //    return [sectionData count];
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,12 +250,15 @@
     CGFloat height = 0;
     switch (row) {
         case 0:
-            height = 120.f;
+            height = 50.f;
             break;
         case 1:
-            height = 313.f;
+            height = 120.f;
             break;
         case 2:
+            height = 313.f;
+            break;
+        case 3:
             height = 220.f;
             break;
             
@@ -230,10 +273,11 @@
     static NSString *airCellIdentifier = @"airCell";
     static NSString *indexCellIdentifier = @"indexCell";
     static NSString *forecastCellIdentifier = @"forecastCell";
+    static NSString *adCellIdentifier = @"adCell";
     
     NSInteger row = [indexPath row];
     
-    if (row == 0) {
+    if (row == 1) {
         LWAirTableViewCell *cell = (LWAirTableViewCell *)[tableView dequeueReusableCellWithIdentifier:airCellIdentifier];
         if (cell == nil)
         {
@@ -262,7 +306,7 @@
         
         cell.descLabel.text = air.aqigrade;
         return cell;
-    }else if (row == 1) {
+    }else if (row == 2) {
         LWIndexTableViewCell *cell = (LWIndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:indexCellIdentifier];
         if (cell == nil)
         {
@@ -308,7 +352,7 @@
         }
         return cell;
         
-    }else if (row == 2) {
+    }else if (row == 3) {
         LWForecastTableViewCell *cell = (LWForecastTableViewCell *)[tableView dequeueReusableCellWithIdentifier:forecastCellIdentifier];
         if (cell == nil)
         {
@@ -359,10 +403,13 @@
         
         
     }else {
-        return nil;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:adCellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:adCellIdentifier];
+            cell.backgroundColor = [UIColor clearColor];
+        }
+        return cell;
     }
-    
-
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -378,7 +425,7 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
-    [self requestWeatherDataByArea:@"北京"];
+    [self requestWeatherDataByArea:self.navigationItem.title];
 }
 
 - (void)doneLoadingTableViewData{
@@ -556,6 +603,17 @@
 - (void)requestFailed:(ASIHTTPRequest *)request {
     [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
 //    [TSMessage sh]
+}
+
+#pragma mark GADBannerViewDelegate implementation
+
+// We've received an ad successfully.
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"Received ad successfully");
+}
+
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
 
 @end

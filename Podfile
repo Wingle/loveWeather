@@ -13,6 +13,7 @@ target "loveWeather" do
     pod 'GDataXML-HTML', '~> 1.1.0'
     pod 'ASIHTTPRequest', '~> 1.8.1'
     pod 'EGOTableViewPullRefresh', '~> 0.1.0'
+    pod 'Google-AdMob-Ads-SDK', '~> 6.8.0'
     
 end
 

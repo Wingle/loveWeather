@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 @interface LWMenuViewController ()
 
-@property (nonatomic, strong) NSDictionary *paneViewControllerTitles;
+@property (nonatomic, strong) NSMutableDictionary *paneViewControllerTitles;
 @property (nonatomic, strong) NSDictionary *paneViewControllerClasses;
 @property (nonatomic, strong) NSDictionary *sectionTitles;
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
@@ -34,6 +34,8 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) UIBarButtonItem *paneStateBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
+
+@property (nonatomic, strong) NSMutableArray *cityList;
 
 @end
 
@@ -97,11 +99,23 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (void)initialize
 {
     self.paneViewControllerType = NSUIntegerMax;
-    self.paneViewControllerTitles = @{
-                                      @(MSPaneViewControllerTypeWeather) : @"AA",
-                                      @(MSPaneViewControllerTypeSetting) : @"设置",
-                                      @(MSPaneViewControllerTypeVersion) : @"关于"
-                                      };
+    NSArray *citys = @[@"北京", @"上海", @"成都", @"广州"];
+//    if (self.paneViewControllerTitles == nil) {
+//        self.paneViewControllerTitles = [NSMutableDictionary dictionaryWithCapacity:0];
+//    }
+//    for (NSString *key in citys) {
+//        [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeWeather)  forKey:key];
+//    }
+//    [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeSetting) forKey:@"设置"];
+//    [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeVersion) forKey:@"关于"];
+////    self.paneViewControllerTitles = @{
+////                                      @(MSPaneViewControllerTypeWeather) : @"AA",
+////                                      @(MSPaneViewControllerTypeSetting) : @"设置",
+////                                      @(MSPaneViewControllerTypeVersion) : @"关于"
+////                                      };
+    
+    _cityList = [NSMutableArray arrayWithCapacity:1];
+    [_cityList addObjectsFromArray:citys];
     
     self.paneViewControllerClasses = @{
                                        @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class]
@@ -113,6 +127,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                            };
     
     self.tableViewSectionBreaks = @[
+                                    @(MSPaneViewControllerTypeWeather),
                                     @(MSPaneViewControllerTypeSetting),
                                     @(MSPaneViewControllerTypeVersion)
                                     ];
@@ -123,20 +138,20 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 {
     MSPaneViewControllerType paneViewControllerType;
     if (indexPath.section == 0) {
-        paneViewControllerType = indexPath.row;
+        paneViewControllerType = MSPaneViewControllerTypeWeather;
     } else {
         paneViewControllerType = ([self.tableViewSectionBreaks[(indexPath.section - 1)] integerValue] + indexPath.row);
     }
     return paneViewControllerType;
 }
 
-- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType
+- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType cityAtIndexPath:(NSIndexPath *)indexPath
 {
     // Close pane if already displaying the pane view controller
-    if (paneViewControllerType == self.paneViewControllerType) {
-        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:YES completion:nil];
-        return;
-    }
+//    if (paneViewControllerType == self.paneViewControllerType) {
+//        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:YES completion:nil];
+//        return;
+//    }
     
     BOOL animateTransition = self.dynamicsDrawerViewController.paneViewController != nil;
     
@@ -144,7 +159,16 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     Class paneViewControllerClass = self.paneViewControllerClasses[@(paneViewControllerType)];
     UIViewController *paneViewController = (UIViewController *)[paneViewControllerClass new];
     
-    paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
+    if (indexPath) {
+        if ([indexPath section] == 0) {
+            paneViewController.navigationItem.title = self.cityList[[indexPath row]];
+        }else {
+            paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
+        }
+    }else {
+        paneViewController.navigationItem.title = [self.cityList lastObject];
+        
+    }
     
     self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
     paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
@@ -172,14 +196,15 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return MSMenuViewControllerTableViewSectionTypeCount;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return [self.tableViewSectionBreaks[section] integerValue];
+        return [self.cityList count];
     } else {
+        NSLog(@"%d",[self.tableViewSectionBreaks[section] integerValue] - [self.tableViewSectionBreaks[(section - 1)] integerValue]);
         return ([self.tableViewSectionBreaks[section] integerValue] - [self.tableViewSectionBreaks[(section - 1)] integerValue]);
     }
 }
@@ -209,7 +234,12 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.paneViewControllerTitles[@([self paneViewControllerTypeForIndexPath:indexPath])];
+    if ([indexPath section] == 0) {
+        cell.textLabel.text = self.cityList[[indexPath row]];
+    }else {
+        cell.textLabel.text = self.paneViewControllerTitles[@([self paneViewControllerTypeForIndexPath:indexPath])];
+    }
+    
     return cell;
 }
 
@@ -218,7 +248,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSPaneViewControllerType paneViewControllerType = [self paneViewControllerTypeForIndexPath:indexPath];
-    [self transitionToViewController:paneViewControllerType];
+    [self transitionToViewController:paneViewControllerType cityAtIndexPath:indexPath];
     
     // Prevent visual display bug with cell dividers
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

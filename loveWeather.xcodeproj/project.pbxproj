@@ -38,6 +38,12 @@
 		989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 989A89F718E0231200055237 /* LWIndexTableViewCell.xib */; };
 		989A89FD18E0303900055237 /* LWForecastTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 989A89FB18E0303900055237 /* LWForecastTableViewCell.m */; };
 		989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */; };
+		989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4118E1354C00055237 /* AudioToolbox.framework */; };
+		989A8A4418E1355600055237 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4318E1355600055237 /* MessageUI.framework */; };
+		989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4518E1356F00055237 /* SystemConfiguration.framework */; };
+		989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4718E136FE00055237 /* AVFoundation.framework */; };
+		989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4918E1374800055237 /* CoreAudio.framework */; };
+		989A8A4C18E13CE300055237 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4B18E13CE300055237 /* StoreKit.framework */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FD318C4A2EB0096D962 /* LWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD218C4A2EB0096D962 /* LWWeatherViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
@@ -104,6 +110,12 @@
 		989A89FA18E0303900055237 /* LWForecastTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWForecastTableViewCell.h; sourceTree = "<group>"; };
 		989A89FB18E0303900055237 /* LWForecastTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWForecastTableViewCell.m; sourceTree = "<group>"; };
 		989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWForecastTableViewCell.xib; sourceTree = "<group>"; };
+		989A8A4118E1354C00055237 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		989A8A4318E1355600055237 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		989A8A4518E1356F00055237 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		989A8A4718E136FE00055237 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		989A8A4918E1374800055237 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		989A8A4B18E13CE300055237 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD118C4A2EB0096D962 /* LWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWeatherViewController.h; sourceTree = "<group>"; };
@@ -126,6 +138,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				989A8A4C18E13CE300055237 /* StoreKit.framework in Frameworks */,
+				989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */,
+				989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */,
+				989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */,
+				989A8A4418E1355600055237 /* MessageUI.framework in Frameworks */,
+				989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */,
 				981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */,
 				981A18CF18BE0B7400B0CF75 /* CoreData.framework in Frameworks */,
 				981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */,
@@ -187,6 +205,12 @@
 		981A18C718BE0B7400B0CF75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				989A8A4B18E13CE300055237 /* StoreKit.framework */,
+				989A8A4918E1374800055237 /* CoreAudio.framework */,
+				989A8A4718E136FE00055237 /* AVFoundation.framework */,
+				989A8A4518E1356F00055237 /* SystemConfiguration.framework */,
+				989A8A4318E1355600055237 /* MessageUI.framework */,
+				989A8A4118E1354C00055237 /* AudioToolbox.framework */,
 				981A18C818BE0B7400B0CF75 /* Foundation.framework */,
 				981A18CA18BE0B7400B0CF75 /* CoreGraphics.framework */,
 				981A18CC18BE0B7400B0CF75 /* UIKit.framework */,
@@ -585,6 +609,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loveWeather/adMod",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "AAC89F20-C938-4BFF-AD07-637A7DE5D786";
 				WRAPPER_EXTENSION = app;
@@ -601,6 +630,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loveWeather/adMod",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "AAC89F20-C938-4BFF-AD07-637A7DE5D786";
 				WRAPPER_EXTENSION = app;

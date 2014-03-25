@@ -21,6 +21,6 @@ typedef NS_ENUM(NSUInteger, MSPaneViewControllerType) {
 @property (nonatomic, assign) MSPaneViewControllerType paneViewControllerType;
 @property (nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
 
-- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType;
+- (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType cityAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
