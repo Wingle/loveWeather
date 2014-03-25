@@ -62,8 +62,8 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="空气质量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtD-wd-zcm">
-                        <rect key="frame" x="238" y="10" width="62" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="空气质量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtD-wd-zcm">
+                        <rect key="frame" x="238" y="10" width="69" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,6 +80,7 @@
                 <outlet property="pm10Label" destination="R48-fl-ij3" id="DyP-R0-zhF"/>
                 <outlet property="pm25Label" destination="six-hQ-STd" id="V7V-3Y-WfY"/>
                 <outlet property="so2Label" destination="vqI-vM-yz0" id="WQn-bc-JvI"/>
+                <outlet property="titleLabel" destination="DtD-wd-zcm" id="Pln-Yi-hlg"/>
             </connections>
         </tableViewCell>
     </objects>

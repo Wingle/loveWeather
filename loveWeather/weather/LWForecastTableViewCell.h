@@ -29,5 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *l33Label;
 @property (weak, nonatomic) IBOutlet UILabel *l43Label;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

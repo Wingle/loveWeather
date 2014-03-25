@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>loveWeather copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>loveWeather.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>981A18E418BE0B7500B0CF75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>989A89FF18E04D3100055237</key>
 		<dict>
 			<key>primary</key>
 			<true/>

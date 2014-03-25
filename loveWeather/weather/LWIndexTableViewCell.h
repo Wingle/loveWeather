@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *line3TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *line4TitleLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

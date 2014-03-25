@@ -7,12 +7,17 @@
 //
 
 #import "LWForecastTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation LWForecastTableViewCell
 
 - (void)awakeFromNib
 {
     // Initialization code
+    _titleLabel.layer.masksToBounds = YES;
+    _titleLabel.layer.borderWidth = 1.f;
+    _titleLabel.layer.borderColor = [[UIColor yellowColor] CGColor];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

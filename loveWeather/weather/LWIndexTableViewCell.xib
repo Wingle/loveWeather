@@ -13,8 +13,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生活建议" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVW-f8-0f6">
-                        <rect key="frame" x="238" y="10" width="75" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生活建议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVW-f8-0f6">
+                        <rect key="frame" x="238" y="10" width="69" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.55081556620000005" green="1" blue="0.3727912746" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,6 +88,7 @@
                 <outlet property="line3TitleLabel" destination="aqF-Gk-kRe" id="LFW-cE-j5B"/>
                 <outlet property="line4Label" destination="voO-fv-5aG" id="REt-mt-s2u"/>
                 <outlet property="line4TitleLabel" destination="WPn-aR-BER" id="kQ9-f5-Yqn"/>
+                <outlet property="titleLabel" destination="YVW-f8-0f6" id="RPD-Uv-A9h"/>
             </connections>
         </tableViewCell>
     </objects>

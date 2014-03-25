@@ -7,12 +7,16 @@
 //
 
 #import "LWIndexTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation LWIndexTableViewCell
 
 - (void)awakeFromNib
 {
     // Initialization code
+    _titleLabel.layer.masksToBounds = YES;
+    _titleLabel.layer.borderWidth = 1.f;
+    _titleLabel.layer.borderColor = [[UIColor greenColor] CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

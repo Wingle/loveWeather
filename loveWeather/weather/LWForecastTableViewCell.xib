@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="天气预报" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-Uk-VzF">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="天气预报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-Uk-VzF">
                         <rect key="frame" x="238" y="10" width="69" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -140,6 +140,7 @@
                 <outlet property="line2ImageView" destination="BWS-YX-Inw" id="6YS-Uu-fG3"/>
                 <outlet property="line3ImageView" destination="QgW-1Y-rgA" id="yD1-M3-qj9"/>
                 <outlet property="line4ImageView" destination="0CK-Bb-Rta" id="7jk-AL-tef"/>
+                <outlet property="titleLabel" destination="IBa-Uk-VzF" id="Wl2-aZ-et2"/>
             </connections>
         </tableViewCell>
     </objects>
