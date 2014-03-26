@@ -44,6 +44,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"Helvetica Neue" size:21.0], NSFontAttributeName, nil]];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.title = @"添加";
     
@@ -51,6 +52,7 @@
     self.navigationItem.leftBarButtonItem = self.leftItem;
     if ([[LWDataManager defaultManager] citysCount] == 0) {
         self.leftItem.enabled = NO;
+        [self.dataSource addObject:@"欢迎使用孝心天气，来添加父母所在的地区吧"];
     }
     
     CGPoint origin = CGPointMake(0.0,
@@ -65,6 +67,7 @@
     self.adBanner.rootViewController = self;
     [self.view addSubview:self.adBanner];
     [self.adBanner loadRequest:[self request]];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,14 +107,14 @@
         BOOL result = [[respDict objectForKey:@"success"] boolValue];
         if (result) {
             [self.dataSource addObject:area];
-            [self.dataSource addObject:@"点击列表中的名称来选中"];
+            [self.dataSource addObject:@"提示：点击列表中的名称来添加"];
         }else {
-            [self.dataSource addObject:@"试试该地区所在城市的名称？"];
+            [self.dataSource addObject:@"提示：试试该地区所在城市的名称？"];
             return NO;
         }
         return YES;
     }else {
-        [self.dataSource addObject:@"试试该地区所在城市的名称？"];
+        [self.dataSource addObject:@"提示：试试该地区所在城市的名称？"];
         return NO;
     }
 }
@@ -147,6 +150,9 @@
 
 #pragma mark - UITableView Delegate Methods
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.dataSource count] == 1) {
+        return nil;
+    }
     if ([indexPath row] == 0) {
         return indexPath;
     }

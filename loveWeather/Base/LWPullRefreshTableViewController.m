@@ -158,6 +158,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    LOG(@"LWPullRefreshTableViewController dealloc...");
+}
+
 #pragma mark - Network actions
 
 - (NSDictionary *)imageMap {
@@ -309,6 +313,8 @@
         
         if ([air.aqigrade isEqualToString:@"重度污染"] || [air.aqigrade isEqualToString:@"严重污染"]) {
             [cell.descLabel setTextColor:[UIColor colorWithRed:194.f/255 green:49.f/255 blue:49.f/255 alpha:1.0]];
+        }else if ([air.aqigrade isEqualToString:@"优"] || [air.aqigrade isEqualToString:@"良"]) {
+            [cell.descLabel setTextColor:[UIColor greenColor]];
         }else {
             [cell.descLabel setTextColor:[UIColor whiteColor]];
         }
@@ -427,12 +433,6 @@
     }
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//	
-//	return [NSString stringWithFormat:@"Section %ld", (long)section];
-//	
-//}
-
 #pragma mark - Data Source Loading / Reloading Methods
 
 - (void)reloadTableViewDataSource{
@@ -500,7 +500,7 @@
     
     GDataXMLDocument *xmlDoc = [[GDataXMLDocument alloc] initWithData:request.responseData error:nil];
     GDataXMLElement *xmlEle = [xmlDoc rootElement];
-    NSLog(@"%@",xmlEle);
+//    LOG(@"%@",xmlEle);
     
     NSArray *partyMembers = [xmlEle elementsForName:@"cts"];
     NSArray *ct = [partyMembers[0] elementsForName:@"ct"];
