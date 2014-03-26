@@ -414,9 +414,15 @@
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:adCellIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:adCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:adCellIdentifier];
             cell.backgroundColor = [UIColor clearColor];
+            
+            [cell.textLabel setTextColor:[UIColor whiteColor]];
+            [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
         }
+        cell.textLabel.text = @"赞助支持，我们将用于产品优化";
+        cell.detailTextLabel.text = @"支付宝账号：xiaoxintech@163.com";
+        
         return cell;
     }
 }
@@ -436,6 +442,12 @@
 	_reloading = YES;
     if (![self requestWeatherDataByArea:self.navigationItem.title]) {
         [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
+        [TSMessage showNotificationInViewController:self
+                                              title:NSLocalizedString(@"更新失败", nil)
+                                           subtitle:NSLocalizedString(@"检查下网络是否有问题!", nil)
+                                               type:TSMessageNotificationTypeError
+                                           duration:2
+                               canBeDismissedByUser:YES];
     }
 }
 
@@ -605,15 +617,23 @@
     }
     
     [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
-    [TSMessage showNotificationWithTitle:NSLocalizedString(@"更新成功", nil)
-                                subtitle:NSLocalizedString(@"孝心天气数据已经更新到最新的数据了!", nil)
-                                    type:TSMessageNotificationTypeSuccess];
+    [TSMessage showNotificationInViewController:self
+                                          title:NSLocalizedString(@"更新成功", nil)
+                                       subtitle:NSLocalizedString(@"孝心天气数据已经更新到最新的数据了!", nil)
+                                           type:TSMessageNotificationTypeSuccess
+                                       duration:2
+                           canBeDismissedByUser:YES];
     
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
     [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
-//    [TSMessage sh]
+    [TSMessage showNotificationInViewController:self
+                                          title:NSLocalizedString(@"更新失败", nil)
+                                       subtitle:NSLocalizedString(@"检查下网络是否有问题!", nil)
+                                           type:TSMessageNotificationTypeError
+                                       duration:2
+                           canBeDismissedByUser:YES];
 }
 
 #pragma mark - LWCitySearchControllerDelegate Methods
@@ -626,11 +646,11 @@
 
 // We've received an ad successfully.
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
-    NSLog(@"Received ad successfully");
+    LOG(@"Received ad successfully");
 }
 
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
+    LOG(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
 
 @end

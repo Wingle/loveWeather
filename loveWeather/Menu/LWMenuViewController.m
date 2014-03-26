@@ -122,7 +122,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                                        };
     
     self.sectionTitles = @{
-                           @(MSMenuViewControllerTableViewSectionTypeOptions) : @"天气",
+                           @(MSMenuViewControllerTableViewSectionTypeOptions) : @"地区",
                            @(MSMenuViewControllerTableViewSectionTypeAbout) : @"选项",
                            };
     

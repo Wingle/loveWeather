@@ -53,6 +53,9 @@
     if (name == nil) {
         return;
     }
+    if ([self hasExistCity:name]) {
+        [_citySouce removeObject:name];
+    }
     [_citySouce addObject:name];
 }
 
@@ -68,7 +71,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+- (BOOL)hasExistCity:(NSString *)name {
+    return [_citySouce containsObject:name];
+}
 
 
 

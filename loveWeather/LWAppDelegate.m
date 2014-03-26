@@ -34,6 +34,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"Helvetica Neue" size:21.0], NSFontAttributeName, nil]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     self.dynamicsDrawerViewController.delegate = self;

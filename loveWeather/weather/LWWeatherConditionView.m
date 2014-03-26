@@ -37,7 +37,7 @@
                                       labelWidth,
                                       hiloHeight);
         
-        CGRect chieseDateFrame = CGRectMake(frame.size.width/2,
+        CGRect chieseDateFrame = CGRectMake(frame.size.width/2 + 10,
                                             frame.size.height - hiloHeight,
                                             labelWidth,
                                             hiloHeight/2);
@@ -108,7 +108,6 @@
         _chieseDateLabel.numberOfLines = 2;
         [self addSubview:_chieseDateLabel];
         
-        // 3
         // bottom left
         _iconView = [[UIImageView alloc] initWithFrame:iconFrame];
         _iconView.contentMode = UIViewContentModeScaleAspectFit;

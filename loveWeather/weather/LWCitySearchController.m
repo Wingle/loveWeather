@@ -12,11 +12,14 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ASIHTTPRequest/ASIHTTPRequest.h>
 #import "NSObject+NSJSONSerialization.h"
+#import "LWDataManager.h"
 
 @interface LWCitySearchController () <GADBannerViewDelegate, ASIHTTPRequestDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property(nonatomic, strong) GADBannerView *adBanner;
+@property (nonatomic, strong) GADBannerView *adBanner;
+
+@property (nonatomic, strong) UIBarButtonItem *leftItem;
 
 @end
 
@@ -28,6 +31,7 @@
     if (self) {
         // Custom initialization
         _dataSource = [NSMutableArray arrayWithCapacity:0];
+        _leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(leftItemClicked:)];
     }
     return self;
 }
@@ -41,12 +45,16 @@
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"Helvetica Neue" size:21.0], NSFontAttributeName, nil]];
     
+    self.title = @"添加";
+    
     // --
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftItemClicked:)];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    self.navigationItem.leftBarButtonItem = self.leftItem;
+    if ([[LWDataManager defaultManager] citysCount] == 0) {
+        self.leftItem.enabled = NO;
+    }
     
     CGPoint origin = CGPointMake(0.0,
-                                 109.f);
+                                 108.f);
     
     // Use predefined GADAdSize constants to define the GADBannerView.
     self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
@@ -170,6 +178,17 @@
     }onQueue:queue completionBlock:^(void){
         [weakself.tableView reloadData];
     }];
+}
+
+#pragma mark - GADBannerViewDelegate implementation
+
+// We've received an ad successfully.
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    LOG(@"Received ad successfully");
+}
+
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error {
+    LOG(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
 
 

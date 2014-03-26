@@ -18,6 +18,7 @@
 - (void)addCityByName:(NSString *)name;
 - (void)removeCityByName:(NSString *)name;
 - (void)dataLocalization;
+- (BOOL)hasExistCity:(NSString *)name;
 
 
 
