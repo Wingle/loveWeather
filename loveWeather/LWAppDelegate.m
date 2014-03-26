@@ -10,7 +10,7 @@
 #import "MSDynamicsDrawerViewController.h"
 #import "LWMenuViewController.h"
 
-#import "LWWeatherViewController.h"
+#import "LWDataManager.h"
 #import "LWPullRefreshTableViewController.h"
 #import <TSMessage.h>
 
@@ -86,6 +86,7 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    [[LWDataManager defaultManager] dataLocalization];
 }
 
 - (void)saveContext

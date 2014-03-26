@@ -11,7 +11,6 @@
 #import <GDataXML-HTML/GDataXMLNode.h>
 #import <TSMessages/TSMessage.h>
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
-#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
 #import "LWWeaterModel.h"
 #import "LWWeatherConditionView.h"
 #import "UIImage+Additions.h"
@@ -19,6 +18,8 @@
 #import "LWAirTableViewCell.h"
 #import "LWIndexTableViewCell.h"
 #import "LWForecastTableViewCell.h"
+#import "LWCitySearchController.h"
+#import "LWDataManager.h"
 
 #import <Google-AdMob-Ads-SDK/GADBannerView.h>
 #import <Google-AdMob-Ads-SDK/GADRequest.h>
@@ -29,9 +30,7 @@
 #define LWCC        @"lwcc"
 #define LWDW        @"lwdw"
 
-#define kSampleAdUnitID @"a15330ec57678a6"
-
-@interface LWPullRefreshTableViewController () <GADBannerViewDelegate>
+@interface LWPullRefreshTableViewController () <GADBannerViewDelegate, LWCitySearchControllerDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -71,6 +70,10 @@
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
     self.tableView.pagingEnabled = YES;
     self.tableView.allowsSelection = NO;
+    
+    // --
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightItemClicked:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
     
     UIImage *background = [UIImage imageWithColor:LW_MAIN_COLOR];
     
@@ -135,6 +138,11 @@
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
     
+    //--
+    if ([[LWDataManager defaultManager] citysCount] == 0) {
+        [self rightItemClicked:nil];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -161,8 +169,8 @@
                       @"0" : @"weather-clear",
                       @"1" : @"weather-few",
                       @"2" : @"weather-broken",
-                      @"?" : @"weather-shower",
-                      @"7" : @"weather-rain",
+                      @"7" : @"weather-shower",
+                      @"3" : @"weather-rain",
                       @"4" : @"weather-tstorm",
                       @"13" : @"weather-snow",
                       @"?" : @"weather-mist",
@@ -231,17 +239,18 @@
     return request;
 }
 
-#pragma mark - Table view data source
+#pragma mark - Action Methods 
+- (void)rightItemClicked:(id)sender {
+    LWCitySearchController *searchController = [[LWCitySearchController alloc] initWithNibName:@"LWCitySearchController" bundle:nil];
+    searchController.delegate = self;
+    UINavigationController *naviCv = [[UINavigationController alloc] initWithRootViewController:searchController];
+    [self presentViewController:naviCv animated:YES completion:nil];
+}
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return [self.dataSource count];
-//}
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSArray *sectionData = self.dataSource[section];
-//    return [sectionData count];
     return 4;
 }
 
@@ -298,7 +307,7 @@
             cell.pTimeLabel.text = nil;
         }
         
-        if ([air.aqigrade isEqualToString:@"重度污染"]) {
+        if ([air.aqigrade isEqualToString:@"重度污染"] || [air.aqigrade isEqualToString:@"严重污染"]) {
             [cell.descLabel setTextColor:[UIColor colorWithRed:194.f/255 green:49.f/255 blue:49.f/255 alpha:1.0]];
         }else {
             [cell.descLabel setTextColor:[UIColor whiteColor]];
@@ -425,7 +434,9 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
-    [self requestWeatherDataByArea:self.navigationItem.title];
+    if (![self requestWeatherDataByArea:self.navigationItem.title]) {
+        [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
+    }
 }
 
 - (void)doneLoadingTableViewData{
@@ -605,7 +616,12 @@
 //    [TSMessage sh]
 }
 
-#pragma mark GADBannerViewDelegate implementation
+#pragma mark - LWCitySearchControllerDelegate Methods
+- (void)searchCitySuccess:(NSString *)cityName {
+    self.navigationItem.title = cityName;
+}
+
+#pragma mark - GADBannerViewDelegate implementation
 
 // We've received an ad successfully.
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {

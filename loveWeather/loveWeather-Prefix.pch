@@ -25,6 +25,9 @@
 #endif
 
 
+#define kSampleAdUnitID @"a15330ec57678a6"
+
+
 #define APPID @"e4f571b7447bfdbe"
 #define PRIVATE_KEY @"9066f3_SmartWeatherAPI_22f6e47"
 #define LW_ROOT_URL @"http://webapi.weather.com.cn/data/?"

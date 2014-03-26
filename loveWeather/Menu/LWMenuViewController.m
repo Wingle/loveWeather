@@ -12,8 +12,8 @@
 #import "MSMenuCell.h"
 #import "MSMenuTableViewHeader.h"
 
-#import "LWWeatherViewController.h"
 #import "LWPullRefreshTableViewController.h"
+#import "LWDataManager.h"
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
@@ -35,7 +35,6 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
 
-@property (nonatomic, strong) NSMutableArray *cityList;
 
 @end
 
@@ -99,7 +98,6 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (void)initialize
 {
     self.paneViewControllerType = NSUIntegerMax;
-    NSArray *citys = @[@"北京", @"上海", @"成都", @"广州"];
 //    if (self.paneViewControllerTitles == nil) {
 //        self.paneViewControllerTitles = [NSMutableDictionary dictionaryWithCapacity:0];
 //    }
@@ -113,9 +111,6 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 ////                                      @(MSPaneViewControllerTypeSetting) : @"设置",
 ////                                      @(MSPaneViewControllerTypeVersion) : @"关于"
 ////                                      };
-    
-    _cityList = [NSMutableArray arrayWithCapacity:1];
-    [_cityList addObjectsFromArray:citys];
     
     self.paneViewControllerClasses = @{
                                        @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class]
@@ -161,12 +156,12 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     
     if (indexPath) {
         if ([indexPath section] == 0) {
-            paneViewController.navigationItem.title = self.cityList[[indexPath row]];
+            paneViewController.navigationItem.title = [[LWDataManager defaultManager] citys][[indexPath row]];
         }else {
             paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
         }
     }else {
-        paneViewController.navigationItem.title = [self.cityList lastObject];
+        paneViewController.navigationItem.title = [[[LWDataManager defaultManager] citys] lastObject];
         
     }
     
@@ -202,9 +197,8 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return [self.cityList count];
+        return [[[LWDataManager defaultManager] citys] count];
     } else {
-        NSLog(@"%d",[self.tableViewSectionBreaks[section] integerValue] - [self.tableViewSectionBreaks[(section - 1)] integerValue]);
         return ([self.tableViewSectionBreaks[section] integerValue] - [self.tableViewSectionBreaks[(section - 1)] integerValue]);
     }
 }
@@ -235,7 +229,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
     if ([indexPath section] == 0) {
-        cell.textLabel.text = self.cityList[[indexPath row]];
+        cell.textLabel.text = [[LWDataManager defaultManager] citys][[indexPath row]];
     }else {
         cell.textLabel.text = self.paneViewControllerTitles[@([self paneViewControllerTypeForIndexPath:indexPath])];
     }
