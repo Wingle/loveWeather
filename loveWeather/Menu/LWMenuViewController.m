@@ -87,6 +87,11 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     self.tableView.separatorColor = [UIColor colorWithWhite:1.0 alpha:0.25];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

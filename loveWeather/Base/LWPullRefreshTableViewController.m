@@ -619,6 +619,7 @@
 #pragma mark - LWCitySearchControllerDelegate Methods
 - (void)searchCitySuccess:(NSString *)cityName {
     self.navigationItem.title = cityName;
+    [[LWDataManager defaultManager] addCityByName:cityName];
 }
 
 #pragma mark - GADBannerViewDelegate implementation
