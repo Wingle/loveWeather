@@ -200,7 +200,6 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     if (section == 0) {
         return [[[LWDataManager defaultManager] citys] count];
     } else {
-        NSLog(@"%d",[self.tableViewSectionBreaks count]);
         return [self.tableViewSectionBreaks count];
     }
 }

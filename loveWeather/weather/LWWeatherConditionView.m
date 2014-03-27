@@ -20,17 +20,19 @@
         CGFloat inset = 15;
         CGFloat tipsInset = 40.f;
         // 3
-        CGFloat temperatureHeight = 110;
+        CGFloat temperatureHeight = 110.f;
+        CGFloat temperatureWidth = 200.f;
         CGFloat humHeight = 20;
         CGFloat hiloHeight = 40;
         CGFloat iconHeight = 30;
         CGFloat tipsSize = frame.size.width - 2*tipsInset;
         CGFloat labelWidth = frame.size.width/2 - inset;
         // 4
+        
         CGRect tipsFrame = CGRectMake(tipsInset,
                                       20,
                                       tipsSize,
-                                      60.f);
+                                      200.f);
         
         CGRect hiloFrame = CGRectMake(inset,
                                       frame.size.height - hiloHeight,
@@ -40,12 +42,17 @@
         CGRect chieseDateFrame = CGRectMake(frame.size.width/2 + 10,
                                             frame.size.height - hiloHeight,
                                             labelWidth,
-                                            hiloHeight/2);
+                                            hiloHeight);
         
         CGRect temperatureFrame = CGRectMake(inset,
                                              frame.size.height - (temperatureHeight + hiloHeight),
-                                             frame.size.width - (2 * inset),
+                                             temperatureWidth,
                                              temperatureHeight);
+        
+        CGRect comeonFrame = CGRectMake(temperatureWidth,
+                                        frame.size.height - (temperatureHeight + hiloHeight) + 10.f,
+                                        frame.size.width - temperatureWidth,
+                                        40.f);
         
         CGRect humFrame = CGRectMake(frame.size.width/2 + 10,
                                      frame.size.height - (temperatureHeight + hiloHeight) + 80,
@@ -61,16 +68,22 @@
         conditionsFrame.size.width = frame.size.width - (((2 * inset) + iconHeight) + 10);
         conditionsFrame.origin.x = iconFrame.origin.x + (iconHeight + 10);
         
+        // come on
+        _comeonLabel = [[UILabel alloc] initWithFrame:comeonFrame];
+        _comeonLabel.backgroundColor = [UIColor clearColor];
+        _comeonLabel.textColor = [UIColor whiteColor];
+        _comeonLabel.textAlignment = NSTextAlignmentLeft;
+        _comeonLabel.numberOfLines = 2;
+        _comeonLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+        [self addSubview:_comeonLabel];
+        
         // tips
         _tipsTextView = [[UITextView alloc] initWithFrame:tipsFrame];
         _tipsTextView.backgroundColor = [UIColor clearColor];
         _tipsTextView.textColor = [UIColor whiteColor];
-        _tipsTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-        _tipsTextView.userInteractionEnabled = NO;
+        _tipsTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+        _tipsTextView.editable = NO;
         
-        _tipsTextView.layer.masksToBounds = YES;
-        _tipsTextView.layer.borderWidth = 2.f;
-        _tipsTextView.layer.borderColor = [LW_MAIN_COLOR CGColor];
         [self addSubview:_tipsTextView];
         
         // bottom left

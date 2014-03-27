@@ -17,5 +17,6 @@
 @property (nonatomic, strong) UILabel *chieseDateLabel;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UITextView *tipsTextView;
+@property (nonatomic, strong) UILabel *comeonLabel;
 
 @end

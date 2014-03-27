@@ -35,6 +35,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *tipsData;
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *blurredImageView;
@@ -61,7 +62,6 @@
     
     CGRect headerFrame = [UIScreen mainScreen].bounds;
 
-    self.tableView.allowsSelection = NO;
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
     
     UIImage *background = [UIImage imageWithColor:LW_MAIN_COLOR];
@@ -110,6 +110,10 @@
         self.weatherData = [NSMutableDictionary dictionaryWithCapacity:0];
     }
     
+    if (self.tipsData == nil) {
+        self.tipsData = [NSMutableArray arrayWithCapacity:0];
+    }
+    
     CGPoint origin = CGPointMake(0.0,
                                 headerFrame.size.height);
     
@@ -153,25 +157,6 @@
 
 #pragma mark - Network actions
 
-- (NSDictionary *)imageMap {
-    // 1
-    static NSDictionary *_imageMap = nil;
-    if (! _imageMap) {
-        // 2
-        _imageMap = @{
-                      @"0" : @"weather-clear",
-                      @"1" : @"weather-few",
-                      @"2" : @"weather-broken",
-                      @"3" : @"weather-rain",
-                      @"4" : @"weather-tstorm",
-                      @"7" : @"weather-shower",
-                      @"13" : @"weather-snow",
-                      @"18" : @"weather-mist",
-                      };
-    }
-    return _imageMap;
-}
-
 - (BOOL)requestWeatherDataByArea:(NSString *)area {
     NSString *strURL = [[NSString stringWithFormat:@"http://weather.51juzhai.com/data/getHttpUrl?cityName=%@",area] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     LOG(@"request url = %@",strURL);
@@ -199,24 +184,6 @@
     }
 }
 
-- (void)reloadWeatherData {
-    LWCc *cc = [self.weatherData objectForKey:LWCC];
-    self.headView.temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",[cc.tmp floatValue]];
-    self.headView.conditionsLabel.text = cc.wd;
-    self.headView.hiloLabel.text = [NSString  stringWithFormat:@"%.0f° / %.0f°",[cc.ltmp floatValue], [cc.htmp floatValue]];
-    self.headView.chieseDateLabel.text = [NSString stringWithFormat:@"%@\n%@", cc.gdt, cc.ldt];
-    [self.headView.chieseDateLabel sizeToFit];
-    self.headView.humLabel.text = [NSString stringWithFormat:@"湿度 : %@ %%", cc.hum];
-    self.headView.iconView.image = [UIImage imageNamed:[self imageMap][cc.wid]];
-    
-    NSArray *dts = [self.weatherData objectForKey:LWDT];
-    LWDt *dt = dts[0];
-    NSString *tipsMessage = [NSString stringWithFormat:@"孝心提示:\n%@",dt.newkn ? dt.newkn : dt.kn];
-    self.headView.tipsTextView.text = tipsMessage;
-    
-    [self.tableView reloadData];
-}
-
 - (GADRequest *)request {
     GADRequest *request = [GADRequest request];
     
@@ -238,6 +205,124 @@
     searchController.delegate = self;
     UINavigationController *naviCv = [[UINavigationController alloc] initWithRootViewController:searchController];
     [self presentViewController:naviCv animated:YES completion:nil];
+}
+
+- (NSDictionary *)imageMap {
+    static NSDictionary *_imageMap = nil;
+    if (! _imageMap) {
+        _imageMap = @{
+                      @"0" : @"weather-clear",
+                      @"1" : @"weather-few",
+                      @"2" : @"weather-broken",
+                      @"3" : @"weather-rain",
+                      @"4" : @"weather-tstorm",
+                      @"7" : @"weather-shower",
+                      @"13" : @"weather-snow",
+                      @"18" : @"weather-mist",
+                      };
+    }
+    return _imageMap;
+}
+
+- (NSString *)tipsMessage:(NSInteger)hour {
+    NSString *message = nil;
+    switch (hour) {
+        case 0:
+        case 1:
+        case 2:
+            message = @"夜深了，休息吧";
+            break;
+        case 3:
+        case 4:
+            message = @"注意身体，热杯牛奶吧";
+            break;
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            message = @"记得吃早餐哦";
+            break;
+        case 9:
+        case 10:
+            message = @"新的一天开始了";
+            break;
+        case 11:
+        case 12:
+            message = @"午饭时间，记得按时吃饭";
+            break;
+        case 13:
+            message = @"眯一会吧";
+            break;
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+            message = @"奋斗吧";
+            break;
+        case 18:
+            message = @"晚饭时间，记得按时吃饭";
+            break;
+        case 19:
+        case 20:
+            message = @"给父母打个电话吧";
+            break;
+        case 21:
+        case 22:
+        case 23:
+            message = @"早点休息";
+            break;
+        default:
+            break;
+    }
+    return message;
+}
+
+- (void)showTipsInHeadView {
+    
+//    @"孝心提示:\n%@",dt.newkn ? dt.newkn : dt.kn
+    NSMutableString *tipsMessage = [[NSMutableString alloc] initWithCapacity:1];
+    
+    
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter* df_utc = [[NSDateFormatter alloc] init];
+    [df_utc setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    df_utc.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"];
+    NSArray *dateArray = [[df_utc stringFromDate:nowDate] componentsSeparatedByString:@" "];
+    
+    NSString *tmpMsg = [self tipsMessage:[[dateArray[1] componentsSeparatedByString:@":"][0] integerValue]];
+    self.headView.comeonLabel.text = tmpMsg;
+    
+    [tipsMessage appendString:@"孝心提示:\n"];
+    
+    NSArray *dts = [self.weatherData objectForKey:LWDT];
+    LWDt *dt = dts[0];
+    [tipsMessage appendString:[NSString stringWithFormat:@"1.%@\n",dt.newkn ? dt.newkn : dt.kn]];
+    
+    NSInteger i = 2;
+    NSArray *idxs = [self.weatherData objectForKey:LWINDEX];
+    for (LWIdxs *idx in idxs) {
+        if (idx.type == 5 || idx.type == 11 || idx.type == 17) {
+            [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@,%@\n", i, idx.nm, idx.recom]];
+            i ++;
+        }
+    }
+    
+    self.headView.tipsTextView.text = tipsMessage;
+    
+}
+
+- (void)reloadWeatherData {
+    LWCc *cc = [self.weatherData objectForKey:LWCC];
+    self.headView.temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",[cc.tmp floatValue]];
+    self.headView.conditionsLabel.text = cc.wd;
+    self.headView.hiloLabel.text = [NSString  stringWithFormat:@"%.0f° / %.0f°",[cc.ltmp floatValue], [cc.htmp floatValue]];
+    self.headView.chieseDateLabel.text = [NSString stringWithFormat:@"%@\n%@", cc.gdt, cc.ldt];
+    self.headView.humLabel.text = [NSString stringWithFormat:@"湿度 : %@ %%", cc.hum];
+    self.headView.iconView.image = [UIImage imageNamed:[self imageMap][cc.wid]];
+    
+    [self showTipsInHeadView];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -326,28 +411,24 @@
                 {
                     cell.line1TitleLabel.text = title;
                     cell.line1Label.text = message;
-                    [cell.line1Label sizeToFit];
                     break;
                 }
                 case 11:
                 {
                     cell.line2TitleLabel.text = title;
                     cell.line2Label.text = message;
-                    [cell.line2Label sizeToFit];
                     break;
                 }
                 case 17:
                 {
                     cell.line3TitleLabel.text = title;
                     cell.line3Label.text = message;
-                    [cell.line3Label sizeToFit];
                     break;
                 }
                 case 19:
                 {
                     cell.line4TitleLabel.text = title;
                     cell.line4Label.text = message;
-                    [cell.line4Label sizeToFit];
                     break;
                 }
                 default:
@@ -420,6 +501,11 @@
         
         return cell;
     }
+}
+
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - Data Source Loading / Reloading Methods
