@@ -88,6 +88,27 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     [self.tableView registerClass:[MSMenuTableViewHeader class] forHeaderFooterViewReuseIdentifier:MSDrawerHeaderReuseIdentifier];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    
+    CGRect bounds = self.view.bounds;
+    CGFloat inset = 10.f;
+    CGFloat iconHeight = 30.f;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 80.f)];
+    view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(bounds.size.width/2 - iconHeight/2, 10.f, iconHeight, iconHeight)];
+    [imageView setImage:[UIImage imageNamed:@"weather-clear"]];
+    [view addSubview:imageView];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(inset, 10 + iconHeight + 10.f, bounds.size.width - 2*inset, 21.f)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18.f];
+    titleLabel.text = @"孝心天气";
+    [view addSubview:titleLabel];
+    
+    self.tableView.tableFooterView = view;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

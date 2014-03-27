@@ -35,7 +35,6 @@
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSMutableArray *tipsData;
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *blurredImageView;
@@ -87,7 +86,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     if (_refreshHeaderView == nil) {
 		
-		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		LWRefreshTableHeaderView *view = [[LWRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height) arrowImageName:@"weather-clear" textColor:[UIColor whiteColor]];
 		view.delegate = self;
 		[self.tableView addSubview:view];
 		_refreshHeaderView = view;
@@ -108,10 +107,6 @@
     
     if (self.weatherData == nil) {
         self.weatherData = [NSMutableDictionary dictionaryWithCapacity:0];
-    }
-    
-    if (self.tipsData == nil) {
-        self.tipsData = [NSMutableArray arrayWithCapacity:0];
     }
     
     CGPoint origin = CGPointMake(0.0,
@@ -292,7 +287,7 @@
     NSString *tmpMsg = [self tipsMessage:[[dateArray[1] componentsSeparatedByString:@":"][0] integerValue]];
     self.headView.comeonLabel.text = tmpMsg;
     
-    [tipsMessage appendString:@"孝心提示:\n"];
+    [tipsMessage appendString:@"孝心提示：\n"];
     
     NSArray *dts = [self.weatherData objectForKey:LWDT];
     LWDt *dt = dts[0];
@@ -302,7 +297,7 @@
     NSArray *idxs = [self.weatherData objectForKey:LWINDEX];
     for (LWIdxs *idx in idxs) {
         if (idx.type == 5 || idx.type == 11 || idx.type == 17) {
-            [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@,%@\n", i, idx.nm, idx.recom]];
+            [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@，%@\n", i, idx.nm, idx.recom]];
             i ++;
         }
     }

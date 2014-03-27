@@ -7,12 +7,12 @@
 //
 
 #import "LWTableViewController.h"
-#import <EGOTableViewPullRefresh/EGORefreshTableHeaderView.h>
+#import "LWRefreshTableHeaderView.h"
 #import <ASIHTTPRequest/ASIHTTPRequest.h>
 
 
 @interface LWPullRefreshTableViewController : LWTableViewController <EGORefreshTableHeaderDelegate, ASIHTTPRequestDelegate> {
-    EGORefreshTableHeaderView *_refreshHeaderView;
+    LWRefreshTableHeaderView *_refreshHeaderView;
 	
 	//  Reloading var should really be your tableviews datasource
 	//  Putting it here for demo purposes
