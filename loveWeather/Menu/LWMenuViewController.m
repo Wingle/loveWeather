@@ -13,6 +13,7 @@
 #import "MSMenuTableViewHeader.h"
 
 #import "LWPullRefreshTableViewController.h"
+#import "LWCitiesManagerViewController.h"
 #import "LWDataManager.h"
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
@@ -26,7 +27,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 @interface LWMenuViewController ()
 
-@property (nonatomic, strong) NSMutableDictionary *paneViewControllerTitles;
+@property (nonatomic, strong) NSDictionary *paneViewControllerTitles;
 @property (nonatomic, strong) NSDictionary *paneViewControllerClasses;
 @property (nonatomic, strong) NSDictionary *sectionTitles;
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
@@ -103,22 +104,16 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 - (void)initialize
 {
     self.paneViewControllerType = NSUIntegerMax;
-//    if (self.paneViewControllerTitles == nil) {
-//        self.paneViewControllerTitles = [NSMutableDictionary dictionaryWithCapacity:0];
-//    }
-//    for (NSString *key in citys) {
-//        [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeWeather)  forKey:key];
-//    }
-//    [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeSetting) forKey:@"设置"];
-//    [self.paneViewControllerTitles setObject:@(MSPaneViewControllerTypeVersion) forKey:@"关于"];
-////    self.paneViewControllerTitles = @{
-////                                      @(MSPaneViewControllerTypeWeather) : @"AA",
-////                                      @(MSPaneViewControllerTypeSetting) : @"设置",
-////                                      @(MSPaneViewControllerTypeVersion) : @"关于"
-////                                      };
+
+    self.paneViewControllerTitles = @{
+                                      @(MSPaneViewControllerTypeManager) : @"管理",
+                                      @(MSPaneViewControllerTypeSetting) : @"设置",
+                                      @(MSPaneViewControllerTypeVersion) : @"关于"
+                                      };
     
     self.paneViewControllerClasses = @{
-                                       @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class]
+                                       @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class],
+                                       @(MSPaneViewControllerTypeManager) : [LWCitiesManagerViewController class]
                                        };
     
     self.sectionTitles = @{
@@ -127,7 +122,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                            };
     
     self.tableViewSectionBreaks = @[
-                                    @(MSPaneViewControllerTypeWeather),
+                                    @(MSPaneViewControllerTypeManager),
                                     @(MSPaneViewControllerTypeSetting),
                                     @(MSPaneViewControllerTypeVersion)
                                     ];
@@ -140,7 +135,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     if (indexPath.section == 0) {
         paneViewControllerType = MSPaneViewControllerTypeWeather;
     } else {
-        paneViewControllerType = ([self.tableViewSectionBreaks[(indexPath.section - 1)] integerValue] + indexPath.row);
+        paneViewControllerType = [self.tableViewSectionBreaks[[indexPath row]] integerValue];
     }
     return paneViewControllerType;
 }
@@ -204,7 +199,8 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     if (section == 0) {
         return [[[LWDataManager defaultManager] citys] count];
     } else {
-        return ([self.tableViewSectionBreaks[section] integerValue] - [self.tableViewSectionBreaks[(section - 1)] integerValue]);
+        NSLog(@"%d",[self.tableViewSectionBreaks count]);
+        return [self.tableViewSectionBreaks count];
     }
 }
 

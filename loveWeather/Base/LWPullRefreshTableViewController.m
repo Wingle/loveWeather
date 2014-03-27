@@ -21,6 +21,7 @@
 #import "LWCitySearchController.h"
 #import "LWDataManager.h"
 
+
 #import <Google-AdMob-Ads-SDK/GADBannerView.h>
 #import <Google-AdMob-Ads-SDK/GADRequest.h>
 
@@ -60,20 +61,8 @@
     
     CGRect headerFrame = [UIScreen mainScreen].bounds;
 
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.navigationBar.translucent = NO;
-    self.view.backgroundColor = [UIColor clearColor];
-
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
-    self.tableView.pagingEnabled = YES;
     self.tableView.allowsSelection = NO;
-    
-    // --
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightItemClicked:)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.2];
     
     UIImage *background = [UIImage imageWithColor:LW_MAIN_COLOR];
     
@@ -173,11 +162,11 @@
                       @"0" : @"weather-clear",
                       @"1" : @"weather-few",
                       @"2" : @"weather-broken",
-                      @"7" : @"weather-shower",
                       @"3" : @"weather-rain",
                       @"4" : @"weather-tstorm",
+                      @"7" : @"weather-shower",
                       @"13" : @"weather-snow",
-                      @"?" : @"weather-mist",
+                      @"18" : @"weather-mist",
                       };
     }
     return _imageMap;
