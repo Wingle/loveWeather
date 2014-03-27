@@ -18,7 +18,7 @@
         // Initialization code
         // 2
         CGFloat inset = 15;
-        CGFloat tipsInset = 60.f;
+        CGFloat tipsInset = 40.f;
         // 3
         CGFloat temperatureHeight = 110;
         CGFloat humHeight = 20;
@@ -30,7 +30,7 @@
         CGRect tipsFrame = CGRectMake(tipsInset,
                                       20,
                                       tipsSize,
-                                      tipsSize);
+                                      60.f);
         
         CGRect hiloFrame = CGRectMake(inset,
                                       frame.size.height - hiloHeight,

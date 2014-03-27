@@ -11,10 +11,12 @@
 #import "MSDynamicsDrawerViewController.h"
 #import "MSMenuCell.h"
 #import "MSMenuTableViewHeader.h"
+#import "LWDataManager.h"
 
 #import "LWPullRefreshTableViewController.h"
 #import "LWCitiesManagerViewController.h"
-#import "LWDataManager.h"
+#import "LWAboutViewController.h"
+
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
@@ -106,14 +108,14 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     self.paneViewControllerType = NSUIntegerMax;
 
     self.paneViewControllerTitles = @{
-                                      @(MSPaneViewControllerTypeManager) : @"管理",
-                                      @(MSPaneViewControllerTypeSetting) : @"设置",
-                                      @(MSPaneViewControllerTypeVersion) : @"关于"
+                                      @(MSPaneViewControllerTypeManager) : @"地区管理",
+                                      @(MSPaneViewControllerTypeAbout) : @"关于孝心"
                                       };
     
     self.paneViewControllerClasses = @{
                                        @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class],
-                                       @(MSPaneViewControllerTypeManager) : [LWCitiesManagerViewController class]
+                                       @(MSPaneViewControllerTypeManager) : [LWCitiesManagerViewController class],
+                                       @(MSPaneViewControllerTypeAbout)   : [LWAboutViewController class],
                                        };
     
     self.sectionTitles = @{
@@ -123,8 +125,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     
     self.tableViewSectionBreaks = @[
                                     @(MSPaneViewControllerTypeManager),
-                                    @(MSPaneViewControllerTypeSetting),
-                                    @(MSPaneViewControllerTypeVersion)
+                                    @(MSPaneViewControllerTypeAbout)
                                     ];
     
 }

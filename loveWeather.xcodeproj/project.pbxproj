@@ -27,6 +27,8 @@
 		981A18F218BE0B7500B0CF75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 981A18F018BE0B7500B0CF75 /* InfoPlist.strings */; };
 		981A18F418BE0B7500B0CF75 /* loveWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */; };
 		982B17B318E3BDA200EF9CF2 /* LWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982B17B218E3BDA200EF9CF2 /* LWTableViewController.m */; };
+		982B17B718E3C7CD00EF9CF2 /* LWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 982B17B518E3C7CD00EF9CF2 /* LWAboutViewController.m */; };
+		982B17B818E3C7CD00EF9CF2 /* LWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982B17B618E3C7CD00EF9CF2 /* LWAboutViewController.xib */; };
 		98386C3F18E18E1C00F60899 /* LWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98386C3E18E18E1C00F60899 /* LWDataManager.m */; };
 		98386C4B18E1A47F00F60899 /* LWCitySearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98386C4918E1A47F00F60899 /* LWCitySearchController.m */; };
 		98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98386C4A18E1A47F00F60899 /* LWCitySearchController.xib */; };
@@ -90,6 +92,9 @@
 		981A18F318BE0B7500B0CF75 /* loveWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loveWeatherTests.m; sourceTree = "<group>"; };
 		982B17B118E3BDA200EF9CF2 /* LWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTableViewController.h; sourceTree = "<group>"; };
 		982B17B218E3BDA200EF9CF2 /* LWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTableViewController.m; sourceTree = "<group>"; };
+		982B17B418E3C7CD00EF9CF2 /* LWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAboutViewController.h; sourceTree = "<group>"; };
+		982B17B518E3C7CD00EF9CF2 /* LWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAboutViewController.m; sourceTree = "<group>"; };
+		982B17B618E3C7CD00EF9CF2 /* LWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWAboutViewController.xib; sourceTree = "<group>"; };
 		98386C3D18E18E1C00F60899 /* LWDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWDataManager.h; sourceTree = "<group>"; };
 		98386C3E18E18E1C00F60899 /* LWDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDataManager.m; sourceTree = "<group>"; };
 		98386C4318E1A34000F60899 /* LWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWViewController.h; sourceTree = "<group>"; };
@@ -272,6 +277,9 @@
 			children = (
 				98386C4E18E2E49100F60899 /* LWCitiesManagerViewController.h */,
 				98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */,
+				982B17B418E3C7CD00EF9CF2 /* LWAboutViewController.h */,
+				982B17B518E3C7CD00EF9CF2 /* LWAboutViewController.m */,
+				982B17B618E3C7CD00EF9CF2 /* LWAboutViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -421,6 +429,7 @@
 				989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */,
 				981A18E018BE0B7500B0CF75 /* Images.xcassets in Resources */,
 				989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */,
+				982B17B818E3C7CD00EF9CF2 /* LWAboutViewController.xib in Resources */,
 				98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +499,7 @@
 				989A89F818E0231200055237 /* LWIndexTableViewCell.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
 				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
+				982B17B718E3C7CD00EF9CF2 /* LWAboutViewController.m in Sources */,
 				988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */,
 				981A18DB18BE0B7400B0CF75 /* LWAppDelegate.m in Sources */,
 				981A18DE18BE0B7400B0CF75 /* loveWeather.xcdatamodeld in Sources */,

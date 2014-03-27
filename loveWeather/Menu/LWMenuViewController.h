@@ -13,8 +13,7 @@
 typedef NS_ENUM(NSUInteger, MSPaneViewControllerType) {
     MSPaneViewControllerTypeWeather,
     MSPaneViewControllerTypeManager,
-    MSPaneViewControllerTypeSetting,
-    MSPaneViewControllerTypeVersion
+    MSPaneViewControllerTypeAbout
 };
 
 @interface LWMenuViewController : UITableViewController
