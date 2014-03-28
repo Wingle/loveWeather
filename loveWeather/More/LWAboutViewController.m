@@ -59,7 +59,7 @@
 }
 
 - (IBAction)emailButtonClicked:(id)sender {
-    NSString *emailTitle = @"[孝心天气]产品反馈";
+    NSString *emailTitle = @"产品反馈";
     // To address
     NSArray *toRecipents = [NSArray arrayWithObject:@"xiaoxintech@163.com"];
     
