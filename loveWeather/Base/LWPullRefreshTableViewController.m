@@ -379,10 +379,10 @@
             return cell;
         }
         cell.indexLabel.text = air.lv;
-        cell.pm25Label.text = [NSString stringWithFormat:@"PM2.5 : %@",air.pmtwoaqi];
-        cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",air.pmtenaqi];
-        cell.so2Label.text = [NSString stringWithFormat:@"二氧化硫 : %@",air.so2];
-        cell.o3Label.text = [NSString stringWithFormat:@"臭氧 : %@",air.o3];
+        cell.pm25Label.text = [NSString stringWithFormat:@"PM2.5 : %@",[air.pmtwoaqi isEqualToString:@""] ?  @"无" : air.pmtwoaqi];
+        cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",[air.pmtenaqi isEqualToString:@""] ?  @"无" : air.pmtenaqi];
+        cell.so2Label.text = [NSString stringWithFormat:@"二氧化硫 : %@",[air.so2 isEqualToString:@""] ? @"无" :air.so2];
+        cell.o3Label.text = [NSString stringWithFormat:@"臭氧 : %@",[air.o3 isEqualToString:@""] ? @"无" : air.o3];
         NSArray *info = [air.ptime componentsSeparatedByString:@" "];
         if ([info count] == 2) {
             NSString *strTime = [info[1] substringToIndex:5];

@@ -35,7 +35,7 @@
 + (void)initialize
 {
     id labelAppearance = [UILabel appearanceWhenContainedIn:[self class], nil];
-    [labelAppearance setFont:[UIFont systemFontOfSize:20.0]];
+    [labelAppearance setFont:[UIFont systemFontOfSize:16.0]];
     [labelAppearance setTextColor:[UIColor yellowColor]];
 }
 
