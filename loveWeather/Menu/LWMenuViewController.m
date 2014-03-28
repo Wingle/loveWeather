@@ -34,10 +34,6 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) NSDictionary *sectionTitles;
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
 
-@property (nonatomic, strong) UIBarButtonItem *paneStateBarButtonItem;
-@property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
-@property (nonatomic, strong) UIBarButtonItem *paneRevealRightBarButtonItem;
-
 
 @end
 
@@ -164,21 +160,16 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 - (void)transitionToViewController:(MSPaneViewControllerType)paneViewControllerType cityAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Close pane if already displaying the pane view controller
-//    if (paneViewControllerType == self.paneViewControllerType) {
-//        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:YES completion:nil];
-//        return;
-//    }
-    
     BOOL animateTransition = self.dynamicsDrawerViewController.paneViewController != nil;
     
-
     Class paneViewControllerClass = self.paneViewControllerClasses[@(paneViewControllerType)];
     UIViewController *paneViewController = (UIViewController *)[paneViewControllerClass new];
     
+    NSString *cityName = nil;
     if (indexPath) {
         if ([indexPath section] == 0) {
-            paneViewController.navigationItem.title = [[LWDataManager defaultManager] citys][[indexPath row]];
+            cityName = [[LWDataManager defaultManager] citys][[indexPath row]];
+            paneViewController.navigationItem.title = cityName;
         }else {
             paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
         }
@@ -187,16 +178,14 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
         
     }
     
-    self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
-    paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
-    
-    self.paneRevealRightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Right Reveal Icon"] style:UIBarButtonItemStyleBordered target:self action:@selector(dynamicsDrawerRevealRightBarButtonItemTapped:)];
-    paneViewController.navigationItem.rightBarButtonItem = self.paneRevealRightBarButtonItem;
-    
     UINavigationController *paneNavigationViewController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
     [self.dynamicsDrawerViewController setPaneViewController:paneNavigationViewController animated:animateTransition completion:nil];
     
     self.paneViewControllerType = paneViewControllerType;
+    if (cityName) {
+        [[LWDataManager defaultManager] addCityByName:cityName];
+        [[LWDataManager defaultManager] dataLocalization];
+    }
 }
 
 - (void)dynamicsDrawerRevealLeftBarButtonItemTapped:(id)sender
