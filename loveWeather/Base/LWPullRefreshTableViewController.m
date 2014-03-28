@@ -367,6 +367,17 @@
             cell = [nib objectAtIndex:0];
         }
         LWAir *air = [self.weatherData objectForKey:LWAIR];
+        if (air == nil) {
+            [cell.descLabel setTextColor:[UIColor whiteColor]];
+            cell.indexLabel.text = @"N/A";
+            cell.descLabel.text = @"无数据";
+            cell.pm25Label.text = nil;
+            cell.pm10Label.text = nil;
+            cell.so2Label.text = nil;
+            cell.pTimeLabel.text = nil;
+            cell.o3Label.text = nil;
+            return cell;
+        }
         cell.indexLabel.text = air.lv;
         cell.pm25Label.text = [NSString stringWithFormat:@"PM2.5 : %@",air.pmtwoaqi];
         cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",air.pmtenaqi];
@@ -662,26 +673,27 @@
             
             // air
             NSArray *airTop = [element elementsForName:@"air"];
-            GDataXMLElement *air = airTop[0];
-            
-            LWAir *airModel = [[LWAir alloc] init];
-            airModel.cityid = [[[air attributeForName:@"cityid"] stringValue] integerValue];
-            airModel.cityName = [[air attributeForName:@"cityName"] stringValue];
-            airModel.title = [[air attributeForName:@"title"] stringValue];
-            airModel.cityaveragename = [[air attributeForName:@"cityaveragename"] stringValue];
-            airModel.lv = [[air attributeForName:@"lv"] stringValue];
-            airModel.pmtwoaqi = [[air attributeForName:@"pmtwoaqi"] stringValue];
-            airModel.pmtenaqi = [[air attributeForName:@"pmtenaqi"] stringValue];
-            airModel.so2 = [[air attributeForName:@"so2"] stringValue];
-            airModel.co = [[air attributeForName:@"co"] stringValue];
-            airModel.no2 = [[air attributeForName:@"no2"] stringValue];
-            airModel.o3 = [[air attributeForName:@"o3"] stringValue];
-            airModel.aqigrade = [[air attributeForName:@"aqigrade"] stringValue];
-            airModel.desc = [[air attributeForName:@"desc"] stringValue];
-            airModel.ptime = [[air attributeForName:@"ptime"] stringValue];
-            
-            [self.weatherData setObject:airModel forKey:LWAIR];
-            
+            if (airTop) {
+                GDataXMLElement *air = airTop[0];
+                
+                LWAir *airModel = [[LWAir alloc] init];
+                airModel.cityid = [[[air attributeForName:@"cityid"] stringValue] integerValue];
+                airModel.cityName = [[air attributeForName:@"cityName"] stringValue];
+                airModel.title = [[air attributeForName:@"title"] stringValue];
+                airModel.cityaveragename = [[air attributeForName:@"cityaveragename"] stringValue];
+                airModel.lv = [[air attributeForName:@"lv"] stringValue];
+                airModel.pmtwoaqi = [[air attributeForName:@"pmtwoaqi"] stringValue];
+                airModel.pmtenaqi = [[air attributeForName:@"pmtenaqi"] stringValue];
+                airModel.so2 = [[air attributeForName:@"so2"] stringValue];
+                airModel.co = [[air attributeForName:@"co"] stringValue];
+                airModel.no2 = [[air attributeForName:@"no2"] stringValue];
+                airModel.o3 = [[air attributeForName:@"o3"] stringValue];
+                airModel.aqigrade = [[air attributeForName:@"aqigrade"] stringValue];
+                airModel.desc = [[air attributeForName:@"desc"] stringValue];
+                airModel.ptime = [[air attributeForName:@"ptime"] stringValue];
+                
+                [self.weatherData setObject:airModel forKey:LWAIR];
+            }
         }
         
     }
