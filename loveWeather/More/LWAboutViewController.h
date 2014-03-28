@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LWAboutViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 - (IBAction)sponsorButtonClicked:(id)sender;
 - (IBAction)emailButtonClicked:(id)sender;

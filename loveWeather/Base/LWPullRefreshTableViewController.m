@@ -219,7 +219,9 @@
                       @"2" : @"weather-broken",
                       @"3" : @"weather-rain",
                       @"4" : @"weather-tstorm",
-                      @"7" : @"weather-shower",
+                      @"7" : @"weather-drizzle",
+                      @"8" : @"weather-mrain",
+                      @"?" : @"weather-shower",
                       @"13" : @"weather-snow",
                       @"18" : @"weather-mist",
                       };

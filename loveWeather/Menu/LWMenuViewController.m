@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
 
 
+@property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
+
 @end
 
 @implementation LWMenuViewController
@@ -177,6 +179,9 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
         paneViewController.navigationItem.title = [[[LWDataManager defaultManager] citys] lastObject];
         
     }
+    
+    self.paneRevealLeftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Left Reveal Icon"] style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerRevealLeftBarButtonItemTapped:)];
+    paneViewController.navigationItem.leftBarButtonItem = self.paneRevealLeftBarButtonItem;
     
     UINavigationController *paneNavigationViewController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
     [self.dynamicsDrawerViewController setPaneViewController:paneNavigationViewController animated:animateTransition completion:nil];
