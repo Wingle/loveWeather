@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define UMENG_APPKEY @"5319800356240bc72c004290"
+
 @class MSDynamicsDrawerViewController;
 
 @interface LWAppDelegate : UIResponder <UIApplicationDelegate>

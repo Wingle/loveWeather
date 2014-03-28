@@ -8,6 +8,7 @@
 
 #import "LWAboutViewController.h"
 #import <MessageUI/MessageUI.h>
+#import <UMengAnalytics/MobClick.h>
 
 @interface LWAboutViewController () <MFMailComposeViewControllerDelegate>
 
@@ -30,15 +31,31 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"关于页面"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"关于页面"];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Action Methods
+
 - (IBAction)sponsorButtonClicked:(id)sender {
     NSString *sponsorLink = @"https://me.alipay.com/xiaoxintech";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sponsorLink]];
+    
+    [MobClick event:@"sponsor"];
 }
 
 - (IBAction)emailButtonClicked:(id)sender {
@@ -53,6 +70,8 @@
     
     // Present mail view controller on screen
     [self presentViewController:mc animated:YES completion:NULL];
+    
+    [MobClick event:@"emailFB"];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

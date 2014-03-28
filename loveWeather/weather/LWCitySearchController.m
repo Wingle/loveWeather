@@ -13,6 +13,7 @@
 #import <ASIHTTPRequest/ASIHTTPRequest.h>
 #import "NSObject+NSJSONSerialization.h"
 #import "LWDataManager.h"
+#import <UMengAnalytics/MobClick.h>
 
 @interface LWCitySearchController () <GADBannerViewDelegate, ASIHTTPRequestDelegate>
 
@@ -68,6 +69,17 @@
     [self.view addSubview:self.adBanner];
     [self.adBanner loadRequest:[self request]];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"地区添加页"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"地区添加页"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,6 +174,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.delegate && [self.delegate respondsToSelector:@selector(searchCitySuccess:)]) {
         [self.delegate searchCitySuccess:self.dataSource[[indexPath row]]];
+        //UMeng.
+        [MobClick event:@"areaGot" label:self.dataSource[[indexPath row]]];
+        
         [self leftItemClicked:nil];
     }
 }
@@ -174,6 +189,10 @@
         return;
     }
     [searchBar resignFirstResponder];
+    
+    //UMeng.
+    [MobClick event:@"searchText" label:searchText];
+    
     __weak typeof(self) weakself = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];

@@ -14,6 +14,7 @@ target "loveWeather" do
     pod 'EGOTableViewPullRefresh', '~> 0.1.0'
     pod 'Google-AdMob-Ads-SDK', '~> 6.8.0'
     pod 'MBProgressHUD', '~> 0.8'
+    pod 'UMengAnalytics', '~> 2.2.1'
     
 end
 

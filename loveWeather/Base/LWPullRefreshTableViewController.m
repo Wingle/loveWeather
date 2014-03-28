@@ -24,6 +24,7 @@
 
 #import <Google-AdMob-Ads-SDK/GADBannerView.h>
 #import <Google-AdMob-Ads-SDK/GADRequest.h>
+#import <UMengAnalytics/MobClick.h>
 
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
@@ -135,9 +136,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"天气页面"];
     CGPoint offset = CGPointMake(0, -65.0);
     self.tableView.contentOffset = offset;
     [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"天气页面"];
 }
 
 - (void)didReceiveMemoryWarning

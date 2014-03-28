@@ -9,6 +9,7 @@
 #import "LWCitiesManagerViewController.h"
 #import "LWDataManager.h"
 #import "LWCitySearchController.h"
+#import <UMengAnalytics/MobClick.h>
 
 NSString * const cellIdentifier = @"reuseIdentifier";
 
@@ -29,6 +30,18 @@ NSString * const cellIdentifier = @"reuseIdentifier";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"地区管理页"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"地区管理页"];
 }
 
 - (void)didReceiveMemoryWarning
