@@ -63,7 +63,7 @@
     }
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [[NSDate date] dateByAddingTimeInterval:20];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1800];
     localNotification.alertBody = @"有空就给父母打个电话吧！";
     localNotification.repeatInterval = NSCalendarUnitWeekday;
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
