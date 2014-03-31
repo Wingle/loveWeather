@@ -78,7 +78,7 @@
         [self addSubview:_comeonLabel];
         
         // tips
-        _tipsTextView = [[UITextView alloc] initWithFrame:tipsFrame];
+        _tipsTextView = [[LWTextView alloc] initWithFrame:tipsFrame];
         _tipsTextView.backgroundColor = [UIColor clearColor];
         _tipsTextView.textColor = [UIColor whiteColor];
         _tipsTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];

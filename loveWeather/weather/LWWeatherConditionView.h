@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LWTextView.h"
 
 @interface LWWeatherConditionView : UIView
 
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) UILabel *conditionsLabel;
 @property (nonatomic, strong) UILabel *chieseDateLabel;
 @property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UITextView *tipsTextView;
+@property (nonatomic, strong) LWTextView *tipsTextView;
 @property (nonatomic, strong) UILabel *comeonLabel;
 
 @end

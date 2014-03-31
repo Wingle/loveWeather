@@ -25,6 +25,7 @@
 #import <Google-AdMob-Ads-SDK/GADBannerView.h>
 #import <Google-AdMob-Ads-SDK/GADRequest.h>
 #import <UMengAnalytics/MobClick.h>
+#import <MessageUI/MessageUI.h>
 
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
@@ -32,7 +33,7 @@
 #define LWCC        @"lwcc"
 #define LWDW        @"lwdw"
 
-@interface LWPullRefreshTableViewController () <GADBannerViewDelegate, LWCitySearchControllerDelegate>
+@interface LWPullRefreshTableViewController () <GADBannerViewDelegate, LWCitySearchControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -132,6 +133,10 @@
         [self rightItemClicked:nil];
     }
     
+    UIMenuItem *menuItem = [[UIMenuItem alloc]initWithTitle:@"短信发送" action:@selector(sendSMS:)];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setMenuItems:[NSArray arrayWithObject:menuItem]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -203,6 +208,25 @@
 }
 
 #pragma mark - Action Methods 
+- (void)sendSMS:(id)sender {
+    NSLog(@"sendSMS");
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备不支持短信发送。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
+    
+    NSString *smsText = [self.headView.tipsTextView.text substringFromIndex:6];
+    
+    NSString *message = [NSString stringWithFormat:@"%@", smsText];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
+}
 - (void)rightItemClicked:(id)sender {
     LWCitySearchController *searchController = [[LWCitySearchController alloc] initWithNibName:@"LWCitySearchController" bundle:nil];
     searchController.delegate = self;
@@ -301,7 +325,7 @@
     LWDt *dt = dts[0];
     [tipsMessage appendString:[NSString stringWithFormat:@"1.%@。\n",dt.newkn ? dt.newkn : dt.kn]];
     
-    NSInteger i = 2;
+    int i = 2;
     NSArray *idxs = [self.weatherData objectForKey:LWINDEX];
     for (LWIdxs *idx in idxs) {
         if (idx.type == 5 || idx.type == 11 || idx.type == 17) {
@@ -330,6 +354,15 @@
     self.headView.iconView.image = [UIImage imageNamed:[self imageMap][cc.wid]];
     
     [self showTipsInHeadView];
+    
+    BOOL isLoadAgain = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoadAgain"];
+    if (!isLoadAgain) {
+        [TSMessage showNotificationWithTitle:@"使用提示"
+                                    subtitle:@"长按“孝心提示”区域的文字可以将文字以短消息发送给父母。"
+                                        type:TSMessageNotificationTypeMessage];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoadAgain"];
+    }
+    
     
     [self.tableView reloadData];
 }
@@ -732,6 +765,28 @@
 - (void)searchCitySuccess:(NSString *)cityName {
     self.navigationItem.title = cityName;
     [[LWDataManager defaultManager] addCityByName:cityName];
+}
+
+#pragma mark - MFMessage
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - GADBannerViewDelegate implementation

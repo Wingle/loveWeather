@@ -62,11 +62,20 @@
         }
     }
     
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+    [dateComps setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
+    [dateComps setWeekday:6];
+    [dateComps setHour:19];
+    [dateComps setMinute:30];
+    NSDate *itemDate = [calendar dateFromComponents:dateComps];
+    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1800];
-    localNotification.alertBody = @"有空就给父母打个电话吧！";
+    localNotification.fireDate = itemDate;
+    localNotification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"];
+    localNotification.alertBody = @"有空的话，记得给父母打个电话！";
     localNotification.repeatInterval = NSCalendarUnitWeekday;
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    localNotification.applicationIconBadgeNumber = 1;
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.userInfo = @{@"TipsAlert" : @"TipsAlert"};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];

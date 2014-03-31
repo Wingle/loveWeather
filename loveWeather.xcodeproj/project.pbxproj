@@ -48,6 +48,7 @@
 		989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4518E1356F00055237 /* SystemConfiguration.framework */; };
 		989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4718E136FE00055237 /* AVFoundation.framework */; };
 		989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4918E1374800055237 /* CoreAudio.framework */; };
+		98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B54DDA18E974B6007ECD40 /* LWTextView.m */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
 		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
@@ -125,6 +126,8 @@
 		989A8A4518E1356F00055237 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		989A8A4718E136FE00055237 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		989A8A4918E1374800055237 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		98B54DD918E974B6007ECD40 /* LWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTextView.h; sourceTree = "<group>"; };
+		98B54DDA18E974B6007ECD40 /* LWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTextView.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD518C4A3600096D962 /* AGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGNavigationController.h; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				98386C4818E1A47F00F60899 /* LWCitySearchController.h */,
 				98386C4918E1A47F00F60899 /* LWCitySearchController.m */,
 				98386C4A18E1A47F00F60899 /* LWCitySearchController.xib */,
+				98B54DD918E974B6007ECD40 /* LWTextView.h */,
+				98B54DDA18E974B6007ECD40 /* LWTextView.m */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				98386C3F18E18E1C00F60899 /* LWDataManager.m in Sources */,
 				98386C4B18E1A47F00F60899 /* LWCitySearchController.m in Sources */,
 				989A89F818E0231200055237 /* LWIndexTableViewCell.m in Sources */,
+				98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
 				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
 				982B17B718E3C7CD00EF9CF2 /* LWAboutViewController.m in Sources */,
