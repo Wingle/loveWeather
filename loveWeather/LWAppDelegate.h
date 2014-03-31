@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#define UMENG_APPKEY @"5319800356240bc72c004290"
+
+@class MSDynamicsDrawerViewController;
+
 @interface LWAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

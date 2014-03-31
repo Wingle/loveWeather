@@ -15,3 +15,25 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+#ifdef DEBUG
+#  define LOG(...)				NSLog(__VA_ARGS__)
+#  define LOG_CURRENT_METHOD	NSLog(@"%@", NSStringFromSelector(_cmd))
+#else
+#  define LOG(...) ;
+#  define LOG_CURRENT_METHOD ;
+#endif
+
+
+#define kSampleAdUnitID @"a15330ec57678a6"
+
+
+#define APPID @"e4f571b7447bfdbe"
+#define PRIVATE_KEY @"9066f3_SmartWeatherAPI_22f6e47"
+#define LW_ROOT_URL @"http://webapi.weather.com.cn/data/?"
+
+#define LW_WEATHER_REQUEST_URL   [NSString stringWithFormat:@"%@appid=%@&key=%@&",LW_ROOT_URL,APPID,PRIVATE_KEY]
+
+#define LW_MAIN_COLOR [UIColor colorWithRed:93.f/255 green:173.f/255 blue:200.f/255 alpha:1]
+
+#define LW_CITY_LIST    @"weatherLists"
