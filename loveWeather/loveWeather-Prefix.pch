@@ -34,6 +34,6 @@
 
 #define LW_WEATHER_REQUEST_URL   [NSString stringWithFormat:@"%@appid=%@&key=%@&",LW_ROOT_URL,APPID,PRIVATE_KEY]
 
-#define LW_MAIN_COLOR [UIColor colorWithRed:89.f/255 green:173.f/255 blue:235.f/255 alpha:0.8]
+#define LW_MAIN_COLOR [UIColor colorWithRed:93.f/255 green:173.f/255 blue:200.f/255 alpha:1]
 
 #define LW_CITY_LIST    @"weatherLists"

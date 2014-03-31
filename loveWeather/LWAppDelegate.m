@@ -54,6 +54,24 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self umengTrack];
     
+    // local notification
+    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *local in localNotifications) {
+        if (local.userInfo[@"TipsAlert"]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:local];
+        }
+    }
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [[NSDate date] dateByAddingTimeInterval:20];
+    localNotification.alertBody = @"有空就给父母打个电话吧！";
+    localNotification.repeatInterval = NSCalendarUnitWeekday;
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.userInfo = @{@"TipsAlert" : @"TipsAlert"};
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    
     // Override point for customization after application launch.
     [[UINavigationBar appearance] setBarTintColor:LW_MAIN_COLOR];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
@@ -76,7 +94,7 @@
     // Transition to the first view controller
     [menuViewController transitionToViewController:MSPaneViewControllerTypeWeather cityAtIndexPath:nil];
     
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = self.dynamicsDrawerViewController;
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.windowBackground];
@@ -112,6 +130,7 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      LOG(@"applicationDidBecomeActive");
+     application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

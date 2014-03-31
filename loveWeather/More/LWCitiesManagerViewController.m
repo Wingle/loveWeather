@@ -10,10 +10,14 @@
 #import "LWDataManager.h"
 #import "LWCitySearchController.h"
 #import <UMengAnalytics/MobClick.h>
+#import <Google-AdMob-Ads-SDK/GADBannerView.h>
+#import <Google-AdMob-Ads-SDK/GADRequest.h>
 
 NSString * const cellIdentifier = @"reuseIdentifier";
 
-@interface LWCitiesManagerViewController () <LWCitySearchControllerDelegate>
+@interface LWCitiesManagerViewController () <LWCitySearchControllerDelegate, GADBannerViewDelegate>
+
+@property (nonatomic, strong) GADBannerView *adBanner;
 
 @end
 
@@ -30,6 +34,34 @@ NSString * const cellIdentifier = @"reuseIdentifier";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 21.f)];
+    UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 21.f)];
+    tipsLabel.font = [UIFont systemFontOfSize:14];
+    tipsLabel.textColor = [UIColor colorWithRed:160.f/255 green:165.f/255 blue:178.f/255 alpha:1];
+    tipsLabel.text = @"提示：地区可以滑动删除";
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    [headView addSubview:tipsLabel];
+    self.tableView.tableHeaderView = headView;
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.tableView.tableHeaderView = nil;
+    });
+    
+    CGPoint origin = CGPointMake(0.0,
+                                 bounds.size.height - 50.f);
+    // Use predefined GADAdSize constants to define the GADBannerView.
+    self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+    
+    // Note: Edit SampleConstants.h to provide a definition for kSampleAdUnitID before compiling.
+    self.adBanner.adUnitID = kSampleAdUnitID;
+    self.adBanner.delegate = self;
+    self.adBanner.rootViewController = self;
+    [[UIApplication sharedApplication].windows[0] addSubview:self.adBanner];
+    [self.adBanner loadRequest:[self request]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,6 +80,11 @@ NSString * const cellIdentifier = @"reuseIdentifier";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [self.adBanner removeFromSuperview];
+    self.adBanner = nil;
 }
 
 #pragma mark - Table view data source
@@ -136,6 +173,22 @@ NSString * const cellIdentifier = @"reuseIdentifier";
     searchController.delegate = self;
     UINavigationController *naviCv = [[UINavigationController alloc] initWithRootViewController:searchController];
     [self presentViewController:naviCv animated:YES completion:nil];
+}
+
+#pragma mark - action
+- (GADRequest *)request {
+    GADRequest *request = [GADRequest request];
+    
+    // Make the request for a test ad. Put in an identifier for the simulator as well as any devices
+    // you want to receive test ads.
+    request.testDevices = @[
+                            // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
+                            // the console when the app is launched.
+                            GAD_SIMULATOR_ID,
+                            @"672e13ff37a8c1e99a51375df44e9f4c9f610d7f",
+                            @"5ea83bfbbab6d8e72c936fa4888757666a28a4c0"
+                            ];
+    return request;
 }
 
 #pragma mark - LWCitySearchControllerDelegate Methods

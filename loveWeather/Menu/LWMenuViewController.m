@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18.f];
-    titleLabel.text = @"孝心天气";
+    titleLabel.text = @"孝心天气，用心报天气";
     [view addSubview:titleLabel];
     
     self.tableView.tableFooterView = view;

@@ -221,7 +221,8 @@
                       @"4" : @"weather-tstorm",
                       @"7" : @"weather-drizzle",
                       @"8" : @"weather-mrain",
-                      @"?" : @"weather-shower",
+                      @"9" : @"weather-shower",
+                      @"10" : @"weather-hr",
                       @"13" : @"weather-snow",
                       @"18" : @"weather-mist",
                       };
@@ -269,7 +270,7 @@
             break;
         case 19:
         case 20:
-            message = @"给父母打个电话吧";
+            message = @"有空就给父母打个电话吧";
             break;
         case 21:
         case 22:
@@ -283,11 +284,8 @@
 }
 
 - (void)showTipsInHeadView {
-    
-//    @"孝心提示:\n%@",dt.newkn ? dt.newkn : dt.kn
     NSMutableString *tipsMessage = [[NSMutableString alloc] initWithCapacity:1];
-    
-    
+
     NSDate *nowDate = [NSDate date];
     NSDateFormatter* df_utc = [[NSDateFormatter alloc] init];
     [df_utc setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -301,15 +299,21 @@
     
     NSArray *dts = [self.weatherData objectForKey:LWDT];
     LWDt *dt = dts[0];
-    [tipsMessage appendString:[NSString stringWithFormat:@"1.%@\n",dt.newkn ? dt.newkn : dt.kn]];
+    [tipsMessage appendString:[NSString stringWithFormat:@"1.%@。\n",dt.newkn ? dt.newkn : dt.kn]];
     
     NSInteger i = 2;
     NSArray *idxs = [self.weatherData objectForKey:LWINDEX];
     for (LWIdxs *idx in idxs) {
         if (idx.type == 5 || idx.type == 11 || idx.type == 17) {
-            [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@，%@\n", i, idx.nm, idx.recom]];
+            [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@\n", i, idx.recom]];
             i ++;
         }
+    }
+    
+    NSArray *dws = [self.weatherData objectForKey:LWDW];
+    for (LWDw *dw in dws) {
+        [tipsMessage appendString:[NSString stringWithFormat:@"%d.%@，%@\n", i, dw.desc, dw.info]];
+        i++;
     }
     
     self.headView.tipsTextView.text = tipsMessage;
@@ -627,20 +631,22 @@
             // dws
             NSArray *dwss = [element elementsForName:@"dws"];
             NSArray *dwTop = [dwss[0] elementsForName:@"dw"];
-            NSMutableArray *dwData = [NSMutableArray arrayWithCapacity:0];
-            for (GDataXMLElement *dw in dwTop) {
-                LWDw *dwModel = [[LWDw alloc] init];
-                
-                dwModel.wdid = [[[dw attributeForName:@"id"] stringValue] integerValue];
-                dwModel.pt = [[dw attributeForName:@"pt"] stringValue];
-                dwModel.et = [[dw attributeForName:@"et"] stringValue];
-                dwModel.desc = [[dw attributeForName:@"desc"] stringValue];
-                dwModel.info = [[dw attributeForName:@"info"] stringValue];
-                dwModel.icon = [[dw attributeForName:@"icon"] stringValue];
-                
-                [dwData addObject:dwModel];
+            if (dwTop) {
+                NSMutableArray *dwData = [NSMutableArray arrayWithCapacity:0];
+                for (GDataXMLElement *dw in dwTop) {
+                    LWDw *dwModel = [[LWDw alloc] init];
+                    
+                    dwModel.wdid = [[[dw attributeForName:@"id"] stringValue] integerValue];
+                    dwModel.pt = [[dw attributeForName:@"pt"] stringValue];
+                    dwModel.et = [[dw attributeForName:@"et"] stringValue];
+                    dwModel.desc = [[dw attributeForName:@"desc"] stringValue];
+                    dwModel.info = [[dw attributeForName:@"info"] stringValue];
+                    dwModel.icon = [[dw attributeForName:@"icon"] stringValue];
+                    
+                    [dwData addObject:dwModel];
+                }
+                [self.weatherData setObject:dwData forKey:LWDW];
             }
-            [self.weatherData setObject:dwData forKey:LWDW];
             
             // cc
             NSArray *ccs = [element elementsForName:@"cc"];
@@ -709,12 +715,6 @@
     }
     
     [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0];
-    [TSMessage showNotificationInViewController:self
-                                          title:NSLocalizedString(@"更新成功", nil)
-                                       subtitle:NSLocalizedString(@"孝心天气数据已经更新到最新的数据了!", nil)
-                                           type:TSMessageNotificationTypeSuccess
-                                       duration:2
-                           canBeDismissedByUser:YES];
     
 }
 
