@@ -127,9 +127,9 @@
         case EKAuthorizationStatusDenied:
         case EKAuthorizationStatusRestricted:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning" message:@"Permission was not granted for Calendar"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"访问受限，请授权。\n步骤如下：设置>隐私>日历>孝心天气。"
                                                            delegate:nil
-                                                  cancelButtonTitle:@"OK"
+                                                  cancelButtonTitle:@"好的"
                                                   otherButtonTitles:nil];
             [alert show];
         }
@@ -211,6 +211,7 @@
 {
 	// Create an instance of EKEventEditViewController
 	EKEventEditViewController *addController = [[EKEventEditViewController alloc] init];
+    [addController.navigationBar setTintColor:[UIColor whiteColor]];
 	
 	// Set addController's event store to the current event store
 	addController.eventStore = self.eventStore;
