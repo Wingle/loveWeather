@@ -94,20 +94,27 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     CGFloat inset = 10.f;
     CGFloat iconHeight = 30.f;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 80.f)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 100.f)];
     view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(bounds.size.width/2 - iconHeight/2, 10.f, iconHeight, iconHeight)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(bounds.size.width/2 - iconHeight/2, inset, iconHeight, iconHeight)];
     [imageView setImage:[UIImage imageNamed:@"weather-clear"]];
     [view addSubview:imageView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(inset, 10 + iconHeight + 10.f, bounds.size.width - 2*inset, 21.f)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconHeight + 2*inset, bounds.size.width, 21.f)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18.f];
     titleLabel.text = @"孝心天气，用心报天气";
     [view addSubview:titleLabel];
+    
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconHeight + 2*inset + titleLabel.bounds.size.height + 5, bounds.size.width, 21.f)];
+    versionLabel.textAlignment = NSTextAlignmentCenter;
+    versionLabel.textColor = [UIColor whiteColor];
+    versionLabel.font = [UIFont boldSystemFontOfSize:16.f];
+    versionLabel.text = [NSString stringWithFormat:@"版本：%@",AppVersion];
+    [view addSubview:versionLabel];
     
     self.tableView.tableFooterView = view;
 }

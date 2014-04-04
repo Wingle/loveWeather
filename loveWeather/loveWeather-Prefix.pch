@@ -37,3 +37,5 @@
 #define LW_MAIN_COLOR [UIColor colorWithRed:93.f/255 green:173.f/255 blue:200.f/255 alpha:1]
 
 #define LW_CITY_LIST    @"weatherLists"
+
+#define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]

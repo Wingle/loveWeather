@@ -23,6 +23,8 @@
 // Used to add events to Calendar
 @property (nonatomic, strong) UIBarButtonItem *addButton;
 
+@property (nonatomic, strong) UIView *headView;
+
 @end
 
 @implementation LWReminderTableViewController
@@ -53,6 +55,15 @@
     self.addButton = [[UIBarButtonItem alloc] initWithTitle:@"添加事件" style:UIBarButtonItemStyleBordered target:self action:@selector(addEvent:)];
     self.navigationItem.rightBarButtonItem = self.addButton;
     self.addButton.enabled = NO;
+    
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 21.f)];
+    UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 21.f)];
+    tipsLabel.font = [UIFont systemFontOfSize:14];
+    tipsLabel.textColor = [UIColor colorWithRed:160.f/255 green:165.f/255 blue:178.f/255 alpha:1];
+    tipsLabel.text = @"添加下父母的生日吧，方便提醒";
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    [self.headView addSubview:tipsLabel];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -90,6 +101,10 @@
     cell.textLabel.text = [self.eventsList[[indexPath row]] title];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.f;
 }
 
 #pragma mark -
@@ -168,6 +183,11 @@
     // Fetch all events happening in the next 24 hours and put them into eventsList
     self.eventsList = [self fetchEvents];
     // Update the UI with the above events
+    if ([self.eventsList count] > 0) {
+        self.tableView.tableHeaderView = nil;
+    }else {
+        self.tableView.tableHeaderView = self.headView;
+    }
     [self.tableView reloadData];
 }
 
@@ -182,7 +202,7 @@
     
     //Create the end date components
     NSDateComponents *tomorrowDateComponents = [[NSDateComponents alloc] init];
-    tomorrowDateComponents.day = 60;
+    tomorrowDateComponents.day = 365;
 	
     NSDate *endDate = [[NSCalendar currentCalendar] dateByAddingComponents:tomorrowDateComponents
                                                                     toDate:startDate
@@ -211,7 +231,6 @@
 {
 	// Create an instance of EKEventEditViewController
 	EKEventEditViewController *addController = [[EKEventEditViewController alloc] init];
-    [addController.navigationBar setTintColor:[UIColor whiteColor]];
 	
 	// Set addController's event store to the current event store
 	addController.eventStore = self.eventStore;

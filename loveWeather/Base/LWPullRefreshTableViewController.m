@@ -221,6 +221,8 @@
     NSString *message = [NSString stringWithFormat:@"%@", smsText];
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    [messageController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [messageController.navigationBar setTintColor:LW_MAIN_COLOR];
     messageController.messageComposeDelegate = self;
     [messageController setBody:message];
     
