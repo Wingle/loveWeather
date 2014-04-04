@@ -16,6 +16,7 @@
 #import "LWPullRefreshTableViewController.h"
 #import "LWCitiesManagerViewController.h"
 #import "LWAboutViewController.h"
+#import "LWReminderTableViewController.h"
 
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
@@ -23,6 +24,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     MSMenuViewControllerTableViewSectionTypeOptions,
+    MSMenuViewControllerTableViewSectionTypeReminder,
     MSMenuViewControllerTableViewSectionTypeAbout,
     MSMenuViewControllerTableViewSectionTypeCount
 };
@@ -33,6 +35,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) NSDictionary *paneViewControllerClasses;
 @property (nonatomic, strong) NSDictionary *sectionTitles;
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
+@property (nonatomic, strong) NSDictionary *toolBarSectionBreaks;
 
 
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
@@ -133,12 +136,14 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     
     self.paneViewControllerClasses = @{
                                        @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class],
+                                       @(MSPaneViewControllerTypeReminder) : [LWReminderTableViewController class],
                                        @(MSPaneViewControllerTypeManager) : [LWCitiesManagerViewController class],
                                        @(MSPaneViewControllerTypeAbout)   : [LWAboutViewController class],
                                        };
     
     self.sectionTitles = @{
                            @(MSMenuViewControllerTableViewSectionTypeOptions) : @"地区",
+                           @(MSMenuViewControllerTableViewSectionTypeReminder) : @"小工具",
                            @(MSMenuViewControllerTableViewSectionTypeAbout) : @"选项",
                            };
     
@@ -147,6 +152,10 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                                     @(MSPaneViewControllerTypeAbout)
                                     ];
     
+    self.toolBarSectionBreaks = @{
+                                  @(MSPaneViewControllerTypeReminder) : @"事件提醒"
+                                  };
+    
 }
 
 - (MSPaneViewControllerType)paneViewControllerTypeForIndexPath:(NSIndexPath *)indexPath
@@ -154,7 +163,10 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     MSPaneViewControllerType paneViewControllerType;
     if (indexPath.section == 0) {
         paneViewControllerType = MSPaneViewControllerTypeWeather;
-    } else {
+    }else if (indexPath.section == 1) {
+        NSNumber *key = [self.toolBarSectionBreaks allKeys][[indexPath row]];
+        paneViewControllerType = [key integerValue];
+    }else {
         paneViewControllerType = [self.tableViewSectionBreaks[[indexPath row]] integerValue];
     }
     return paneViewControllerType;
@@ -207,14 +219,16 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return [[[LWDataManager defaultManager] citys] count];
-    } else {
+    }else if (section == 1) {
+        return [[self.toolBarSectionBreaks allKeys] count];
+    }else {
         return [self.tableViewSectionBreaks count];
     }
 }
@@ -246,6 +260,9 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
     if ([indexPath section] == 0) {
         cell.textLabel.text = [[LWDataManager defaultManager] citys][[indexPath row]];
+    }else if ([indexPath section] == 1) {
+        NSNumber *key = [self.toolBarSectionBreaks allKeys][[indexPath row]];
+        cell.textLabel.text = self.toolBarSectionBreaks[key];
     }else {
         cell.textLabel.text = self.paneViewControllerTitles[@([self paneViewControllerTypeForIndexPath:indexPath])];
     }

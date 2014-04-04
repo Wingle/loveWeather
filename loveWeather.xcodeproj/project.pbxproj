@@ -35,6 +35,7 @@
 		98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98386C4A18E1A47F00F60899 /* LWCitySearchController.xib */; };
 		98386C5118E2E49100F60899 /* LWCitiesManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */; };
 		9841369618E5140600DB515D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9841369518E5140600DB515D /* StoreKit.framework */; };
+		984B24CA18EE680800C9E795 /* LWReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B24C918EE680800C9E795 /* LWReminderTableViewController.m */; };
 		988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */; };
 		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
 		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
@@ -107,6 +108,8 @@
 		98386C4E18E2E49100F60899 /* LWCitiesManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWCitiesManagerViewController.h; sourceTree = "<group>"; };
 		98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCitiesManagerViewController.m; sourceTree = "<group>"; };
 		9841369518E5140600DB515D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		984B24C818EE680800C9E795 /* LWReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWReminderTableViewController.h; sourceTree = "<group>"; };
+		984B24C918EE680800C9E795 /* LWReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReminderTableViewController.m; sourceTree = "<group>"; };
 		988089BF18D7FF4600332C6A /* LWPullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPullRefreshTableViewController.h; sourceTree = "<group>"; };
 		988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPullRefreshTableViewController.m; sourceTree = "<group>"; };
 		988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSJSONSerialization.h"; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				984B24C718EE67F700C9E795 /* Reminder */,
 				98386C4D18E2E3BC00F60899 /* More */,
 				988089C218D814BC00332C6A /* Utility */,
 				98EE2FD418C4A3600096D962 /* Base */,
@@ -285,6 +289,15 @@
 				982B17B618E3C7CD00EF9CF2 /* LWAboutViewController.xib */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		984B24C718EE67F700C9E795 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				984B24C818EE680800C9E795 /* LWReminderTableViewController.h */,
+				984B24C918EE680800C9E795 /* LWReminderTableViewController.m */,
+			);
+			path = Reminder;
 			sourceTree = "<group>";
 		};
 		988089C218D814BC00332C6A /* Utility */ = {
@@ -502,6 +515,7 @@
 				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
 				9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */,
 				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
+				984B24CA18EE680800C9E795 /* LWReminderTableViewController.m in Sources */,
 				988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */,
 				98386C3F18E18E1C00F60899 /* LWDataManager.m in Sources */,
 				98386C4B18E1A47F00F60899 /* LWCitySearchController.m in Sources */,
