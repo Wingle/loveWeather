@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *so2Label;
 @property (weak, nonatomic) IBOutlet UILabel *o3Label;
 @property (weak, nonatomic) IBOutlet UILabel *pTimeLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+
 @end

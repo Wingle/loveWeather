@@ -384,7 +384,7 @@
             height = 50.f;
             break;
         case 1:
-            height = 120.f;
+            height = 180.f;
             break;
         case 2:
             height = 313.f;
@@ -432,6 +432,7 @@
         cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",[air.pmtenaqi isEqualToString:@""] ?  @"无" : air.pmtenaqi];
         cell.so2Label.text = [NSString stringWithFormat:@"二氧化硫 : %@",[air.so2 isEqualToString:@""] ? @"无" :air.so2];
         cell.o3Label.text = [NSString stringWithFormat:@"臭氧 : %@",[air.o3 isEqualToString:@""] ? @"无" : air.o3];
+        cell.commentLabel.text = air.desc;
         NSArray *info = [air.ptime componentsSeparatedByString:@" "];
         if ([info count] == 2) {
             NSString *strTime = [info[1] substringToIndex:5];
