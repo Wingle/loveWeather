@@ -190,6 +190,24 @@
     }
     [searchBar resignFirstResponder];
     
+    NSRange range = [searchText rangeOfString:@"市"];
+    if (range.location == NSNotFound) {
+        range = [searchText rangeOfString:@"区"];
+        if (range.location == NSNotFound) {
+            range = [searchText rangeOfString:@"县"];
+            if (range.location == NSNotFound) {
+                
+            }else {
+                 searchText = [searchText substringToIndex:range.location];
+            }
+        }else {
+             searchText = [searchText substringToIndex:range.location];
+        }
+    }else {
+        searchText = [searchText substringToIndex:range.location];
+    }
+    LOG(@"%@",searchText);
+    
     //UMeng.
     [MobClick event:@"searchText" label:searchText];
     
