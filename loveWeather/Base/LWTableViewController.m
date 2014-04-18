@@ -7,8 +7,10 @@
 //
 
 #import "LWTableViewController.h"
+#import <UMengSocial/UMSocial.h>
+#import "UMSocialScreenShoter.h"
 
-@interface LWTableViewController ()
+@interface LWTableViewController () <UMSocialUIDelegate>
 
 @end
 
@@ -39,8 +41,10 @@
     
     self.tableView.backgroundColor = [UIColor clearColor];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightItemClicked:)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    self.rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightItemClicked:)];
+    self.shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareItemButtonClicked:)];
+    self.shareItem.enabled = NO;
+    self.navigationItem.rightBarButtonItems = @[self.rightItem, self.shareItem];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,5 +124,10 @@
 - (void)rightItemClicked:(id)sender {
     
 }
+
+- (void)shareItemButtonClicked:(id)sender {
+    
+}
+
 
 @end

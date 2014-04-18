@@ -50,6 +50,10 @@
 		989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4718E136FE00055237 /* AVFoundation.framework */; };
 		989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4918E1374800055237 /* CoreAudio.framework */; };
 		98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B54DDA18E974B6007ECD40 /* LWTextView.m */; };
+		98BD1AB31900E39D0049843E /* ios-social-sdk-shake.html in Resources */ = {isa = PBXBuildFile; fileRef = 98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */; };
+		98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */; };
+		98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAE1900E39D0049843E /* libSocialWechat.a */; };
+		98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAF1900E39D0049843E /* libWeChatSDK.a */; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
 		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
@@ -133,6 +137,14 @@
 		989A8A4918E1374800055237 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		98B54DD918E974B6007ECD40 /* LWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTextView.h; sourceTree = "<group>"; };
 		98B54DDA18E974B6007ECD40 /* LWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTextView.m; sourceTree = "<group>"; };
+		98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-shake.html"; sourceTree = "<group>"; };
+		98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocial_Sdk_ScreenShot_1.0.a; sourceTree = "<group>"; };
+		98BD1AAC1900E39D0049843E /* UMSocialScreenShoter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialScreenShoter.h; sourceTree = "<group>"; };
+		98BD1AAE1900E39D0049843E /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
+		98BD1AAF1900E39D0049843E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		98BD1AB01900E39D0049843E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		98BD1AB11900E39D0049843E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		98BD1AB21900E39D0049843E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD518C4A3600096D962 /* AGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGNavigationController.h; sourceTree = "<group>"; };
@@ -151,9 +163,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */,
 				989A8A4418E1355600055237 /* MessageUI.framework in Frameworks */,
 				989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */,
 				989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */,
+				98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */,
 				989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */,
 				989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */,
 				981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */,
@@ -161,6 +175,7 @@
 				981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */,
 				981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */,
 				360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */,
+				98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */,
 				9841369618E5140600DB515D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +252,7 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				98BD1AA81900E39D0049843E /* UMeng_Extra */,
 				984B24C718EE67F700C9E795 /* Reminder */,
 				98386C4D18E2E3BC00F60899 /* More */,
 				988089C218D814BC00332C6A /* Utility */,
@@ -311,6 +327,37 @@
 				988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		98BD1AA81900E39D0049843E /* UMeng_Extra */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AA91900E39D0049843E /* UMSocial_ScreenShot_Sdk */,
+				98BD1AAD1900E39D0049843E /* Wechat */,
+			);
+			path = UMeng_Extra;
+			sourceTree = "<group>";
+		};
+		98BD1AA91900E39D0049843E /* UMSocial_ScreenShot_Sdk */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */,
+				98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */,
+				98BD1AAC1900E39D0049843E /* UMSocialScreenShoter.h */,
+			);
+			path = UMSocial_ScreenShot_Sdk;
+			sourceTree = "<group>";
+		};
+		98BD1AAD1900E39D0049843E /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AAE1900E39D0049843E /* libSocialWechat.a */,
+				98BD1AAF1900E39D0049843E /* libWeChatSDK.a */,
+				98BD1AB01900E39D0049843E /* UMSocialWechatHandler.h */,
+				98BD1AB11900E39D0049843E /* WXApi.h */,
+				98BD1AB21900E39D0049843E /* WXApiObject.h */,
+			);
+			path = Wechat;
 			sourceTree = "<group>";
 		};
 		98EE2FCC18C4719D0096D962 /* Menu */ = {
@@ -457,6 +504,7 @@
 				989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */,
 				982B17B818E3C7CD00EF9CF2 /* LWAboutViewController.xib in Resources */,
 				98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */,
+				98BD1AB31900E39D0049843E /* ios-social-sdk-shake.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +707,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveWeather/adMod",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,6 +731,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveWeather/adMod",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

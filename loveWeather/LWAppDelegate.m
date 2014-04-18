@@ -14,6 +14,8 @@
 #import "LWPullRefreshTableViewController.h"
 #import <TSMessage.h>
 #import <UMengAnalytics/MobClick.h>
+#import <UMSocial.h>
+#import "UMSocialWechatHandler.h"
 
 @interface LWAppDelegate () <MSDynamicsDrawerViewControllerDelegate>
 
@@ -34,6 +36,8 @@
 #endif
     
     [MobClick setAppVersion:XcodeAppVersion]; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
+    [UMSocialData setAppKey:UMENG_APPKEY];
+    [UMSocialWechatHandler setWXAppId:WECHAT_APPKEY url:nil];
 
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:(ReportPolicy) REALTIME channelId:nil];
     //   reportPolicy为枚举类型,可以为 REALTIME, BATCH,SENDDAILY,SENDWIFIONLY几种

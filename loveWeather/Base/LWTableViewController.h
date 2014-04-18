@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LWTableViewController : UITableViewController
+@property (nonatomic, strong) UIBarButtonItem *rightItem;
+@property (nonatomic, strong) UIBarButtonItem *shareItem;
 
 - (void)rightItemClicked:(id)sender;
+- (void)shareItemButtonClicked:(id)sender;
 
 @end

@@ -16,6 +16,7 @@ target "loveWeather" do
     pod 'MBProgressHUD', '~> 0.8'
     pod 'UMengAnalytics', '~> 2.2.1'
     pod 'InnoEGOCache', '~> 2.1'
+    pod 'UMengSocial', '~> 3.3.7'
     
 end
 
