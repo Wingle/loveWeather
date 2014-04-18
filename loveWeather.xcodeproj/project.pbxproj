@@ -54,6 +54,7 @@
 		98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */; };
 		98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAE1900E39D0049843E /* libSocialWechat.a */; };
 		98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAF1900E39D0049843E /* libWeChatSDK.a */; };
+		98BD1AB9190100C40049843E /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
 		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
@@ -145,6 +146,8 @@
 		98BD1AB01900E39D0049843E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
 		98BD1AB11900E39D0049843E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		98BD1AB21900E39D0049843E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		98BD1AB7190100C40049843E /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD518C4A3600096D962 /* AGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGNavigationController.h; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 		988089C218D814BC00332C6A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				98BD1AB7190100C40049843E /* EGORefreshTableHeaderView.h */,
+				98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */,
 				9802650A18DFE452000A85EF /* UIImage+Additions.h */,
 				9802650B18DFE452000A85EF /* UIImage+Additions.m */,
 				988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */,
@@ -558,6 +563,7 @@
 			files = (
 				98386C5118E2E49100F60899 /* LWCitiesManagerViewController.m in Sources */,
 				98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */,
+				98BD1AB9190100C40049843E /* EGORefreshTableHeaderView.m in Sources */,
 				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
 				982B17B318E3BDA200EF9CF2 /* LWTableViewController.m in Sources */,
 				989A89FD18E0303900055237 /* LWForecastTableViewCell.m in Sources */,
