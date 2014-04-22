@@ -205,8 +205,6 @@
         // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
         // the console when the app is launched.
         GAD_SIMULATOR_ID,
-        @"672e13ff37a8c1e99a51375df44e9f4c9f610d7f",
-        @"5ea83bfbbab6d8e72c936fa4888757666a28a4c0"
     ];
     return request;
 }
@@ -236,12 +234,14 @@
     searchController.delegate = self;
     UINavigationController *naviCv = [[UINavigationController alloc] initWithRootViewController:searchController];
     [self presentViewController:naviCv animated:YES completion:nil];
+    [MobClick event:@"addButton"];
 }
 
 - (void)shareItemButtonClicked:(id)sender {
     UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:nil shareText:@"孝心天气" shareImage:image shareToSnsNames:@[UMShareToWechatTimeline, UMShareToWechatSession , UMShareToSms, UMShareToSina] delegate:self];
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
+    [MobClick event:@"shareButton"];
 }
 
 - (NSDictionary *)imageMap {

@@ -9,6 +9,7 @@
 #import "LWReminderTableViewController.h"
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import <UMengAnalytics/MobClick.h>
 
 @interface LWReminderTableViewController () <EKEventEditViewDelegate>
 // EKEventStore instance associated with the current Calendar application
@@ -236,6 +237,8 @@
 	addController.eventStore = self.eventStore;
     addController.editViewDelegate = self;
     [self presentViewController:addController animated:YES completion:nil];
+    
+    [MobClick event:@"notiButton"];
 }
 
 
