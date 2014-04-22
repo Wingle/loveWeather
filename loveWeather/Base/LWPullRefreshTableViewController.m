@@ -802,7 +802,7 @@
 
 #pragma mark - UMengUIDelegate
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData {
-    if ([platformName isEqualToString:@"sms"]) {
+    if ([platformName isEqualToString:@"sms"] || [platformName isEqualToString:@"sina"]) {
         socialData.shareText = [self.headView.tipsTextView.text substringFromIndex:6];
         return;
     }
