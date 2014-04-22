@@ -26,6 +26,8 @@
 #import <Google-AdMob-Ads-SDK/GADRequest.h>
 #import <UMengAnalytics/MobClick.h>
 #import <MessageUI/MessageUI.h>
+#import <UMengSocial/UMSocial.h>
+#import "UMSocialScreenShoter.h"
 
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
@@ -33,7 +35,7 @@
 #define LWCC        @"lwcc"
 #define LWDW        @"lwdw"
 
-@interface LWPullRefreshTableViewController () <GADBannerViewDelegate, LWCitySearchControllerDelegate, MFMessageComposeViewControllerDelegate>
+@interface LWPullRefreshTableViewController () <GADBannerViewDelegate, LWCitySearchControllerDelegate, UMSocialUIDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -60,6 +62,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shareItem.enabled = YES;
     
     CGRect headerFrame = [UIScreen mainScreen].bounds;
 
@@ -216,11 +220,11 @@
         return;
     }
     
-    NSString *smsText = [self.headView.tipsTextView.text substringFromIndex:6];
-    
-    NSString *message = [NSString stringWithFormat:@"%@", smsText];
+    NSString *message = [self.headView.tipsTextView.text substringFromIndex:6];
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    [messageController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [messageController.navigationBar setTintColor:[UIColor whiteColor]];
     messageController.messageComposeDelegate = self;
     [messageController setBody:message];
     
@@ -232,6 +236,12 @@
     searchController.delegate = self;
     UINavigationController *naviCv = [[UINavigationController alloc] initWithRootViewController:searchController];
     [self presentViewController:naviCv animated:YES completion:nil];
+}
+
+- (void)shareItemButtonClicked:(id)sender {
+    UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:nil shareText:@"孝心天气" shareImage:image shareToSnsNames:@[UMShareToWechatTimeline, UMShareToWechatSession , UMShareToSms, UMShareToSina] delegate:self];
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
 }
 
 - (NSDictionary *)imageMap {
@@ -382,7 +392,7 @@
             height = 50.f;
             break;
         case 1:
-            height = 120.f;
+            height = 180.f;
             break;
         case 2:
             height = 313.f;
@@ -430,6 +440,7 @@
         cell.pm10Label.text = [NSString stringWithFormat:@"PM10 : %@",[air.pmtenaqi isEqualToString:@""] ?  @"无" : air.pmtenaqi];
         cell.so2Label.text = [NSString stringWithFormat:@"二氧化硫 : %@",[air.so2 isEqualToString:@""] ? @"无" :air.so2];
         cell.o3Label.text = [NSString stringWithFormat:@"臭氧 : %@",[air.o3 isEqualToString:@""] ? @"无" : air.o3];
+        cell.commentLabel.text = air.desc;
         NSArray *info = [air.ptime componentsSeparatedByString:@" "];
         if ([info count] == 2) {
             NSString *strTime = [info[1] substringToIndex:5];
@@ -787,6 +798,15 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UMengUIDelegate
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData {
+    if ([platformName isEqualToString:@"sms"] || [platformName isEqualToString:@"sina"]) {
+        socialData.shareText = [self.headView.tipsTextView.text substringFromIndex:6];
+        return;
+    }
+    
 }
 
 #pragma mark - GADBannerViewDelegate implementation

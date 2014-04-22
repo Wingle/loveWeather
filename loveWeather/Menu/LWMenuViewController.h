@@ -12,6 +12,7 @@
 
 typedef NS_ENUM(NSUInteger, MSPaneViewControllerType) {
     MSPaneViewControllerTypeWeather,
+    MSPaneViewControllerTypeReminder,
     MSPaneViewControllerTypeManager,
     MSPaneViewControllerTypeAbout
 };

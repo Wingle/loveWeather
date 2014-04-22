@@ -11,11 +11,11 @@ target "loveWeather" do
     pod 'TSMessages', '~> 0.9.5'
     pod 'GDataXML-HTML', '~> 1.1.0'
     pod 'ASIHTTPRequest', '~> 1.8.1'
-    pod 'EGOTableViewPullRefresh', '~> 0.1.0'
     pod 'Google-AdMob-Ads-SDK', '~> 6.8.0'
     pod 'MBProgressHUD', '~> 0.8'
     pod 'UMengAnalytics', '~> 2.2.1'
     pod 'InnoEGOCache', '~> 2.1'
+    pod 'UMengSocial', '~> 3.3.7'
     
 end
 

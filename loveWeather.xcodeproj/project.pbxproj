@@ -35,6 +35,7 @@
 		98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98386C4A18E1A47F00F60899 /* LWCitySearchController.xib */; };
 		98386C5118E2E49100F60899 /* LWCitiesManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */; };
 		9841369618E5140600DB515D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9841369518E5140600DB515D /* StoreKit.framework */; };
+		984B24CA18EE680800C9E795 /* LWReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B24C918EE680800C9E795 /* LWReminderTableViewController.m */; };
 		988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */; };
 		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
 		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
@@ -49,6 +50,11 @@
 		989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4718E136FE00055237 /* AVFoundation.framework */; };
 		989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4918E1374800055237 /* CoreAudio.framework */; };
 		98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B54DDA18E974B6007ECD40 /* LWTextView.m */; };
+		98BD1AB31900E39D0049843E /* ios-social-sdk-shake.html in Resources */ = {isa = PBXBuildFile; fileRef = 98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */; };
+		98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */; };
+		98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAE1900E39D0049843E /* libSocialWechat.a */; };
+		98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAF1900E39D0049843E /* libWeChatSDK.a */; };
+		98BD1AB9190100C40049843E /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */; };
 		98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FD618C4A3600096D962 /* AGNavigationController.m */; };
 		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
@@ -107,6 +113,10 @@
 		98386C4E18E2E49100F60899 /* LWCitiesManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWCitiesManagerViewController.h; sourceTree = "<group>"; };
 		98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCitiesManagerViewController.m; sourceTree = "<group>"; };
 		9841369518E5140600DB515D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		984B24C818EE680800C9E795 /* LWReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWReminderTableViewController.h; sourceTree = "<group>"; };
+		984B24C918EE680800C9E795 /* LWReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReminderTableViewController.m; sourceTree = "<group>"; };
+		984B24CE18EEA4B700C9E795 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		984B24CF18EEA4B700C9E795 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		988089BF18D7FF4600332C6A /* LWPullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPullRefreshTableViewController.h; sourceTree = "<group>"; };
 		988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPullRefreshTableViewController.m; sourceTree = "<group>"; };
 		988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSJSONSerialization.h"; sourceTree = "<group>"; };
@@ -128,6 +138,16 @@
 		989A8A4918E1374800055237 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		98B54DD918E974B6007ECD40 /* LWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTextView.h; sourceTree = "<group>"; };
 		98B54DDA18E974B6007ECD40 /* LWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTextView.m; sourceTree = "<group>"; };
+		98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-shake.html"; sourceTree = "<group>"; };
+		98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocial_Sdk_ScreenShot_1.0.a; sourceTree = "<group>"; };
+		98BD1AAC1900E39D0049843E /* UMSocialScreenShoter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialScreenShoter.h; sourceTree = "<group>"; };
+		98BD1AAE1900E39D0049843E /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
+		98BD1AAF1900E39D0049843E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		98BD1AB01900E39D0049843E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		98BD1AB11900E39D0049843E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		98BD1AB21900E39D0049843E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		98BD1AB7190100C40049843E /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		98EE2FCD18C471AB0096D962 /* LWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMenuViewController.h; sourceTree = "<group>"; };
 		98EE2FCE18C471AB0096D962 /* LWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMenuViewController.m; sourceTree = "<group>"; };
 		98EE2FD518C4A3600096D962 /* AGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGNavigationController.h; sourceTree = "<group>"; };
@@ -146,9 +166,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */,
 				989A8A4418E1355600055237 /* MessageUI.framework in Frameworks */,
 				989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */,
 				989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */,
+				98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */,
 				989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */,
 				989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */,
 				981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */,
@@ -156,6 +178,7 @@
 				981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */,
 				981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */,
 				360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */,
+				98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */,
 				9841369618E5140600DB515D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +255,8 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				98BD1AA81900E39D0049843E /* UMeng_Extra */,
+				984B24C718EE67F700C9E795 /* Reminder */,
 				98386C4D18E2E3BC00F60899 /* More */,
 				988089C218D814BC00332C6A /* Utility */,
 				98EE2FD418C4A3600096D962 /* Base */,
@@ -287,15 +312,57 @@
 			path = More;
 			sourceTree = "<group>";
 		};
+		984B24C718EE67F700C9E795 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				984B24C818EE680800C9E795 /* LWReminderTableViewController.h */,
+				984B24C918EE680800C9E795 /* LWReminderTableViewController.m */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
 		988089C218D814BC00332C6A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				98BD1AB7190100C40049843E /* EGORefreshTableHeaderView.h */,
+				98BD1AB8190100C40049843E /* EGORefreshTableHeaderView.m */,
 				9802650A18DFE452000A85EF /* UIImage+Additions.h */,
 				9802650B18DFE452000A85EF /* UIImage+Additions.m */,
 				988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */,
 				988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		98BD1AA81900E39D0049843E /* UMeng_Extra */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AA91900E39D0049843E /* UMSocial_ScreenShot_Sdk */,
+				98BD1AAD1900E39D0049843E /* Wechat */,
+			);
+			path = UMeng_Extra;
+			sourceTree = "<group>";
+		};
+		98BD1AA91900E39D0049843E /* UMSocial_ScreenShot_Sdk */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */,
+				98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */,
+				98BD1AAC1900E39D0049843E /* UMSocialScreenShoter.h */,
+			);
+			path = UMSocial_ScreenShot_Sdk;
+			sourceTree = "<group>";
+		};
+		98BD1AAD1900E39D0049843E /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				98BD1AAE1900E39D0049843E /* libSocialWechat.a */,
+				98BD1AAF1900E39D0049843E /* libWeChatSDK.a */,
+				98BD1AB01900E39D0049843E /* UMSocialWechatHandler.h */,
+				98BD1AB11900E39D0049843E /* WXApi.h */,
+				98BD1AB21900E39D0049843E /* WXApiObject.h */,
+			);
+			path = Wechat;
 			sourceTree = "<group>";
 		};
 		98EE2FCC18C4719D0096D962 /* Menu */ = {
@@ -417,6 +484,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 981A18BC18BE0B7400B0CF75;
 			productRefGroup = 981A18C618BE0B7400B0CF75 /* Products */;
@@ -441,6 +509,7 @@
 				989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */,
 				982B17B818E3C7CD00EF9CF2 /* LWAboutViewController.xib in Resources */,
 				98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */,
+				98BD1AB31900E39D0049843E /* ios-social-sdk-shake.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +563,7 @@
 			files = (
 				98386C5118E2E49100F60899 /* LWCitiesManagerViewController.m in Sources */,
 				98EE2FCF18C471AB0096D962 /* LWMenuViewController.m in Sources */,
+				98BD1AB9190100C40049843E /* EGORefreshTableHeaderView.m in Sources */,
 				98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */,
 				982B17B318E3BDA200EF9CF2 /* LWTableViewController.m in Sources */,
 				989A89FD18E0303900055237 /* LWForecastTableViewCell.m in Sources */,
@@ -502,6 +572,7 @@
 				988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */,
 				9802650C18DFE452000A85EF /* UIImage+Additions.m in Sources */,
 				988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */,
+				984B24CA18EE680800C9E795 /* LWReminderTableViewController.m in Sources */,
 				988089CE18D974D000332C6A /* LWWeatherConditionView.m in Sources */,
 				98386C3F18E18E1C00F60899 /* LWDataManager.m in Sources */,
 				98386C4B18E1A47F00F60899 /* LWCitySearchController.m in Sources */,
@@ -541,6 +612,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				981A18D418BE0B7400B0CF75 /* en */,
+				984B24CE18EEA4B700C9E795 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -549,6 +621,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				981A18F118BE0B7500B0CF75 /* en */,
+				984B24CF18EEA4B700C9E795 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -640,6 +713,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveWeather/adMod",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,6 +737,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/loveWeather/adMod",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
+					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

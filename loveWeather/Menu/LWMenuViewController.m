@@ -16,6 +16,7 @@
 #import "LWPullRefreshTableViewController.h"
 #import "LWCitiesManagerViewController.h"
 #import "LWAboutViewController.h"
+#import "LWReminderTableViewController.h"
 
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
@@ -23,6 +24,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     MSMenuViewControllerTableViewSectionTypeOptions,
+    MSMenuViewControllerTableViewSectionTypeReminder,
     MSMenuViewControllerTableViewSectionTypeAbout,
     MSMenuViewControllerTableViewSectionTypeCount
 };
@@ -33,6 +35,7 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 @property (nonatomic, strong) NSDictionary *paneViewControllerClasses;
 @property (nonatomic, strong) NSDictionary *sectionTitles;
 @property (nonatomic, strong) NSArray *tableViewSectionBreaks;
+@property (nonatomic, strong) NSDictionary *toolBarSectionBreaks;
 
 
 @property (nonatomic, strong) UIBarButtonItem *paneRevealLeftBarButtonItem;
@@ -91,20 +94,27 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     CGFloat inset = 10.f;
     CGFloat iconHeight = 30.f;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 80.f)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, 100.f)];
     view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(bounds.size.width/2 - iconHeight/2, 10.f, iconHeight, iconHeight)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(bounds.size.width/2 - iconHeight/2, inset, iconHeight, iconHeight)];
     [imageView setImage:[UIImage imageNamed:@"weather-clear"]];
     [view addSubview:imageView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(inset, 10 + iconHeight + 10.f, bounds.size.width - 2*inset, 21.f)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconHeight + 2*inset, bounds.size.width, 21.f)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18.f];
     titleLabel.text = @"孝心天气，用心报天气";
     [view addSubview:titleLabel];
+    
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconHeight + 2*inset + titleLabel.bounds.size.height + 5, bounds.size.width, 21.f)];
+    versionLabel.textAlignment = NSTextAlignmentCenter;
+    versionLabel.textColor = [UIColor whiteColor];
+    versionLabel.font = [UIFont boldSystemFontOfSize:16.f];
+    versionLabel.text = [NSString stringWithFormat:@"版本：%@",AppVersion];
+    [view addSubview:versionLabel];
     
     self.tableView.tableFooterView = view;
 }
@@ -133,12 +143,14 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     
     self.paneViewControllerClasses = @{
                                        @(MSPaneViewControllerTypeWeather) : [LWPullRefreshTableViewController class],
+                                       @(MSPaneViewControllerTypeReminder) : [LWReminderTableViewController class],
                                        @(MSPaneViewControllerTypeManager) : [LWCitiesManagerViewController class],
                                        @(MSPaneViewControllerTypeAbout)   : [LWAboutViewController class],
                                        };
     
     self.sectionTitles = @{
                            @(MSMenuViewControllerTableViewSectionTypeOptions) : @"地区",
+                           @(MSMenuViewControllerTableViewSectionTypeReminder) : @"小工具",
                            @(MSMenuViewControllerTableViewSectionTypeAbout) : @"选项",
                            };
     
@@ -147,6 +159,10 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
                                     @(MSPaneViewControllerTypeAbout)
                                     ];
     
+    self.toolBarSectionBreaks = @{
+                                  @(MSPaneViewControllerTypeReminder) : @"事件提醒"
+                                  };
+    
 }
 
 - (MSPaneViewControllerType)paneViewControllerTypeForIndexPath:(NSIndexPath *)indexPath
@@ -154,7 +170,10 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     MSPaneViewControllerType paneViewControllerType;
     if (indexPath.section == 0) {
         paneViewControllerType = MSPaneViewControllerTypeWeather;
-    } else {
+    }else if (indexPath.section == 1) {
+        NSNumber *key = [self.toolBarSectionBreaks allKeys][[indexPath row]];
+        paneViewControllerType = [key integerValue];
+    }else {
         paneViewControllerType = [self.tableViewSectionBreaks[[indexPath row]] integerValue];
     }
     return paneViewControllerType;
@@ -207,14 +226,16 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return [[[LWDataManager defaultManager] citys] count];
-    } else {
+    }else if (section == 1) {
+        return [[self.toolBarSectionBreaks allKeys] count];
+    }else {
         return [self.tableViewSectionBreaks count];
     }
 }
@@ -246,6 +267,9 @@ typedef NS_ENUM(NSUInteger, MSMenuViewControllerTableViewSectionType) {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
     if ([indexPath section] == 0) {
         cell.textLabel.text = [[LWDataManager defaultManager] citys][[indexPath row]];
+    }else if ([indexPath section] == 1) {
+        NSNumber *key = [self.toolBarSectionBreaks allKeys][[indexPath row]];
+        cell.textLabel.text = self.toolBarSectionBreaks[key];
     }else {
         cell.textLabel.text = self.paneViewControllerTitles[@([self paneViewControllerTypeForIndexPath:indexPath])];
     }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 WingleWong. All rights reserved.
 //
 
-#import <EGOTableViewPullRefresh/EGORefreshTableHeaderView.h>
+#import "EGORefreshTableHeaderView.h"
 
 @interface LWRefreshTableHeaderView : EGORefreshTableHeaderView
 
