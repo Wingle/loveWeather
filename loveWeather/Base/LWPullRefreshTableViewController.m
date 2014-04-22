@@ -204,7 +204,7 @@
     request.testDevices = @[
         // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
         // the console when the app is launched.
-        GAD_SIMULATOR_ID,
+        GAD_SIMULATOR_ID
     ];
     return request;
 }

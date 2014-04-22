@@ -184,9 +184,7 @@ NSString * const cellIdentifier = @"reuseIdentifier";
     request.testDevices = @[
                             // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
                             // the console when the app is launched.
-                            GAD_SIMULATOR_ID,
-                            @"672e13ff37a8c1e99a51375df44e9f4c9f610d7f",
-                            @"5ea83bfbbab6d8e72c936fa4888757666a28a4c0"
+                            GAD_SIMULATOR_ID
                             ];
     return request;
 }
