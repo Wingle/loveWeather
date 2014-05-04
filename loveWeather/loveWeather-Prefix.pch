@@ -25,7 +25,7 @@
 #endif
 
 
-#define kSampleAdUnitID @"a15330ec57678a6"
+#define kDomobPublisherID   @"56OJwoqIuNGn/JWmgx"
 
 
 #define APPID @"e4f571b7447bfdbe"

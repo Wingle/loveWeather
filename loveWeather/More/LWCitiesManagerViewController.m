@@ -10,14 +10,13 @@
 #import "LWDataManager.h"
 #import "LWCitySearchController.h"
 #import <UMengAnalytics/MobClick.h>
-#import <Google-AdMob-Ads-SDK/GADBannerView.h>
-#import <Google-AdMob-Ads-SDK/GADRequest.h>
+#import "DMAdView.h"
 
 NSString * const cellIdentifier = @"reuseIdentifier";
 
-@interface LWCitiesManagerViewController () <LWCitySearchControllerDelegate, GADBannerViewDelegate>
+@interface LWCitiesManagerViewController () <LWCitySearchControllerDelegate, DMAdViewDelegate>
 
-@property (nonatomic, strong) GADBannerView *adBanner;
+@property (nonatomic, strong) DMAdView *adBanner;
 
 @end
 
@@ -51,17 +50,20 @@ NSString * const cellIdentifier = @"reuseIdentifier";
         weakSelf.tableView.tableHeaderView = nil;
     });
     
-    CGPoint origin = CGPointMake(0.0,
-                                 bounds.size.height - 50.f);
-    // Use predefined GADAdSize constants to define the GADBannerView.
-    self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+    // 创建广告视图，此处使用的是测试ID，请登陆多盟官网（www.domob.cn）获取新的ID
+    self.adBanner = [[DMAdView alloc] initWithPublisherId:kDomobPublisherID
+                                              placementId:@"16TLuUqoAphr2NUkHQSgRM1i"
+                                                     size:DOMOB_AD_SIZE_320x50
+                                              autorefresh:YES];
+    // 设置广告视图的位置
+    self.adBanner.frame = CGRectMake(0, bounds.size.height - 50.f,
+                                     DOMOB_AD_SIZE_320x50.width,
+                                     DOMOB_AD_SIZE_320x50.height);
     
-    // Note: Edit SampleConstants.h to provide a definition for kSampleAdUnitID before compiling.
-    self.adBanner.adUnitID = kSampleAdUnitID;
-    self.adBanner.delegate = self;
-    self.adBanner.rootViewController = self;
+    self.adBanner.delegate = self; // 设置 Delegate
+    self.adBanner.rootViewController = self; // 设置 RootViewController
     [[UIApplication sharedApplication].windows[0] addSubview:self.adBanner];
-    [self.adBanner loadRequest:[self request]];
+    [self.adBanner loadAd]; // 开始加载广告}
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -176,18 +178,6 @@ NSString * const cellIdentifier = @"reuseIdentifier";
 }
 
 #pragma mark - action
-- (GADRequest *)request {
-    GADRequest *request = [GADRequest request];
-    
-    // Make the request for a test ad. Put in an identifier for the simulator as well as any devices
-    // you want to receive test ads.
-    request.testDevices = @[
-                            // TODO: Add your device/simulator test identifiers here. Your device identifier is printed to
-                            // the console when the app is launched.
-                            GAD_SIMULATOR_ID
-                            ];
-    return request;
-}
 
 #pragma mark - LWCitySearchControllerDelegate Methods
 - (void)searchCitySuccess:(NSString *)cityName {

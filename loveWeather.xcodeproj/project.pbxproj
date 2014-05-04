@@ -50,6 +50,23 @@
 		989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4718E136FE00055237 /* AVFoundation.framework */; };
 		989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989A8A4918E1374800055237 /* CoreAudio.framework */; };
 		98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B54DDA18E974B6007ECD40 /* LWTextView.m */; };
+		98BB090E1915F16A007CBC52 /* DomobAdSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98BB090C1915F16A007CBC52 /* DomobAdSDKBundle.bundle */; };
+		98BB090F1915F16A007CBC52 /* libDomobAdSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB090D1915F16A007CBC52 /* libDomobAdSDK.a */; };
+		98BB09111915F1BC007CBC52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09101915F1BC007CBC52 /* Security.framework */; };
+		98BB09131915F1CA007CBC52 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09121915F1CA007CBC52 /* CoreTelephony.framework */; };
+		98BB09151915F1DF007CBC52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09141915F1DF007CBC52 /* CFNetwork.framework */; };
+		98BB09171915F1F2007CBC52 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09161915F1F2007CBC52 /* MobileCoreServices.framework */; };
+		98BB09191915F1FF007CBC52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09181915F1FF007CBC52 /* libz.dylib */; };
+		98BB091B1915F20D007CBC52 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB091A1915F20D007CBC52 /* CoreMedia.framework */; };
+		98BB091D1915F21D007CBC52 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB091C1915F21D007CBC52 /* MediaPlayer.framework */; };
+		98BB091F1915F236007CBC52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB091E1915F236007CBC52 /* QuartzCore.framework */; };
+		98BB09211915F242007CBC52 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09201915F242007CBC52 /* CoreText.framework */; };
+		98BB09231915F24E007CBC52 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09221915F24E007CBC52 /* AdSupport.framework */; };
+		98BB09251915F25D007CBC52 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09241915F25D007CBC52 /* CoreLocation.framework */; };
+		98BB09271915F283007CBC52 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09261915F283007CBC52 /* PassKit.framework */; };
+		98BB09291915F28A007CBC52 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB09281915F28A007CBC52 /* Social.framework */; };
+		98BB092B1915F295007CBC52 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB092A1915F295007CBC52 /* EventKit.framework */; };
+		98BB092D1915F2BD007CBC52 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB092C1915F2BD007CBC52 /* libsqlite3.dylib */; };
 		98BD1AB31900E39D0049843E /* ios-social-sdk-shake.html in Resources */ = {isa = PBXBuildFile; fileRef = 98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */; };
 		98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */; };
 		98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BD1AAE1900E39D0049843E /* libSocialWechat.a */; };
@@ -138,6 +155,29 @@
 		989A8A4918E1374800055237 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		98B54DD918E974B6007ECD40 /* LWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTextView.h; sourceTree = "<group>"; };
 		98B54DDA18E974B6007ECD40 /* LWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTextView.m; sourceTree = "<group>"; };
+		98BB09051915F16A007CBC52 /* DMAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAdView.h; sourceTree = "<group>"; };
+		98BB09061915F16A007CBC52 /* DMFeedsAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFeedsAdView.h; sourceTree = "<group>"; };
+		98BB09071915F16A007CBC52 /* DMInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMInterstitialAdController.h; sourceTree = "<group>"; };
+		98BB09081915F16A007CBC52 /* DMRTSplashAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRTSplashAdController.h; sourceTree = "<group>"; };
+		98BB09091915F16A007CBC52 /* DMSplashAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSplashAdController.h; sourceTree = "<group>"; };
+		98BB090A1915F16A007CBC52 /* DMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTools.h; sourceTree = "<group>"; };
+		98BB090C1915F16A007CBC52 /* DomobAdSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DomobAdSDKBundle.bundle; sourceTree = "<group>"; };
+		98BB090D1915F16A007CBC52 /* libDomobAdSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobAdSDK.a; sourceTree = "<group>"; };
+		98BB09101915F1BC007CBC52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		98BB09121915F1CA007CBC52 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		98BB09141915F1DF007CBC52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		98BB09161915F1F2007CBC52 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		98BB09181915F1FF007CBC52 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		98BB091A1915F20D007CBC52 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		98BB091C1915F21D007CBC52 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		98BB091E1915F236007CBC52 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		98BB09201915F242007CBC52 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		98BB09221915F24E007CBC52 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		98BB09241915F25D007CBC52 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		98BB09261915F283007CBC52 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		98BB09281915F28A007CBC52 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		98BB092A1915F295007CBC52 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		98BB092C1915F2BD007CBC52 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		98BD1AAA1900E39D0049843E /* ios-social-sdk-shake.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-shake.html"; sourceTree = "<group>"; };
 		98BD1AAB1900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocial_Sdk_ScreenShot_1.0.a; sourceTree = "<group>"; };
 		98BD1AAC1900E39D0049843E /* UMSocialScreenShoter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialScreenShoter.h; sourceTree = "<group>"; };
@@ -166,20 +206,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */,
+				98BB092D1915F2BD007CBC52 /* libsqlite3.dylib in Frameworks */,
+				989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */,
+				989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */,
+				98BB092B1915F295007CBC52 /* EventKit.framework in Frameworks */,
+				98BB09291915F28A007CBC52 /* Social.framework in Frameworks */,
+				98BB09271915F283007CBC52 /* PassKit.framework in Frameworks */,
+				9841369618E5140600DB515D /* StoreKit.framework in Frameworks */,
+				98BB09251915F25D007CBC52 /* CoreLocation.framework in Frameworks */,
+				98BB09231915F24E007CBC52 /* AdSupport.framework in Frameworks */,
+				98BB09211915F242007CBC52 /* CoreText.framework in Frameworks */,
+				98BB091F1915F236007CBC52 /* QuartzCore.framework in Frameworks */,
+				98BB091D1915F21D007CBC52 /* MediaPlayer.framework in Frameworks */,
+				98BB091B1915F20D007CBC52 /* CoreMedia.framework in Frameworks */,
+				98BB09191915F1FF007CBC52 /* libz.dylib in Frameworks */,
+				98BB09171915F1F2007CBC52 /* MobileCoreServices.framework in Frameworks */,
+				98BB09151915F1DF007CBC52 /* CFNetwork.framework in Frameworks */,
+				98BB09131915F1CA007CBC52 /* CoreTelephony.framework in Frameworks */,
+				98BB09111915F1BC007CBC52 /* Security.framework in Frameworks */,
 				98BD1AB61900E39D0049843E /* libWeChatSDK.a in Frameworks */,
 				989A8A4418E1355600055237 /* MessageUI.framework in Frameworks */,
+				98BB090F1915F16A007CBC52 /* libDomobAdSDK.a in Frameworks */,
 				989A8A4A18E1374800055237 /* CoreAudio.framework in Frameworks */,
-				989A8A4818E136FE00055237 /* AVFoundation.framework in Frameworks */,
 				98BD1AB51900E39D0049843E /* libSocialWechat.a in Frameworks */,
-				989A8A4618E1356F00055237 /* SystemConfiguration.framework in Frameworks */,
-				989A8A4218E1354C00055237 /* AudioToolbox.framework in Frameworks */,
 				981A18CB18BE0B7400B0CF75 /* CoreGraphics.framework in Frameworks */,
 				981A18CF18BE0B7400B0CF75 /* CoreData.framework in Frameworks */,
 				981A18CD18BE0B7400B0CF75 /* UIKit.framework in Frameworks */,
 				981A18C918BE0B7400B0CF75 /* Foundation.framework in Frameworks */,
 				360DD1780B244FD4AFB37684 /* libPods-loveWeather.a in Frameworks */,
 				98BD1AB41900E39D0049843E /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */,
-				9841369618E5140600DB515D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +292,21 @@
 		981A18C718BE0B7400B0CF75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98BB092C1915F2BD007CBC52 /* libsqlite3.dylib */,
+				98BB092A1915F295007CBC52 /* EventKit.framework */,
+				98BB09281915F28A007CBC52 /* Social.framework */,
+				98BB09261915F283007CBC52 /* PassKit.framework */,
+				98BB09241915F25D007CBC52 /* CoreLocation.framework */,
+				98BB09221915F24E007CBC52 /* AdSupport.framework */,
+				98BB09201915F242007CBC52 /* CoreText.framework */,
+				98BB091E1915F236007CBC52 /* QuartzCore.framework */,
+				98BB091C1915F21D007CBC52 /* MediaPlayer.framework */,
+				98BB091A1915F20D007CBC52 /* CoreMedia.framework */,
+				98BB09181915F1FF007CBC52 /* libz.dylib */,
+				98BB09161915F1F2007CBC52 /* MobileCoreServices.framework */,
+				98BB09141915F1DF007CBC52 /* CFNetwork.framework */,
+				98BB09121915F1CA007CBC52 /* CoreTelephony.framework */,
+				98BB09101915F1BC007CBC52 /* Security.framework */,
 				9841369518E5140600DB515D /* StoreKit.framework */,
 				989A8A4918E1374800055237 /* CoreAudio.framework */,
 				989A8A4718E136FE00055237 /* AVFoundation.framework */,
@@ -255,6 +326,7 @@
 		981A18D018BE0B7400B0CF75 /* loveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				98BB09041915F16A007CBC52 /* DomobAdSDK */,
 				98BD1AA81900E39D0049843E /* UMeng_Extra */,
 				984B24C718EE67F700C9E795 /* Reminder */,
 				98386C4D18E2E3BC00F60899 /* More */,
@@ -332,6 +404,29 @@
 				988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		98BB09041915F16A007CBC52 /* DomobAdSDK */ = {
+			isa = PBXGroup;
+			children = (
+				98BB09051915F16A007CBC52 /* DMAdView.h */,
+				98BB09061915F16A007CBC52 /* DMFeedsAdView.h */,
+				98BB09071915F16A007CBC52 /* DMInterstitialAdController.h */,
+				98BB09081915F16A007CBC52 /* DMRTSplashAdController.h */,
+				98BB09091915F16A007CBC52 /* DMSplashAdController.h */,
+				98BB090A1915F16A007CBC52 /* DMTools.h */,
+				98BB090B1915F16A007CBC52 /* DomobAdSDKBundle */,
+				98BB090D1915F16A007CBC52 /* libDomobAdSDK.a */,
+			);
+			path = DomobAdSDK;
+			sourceTree = "<group>";
+		};
+		98BB090B1915F16A007CBC52 /* DomobAdSDKBundle */ = {
+			isa = PBXGroup;
+			children = (
+				98BB090C1915F16A007CBC52 /* DomobAdSDKBundle.bundle */,
+			);
+			path = DomobAdSDKBundle;
 			sourceTree = "<group>";
 		};
 		98BD1AA81900E39D0049843E /* UMeng_Extra */ = {
@@ -505,6 +600,7 @@
 				981A18D518BE0B7400B0CF75 /* InfoPlist.strings in Resources */,
 				9802651218DFE628000A85EF /* LWAirTableViewCell.xib in Resources */,
 				989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */,
+				98BB090E1915F16A007CBC52 /* DomobAdSDKBundle.bundle in Resources */,
 				981A18E018BE0B7500B0CF75 /* Images.xcassets in Resources */,
 				989A89F918E0231200055237 /* LWIndexTableViewCell.xib in Resources */,
 				982B17B818E3C7CD00EF9CF2 /* LWAboutViewController.xib in Resources */,
@@ -715,8 +811,49 @@
 					"$(PROJECT_DIR)/loveWeather/adMod",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
+					"$(PROJECT_DIR)/loveWeather/DomobAdSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lMobClickLibrary",
+					"-lSocialQQ",
+					"-lSocialWechat",
+					"-lUMSocial_Sdk_3.3.7",
+					"-lUMSocial_Sdk_Comment_3.3.7",
+					"-lWeChatSDK",
+					"-liconv",
+					"-lsqlite3",
+					"-lstdc++",
+					"-lxml2",
+					"-lxml2.2",
+					"-lz",
+					"-lz.1",
+					"-framework",
+					Accelerate,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreTelephony,
+					"-framework",
+					Foundation,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					TencentOpenAPI,
+					"-framework",
+					UIKit,
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
@@ -740,8 +877,49 @@
 					"$(PROJECT_DIR)/loveWeather/adMod",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
+					"$(PROJECT_DIR)/loveWeather/DomobAdSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lMobClickLibrary",
+					"-lSocialQQ",
+					"-lSocialWechat",
+					"-lUMSocial_Sdk_3.3.7",
+					"-lUMSocial_Sdk_Comment_3.3.7",
+					"-lWeChatSDK",
+					"-liconv",
+					"-lsqlite3",
+					"-lstdc++",
+					"-lxml2",
+					"-lxml2.2",
+					"-lz",
+					"-lz.1",
+					"-framework",
+					Accelerate,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreTelephony,
+					"-framework",
+					Foundation,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					TencentOpenAPI,
+					"-framework",
+					UIKit,
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
