@@ -117,6 +117,53 @@
     
     [TSMessage setDefaultViewController:self.window.rootViewController];
     
+    // 设置适合的背景图片
+    // Set background image
+    NSString *defaultImgName = @"LaunchImage";
+    CGFloat offset = 0.0f;
+    CGSize adSize;
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        adSize = DOMOB_AD_SIZE_768x576;
+        offset = 374.0f;
+    } else {
+        adSize = DOMOB_AD_SIZE_320x400;
+    }
+    
+    BOOL isCacheSplash = NO;
+    // 选择测试缓存开屏还是实时开屏，NO为实时开屏。
+    // Choose NO or YES for RealTimeSplashView or SplashView
+    // 初始化开屏广告控制器，此处使用的是测试ID，请登陆多盟官网（www.domob.cn）获取新的ID
+    // Get your ID from Domob website
+    NSString* testSplashPlacementID = @"16TLuUqoAphr2NUkHtrsOoSz";
+    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:defaultImgName]];
+    if (isCacheSplash) {
+        _splashAd = [[DMSplashAdController alloc] initWithPublisherId:kDomobPublisherID
+                                                          placementId:testSplashPlacementID
+                                                                 size:adSize
+                                                               offset:offset
+                                                               window:self.window
+                                                           background:bgColor
+                                                            animation:YES];
+        self.splashAd.delegate = self;
+        if (_splashAd.isReady)
+        {
+            [_splashAd present];
+        }
+    } else {
+        DMRTSplashAdController* rtsplashAd = nil;
+        rtsplashAd = [[DMRTSplashAdController alloc] initWithPublisherId:kDomobPublisherID
+                                                             placementId:testSplashPlacementID
+                                                                    size:adSize
+                                                                  offset:offset
+                                                                  window:self.window
+                                                              background:bgColor
+                                                               animation:YES];
+        
+        
+        rtsplashAd.delegate = self;
+        [rtsplashAd present];
+    }
+    
     return YES;
 }
 
