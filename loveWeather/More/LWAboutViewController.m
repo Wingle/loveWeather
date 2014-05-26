@@ -53,8 +53,9 @@
 #pragma mark - Action Methods
 
 - (IBAction)sponsorButtonClicked:(id)sender {
-    NSString *sponsorLink = @"https://me.alipay.com/xiaoxintech";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sponsorLink]];
+//    Stop use this link.
+//    NSString *sponsorLink = @"https://me.alipay.com/xiaoxintech";
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:sponsorLink]];
     
     [MobClick event:@"sponsor"];
 }
