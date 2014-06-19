@@ -183,10 +183,14 @@
         BOOL result = [[respDict objectForKey:@"success"] boolValue];
         if (result) {
             NSString *mojiURL = [respDict objectForKey:@"result"];
-            ASIHTTPRequest *mojiRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:mojiURL]];
+            ASIHTTPRequest *mojiRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[mojiURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             [mojiRequest setUserAgentString:@"Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"];
             [mojiRequest setDelegate:self];
             [mojiRequest startAsynchronous];
+            
+            //UMeng.
+            [MobClick event:@"areaCode" label:[NSString stringWithFormat:@"%@:%@", area, mojiURL]];
+            
         }else {
             return NO;
         }
