@@ -189,7 +189,12 @@
             [mojiRequest startAsynchronous];
             
             //UMeng.
-            [MobClick event:@"areaCode" label:[NSString stringWithFormat:@"%@:%@", area, mojiURL]];
+            NSRange xmlRange = [mojiURL rangeOfString:@".xml?"];
+            if (xmlRange.location != NSNotFound) {
+                NSString *subXml = [mojiURL substringToIndex:xmlRange.location];
+                NSArray *xmlArray = [subXml componentsSeparatedByString:@"/"];
+                [MobClick event:@"areaCode" label:[NSString stringWithFormat:@"%@:%@", area, [xmlArray lastObject]]];
+            }
             
         }else {
             return NO;
