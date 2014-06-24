@@ -798,8 +798,12 @@
 
 #pragma mark - UMengUIDelegate
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData {
-    if ([platformName isEqualToString:@"sms"] || [platformName isEqualToString:@"sina"]) {
+    if ([platformName isEqualToString:@"sms"]) {
         socialData.shareText = [self.headView.tipsTextView.text substringFromIndex:6];
+        return;
+    }
+    if ([platformName isEqualToString:@"sina"]) {
+        socialData.shareText = [NSString stringWithFormat:@"%@ 下载链接:https://itunes.apple.com/cn/app/xiao-xin-tian-qi/id882366696?mt=8",[self.headView.tipsTextView.text substringFromIndex:6]];
         return;
     }
     
