@@ -798,6 +798,7 @@
 
 #pragma mark - UMengUIDelegate
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData {
+    [MobClick event:@"sharePlatform" label:platformName];
     if ([platformName isEqualToString:@"sms"]) {
         socialData.shareText = [self.headView.tipsTextView.text substringFromIndex:6];
         return;
