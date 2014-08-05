@@ -77,6 +77,8 @@
 		98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDA18C4A3600096D962 /* AGViewController.m */; };
 		98EE2FE218C4B1B00096D962 /* MSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FDF18C4B1B00096D962 /* MSMenuCell.m */; };
 		98EE2FE318C4B1B00096D962 /* MSMenuTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE2FE118C4B1B00096D962 /* MSMenuTableViewHeader.m */; };
+		A0CEFF081990AFC100D0B32E /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CEFF051990AFC100D0B32E /* libXG-SDK.a */; };
+		A0CEFF091990AFC100D0B32E /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A0CEFF061990AFC100D0B32E /* ReleaseNotes.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +201,9 @@
 		98EE2FDF18C4B1B00096D962 /* MSMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuCell.m; sourceTree = "<group>"; };
 		98EE2FE018C4B1B00096D962 /* MSMenuTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMenuTableViewHeader.h; sourceTree = "<group>"; };
 		98EE2FE118C4B1B00096D962 /* MSMenuTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuTableViewHeader.m; sourceTree = "<group>"; };
+		A0CEFF051990AFC100D0B32E /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		A0CEFF061990AFC100D0B32E /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		A0CEFF071990AFC100D0B32E /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		FAEDE4865EF7424189924365 /* libPods-loveWeather.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveWeather.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +224,7 @@
 				98BB09211915F242007CBC52 /* CoreText.framework in Frameworks */,
 				98BB091F1915F236007CBC52 /* QuartzCore.framework in Frameworks */,
 				98BB091D1915F21D007CBC52 /* MediaPlayer.framework in Frameworks */,
+				A0CEFF081990AFC100D0B32E /* libXG-SDK.a in Frameworks */,
 				98BB091B1915F20D007CBC52 /* CoreMedia.framework in Frameworks */,
 				98BB09191915F1FF007CBC52 /* libz.dylib in Frameworks */,
 				98BB09171915F1F2007CBC52 /* MobileCoreServices.framework in Frameworks */,
@@ -328,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				9834C4381932F18B0015BAB7 /* loveWeather.entitlements */,
+				A0CEFF041990AFC100D0B32E /* XgSDK */,
 				98BB09041915F16A007CBC52 /* DomobAdSDK */,
 				98BD1AA81900E39D0049843E /* UMeng_Extra */,
 				984B24C718EE67F700C9E795 /* Reminder */,
@@ -512,6 +519,16 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		A0CEFF041990AFC100D0B32E /* XgSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A0CEFF051990AFC100D0B32E /* libXG-SDK.a */,
+				A0CEFF061990AFC100D0B32E /* ReleaseNotes.txt */,
+				A0CEFF071990AFC100D0B32E /* XGPush.h */,
+			);
+			path = XgSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -604,6 +621,7 @@
 			files = (
 				981A18D518BE0B7400B0CF75 /* InfoPlist.strings in Resources */,
 				9802651218DFE628000A85EF /* LWAirTableViewCell.xib in Resources */,
+				A0CEFF091990AFC100D0B32E /* ReleaseNotes.txt in Resources */,
 				989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */,
 				98BB090E1915F16A007CBC52 /* DomobAdSDKBundle.bundle in Resources */,
 				981A18E018BE0B7500B0CF75 /* Images.xcassets in Resources */,
@@ -806,8 +824,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qin Fang (FZHQ5464RV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qin Fang (FZHQ5464RV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
@@ -816,6 +834,7 @@
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 					"$(PROJECT_DIR)/loveWeather/DomobAdSDK",
+					"$(PROJECT_DIR)/loveWeather/XgSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -859,7 +878,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "979D5AA5-4933-4914-AFD9-62336DCEA8AA";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -871,8 +890,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Qin Fang (P5EKF975D6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Qin Fang (P5EKF975D6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "loveWeather/loveWeather-Prefix.pch";
 				INFOPLIST_FILE = "loveWeather/loveWeather-Info.plist";
@@ -881,6 +900,7 @@
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/UMSocial_ScreenShot_Sdk",
 					"$(PROJECT_DIR)/loveWeather/UMeng_Extra/Wechat",
 					"$(PROJECT_DIR)/loveWeather/DomobAdSDK",
+					"$(PROJECT_DIR)/loveWeather/XgSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -924,7 +944,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "41FAEB01-88F4-4F15-8198-94C0D14E697A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

@@ -16,6 +16,7 @@
 #import <UMengAnalytics/MobClick.h>
 #import <UMSocial.h>
 #import "UMSocialWechatHandler.h"
+#import "XGPush.h"
 
 @interface LWAppDelegate () <MSDynamicsDrawerViewControllerDelegate>
 
@@ -59,6 +60,10 @@
     LOG(@"online config has fininshed and note = %@", note.userInfo);
 }
 
+- (void) registerNofitication {
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -89,6 +94,10 @@
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.userInfo = @{@"TipsAlert" : @"TipsAlert"};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    // push notification
+    [self registerNofitication];
+    [XGPush startApp:2200041153 appKey:@"IRF5BA86P89N"];
     
     
     // Override point for customization after application launch.
@@ -230,7 +239,7 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
              // Replace this implementation with code to handle the error appropriately.
              // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            LOG(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         } 
     }
@@ -302,7 +311,7 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        LOG(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
     
@@ -324,6 +333,44 @@
         _windowBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Window Background"]];
     }
     return _windowBackground;
+}
+
+
+#pragma mark - push
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    //notification是发送推送时传入的字典信息
+    [XGPush localNotificationAtFrontEnd:notification userInfoKey:@"clockID" userInfoValue:@"myid"];
+    
+    //删除推送列表中的这一条
+    [XGPush delLocalNotification:notification];
+    //[XGPush delLocalNotification:@"clockID" userInfoValue:@"myid"];
+    
+    //清空推送列表
+    //[XGPush clearLocalNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString* deviceTokenStr = [XGPush getDeviceToken:deviceToken];
+    
+    void (^successBlock)(void) = ^(void){
+        //成功之后的处理
+        LOG(@"[xgpush]register successBlock ,deviceToken: %@",deviceTokenStr);
+    };
+    
+    void (^errorBlock)(void) = ^(void){
+        //失败之后的处理
+        LOG(@"[xgpush]register errorBlock");
+    };
+    
+    //注册设备
+    [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
+    
+    //如果不需要回调
+    //[XGPush registerDevice:deviceToken];
+    
+    //打印获取的deviceToken的字符串
+    LOG(@"deviceTokenStr is %@",deviceTokenStr);
 }
 
 @end
