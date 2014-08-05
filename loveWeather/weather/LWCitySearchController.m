@@ -55,13 +55,15 @@
         [self.dataSource addObject:@"欢迎使用孝心天气，来添加父母所在的地区吧"];
     }
     
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    
     // 创建广告视图，此处使用的是测试ID，请登陆多盟官网（www.domob.cn）获取新的ID
     self.adBanner = [[DMAdView alloc] initWithPublisherId:kDomobPublisherID
                                               placementId:@"16TLuUqoAphr2NUkHQSgRM1i"
                                                      size:DOMOB_AD_SIZE_320x50
                                               autorefresh:YES];
     // 设置广告视图的位置
-    self.adBanner.frame = CGRectMake(0, 108.f,
+    self.adBanner.frame = CGRectMake(0, bounds.size.height - DOMOB_AD_SIZE_320x50.height,
                                      DOMOB_AD_SIZE_320x50.width,
                                      DOMOB_AD_SIZE_320x50.height);
     
