@@ -70,30 +70,30 @@
     [self umengTrack];
     
     // local notification
-    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    for (UILocalNotification *local in localNotifications) {
-        if (local.userInfo[@"TipsAlert"]) {
-            [[UIApplication sharedApplication] cancelLocalNotification:local];
-        }
-    }
-    
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
-    [dateComps setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
-    [dateComps setWeekday:6];
-    [dateComps setHour:19];
-    [dateComps setMinute:30];
-    NSDate *itemDate = [calendar dateFromComponents:dateComps];
-    
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = itemDate;
-    localNotification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"];
-    localNotification.alertBody = @"有空的话，记得给父母打个电话！";
-    localNotification.repeatInterval = NSCalendarUnitWeekday;
-    localNotification.applicationIconBadgeNumber = 1;
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.userInfo = @{@"TipsAlert" : @"TipsAlert"};
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+//    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+//    for (UILocalNotification *local in localNotifications) {
+//        if (local.userInfo[@"TipsAlert"]) {
+//            [[UIApplication sharedApplication] cancelLocalNotification:local];
+//        }
+//    }
+//
+//    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+//    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+//    [dateComps setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
+//    [dateComps setWeekday:6];
+//    [dateComps setHour:19];
+//    [dateComps setMinute:30];
+//    NSDate *itemDate = [calendar dateFromComponents:dateComps];
+//    
+//    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+//    localNotification.fireDate = itemDate;
+//    localNotification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"];
+//    localNotification.alertBody = @"有空的话，记得给父母打个电话！";
+//    localNotification.repeatInterval = NSCalendarUnitWeekday;
+//    localNotification.applicationIconBadgeNumber = 1;
+//    localNotification.soundName = UILocalNotificationDefaultSoundName;
+//    localNotification.userInfo = @{@"TipsAlert" : @"TipsAlert"};
+//    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
     // push notification
     [self registerNofitication];
@@ -111,6 +111,7 @@
     
     self.dynamicsDrawerViewController = [MSDynamicsDrawerViewController new];
     self.dynamicsDrawerViewController.delegate = self;
+    [self.dynamicsDrawerViewController registerTouchForwardingClass:[UITableViewCell class]];
     
     // Add some example stylers
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerScaleStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];

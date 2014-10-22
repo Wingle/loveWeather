@@ -133,7 +133,7 @@ NSString * const cellIdentifier = @"reuseIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.f;
+    return 60.f;
 }
 
 /*
