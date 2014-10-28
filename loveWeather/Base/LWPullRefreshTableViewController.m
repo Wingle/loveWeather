@@ -603,6 +603,7 @@
             webVC.strURL = @"http://ai.m.taobao.com/search.html?q=老年人保健品&pid=mm_33231688_7050284_23466709";
             [self.navigationController pushViewController:webVC animated:YES];
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            [MobClick event:@"bjpClicked"];
             break;
         }
         case 5:
@@ -611,6 +612,7 @@
             webVC.strURL = @"http://ai.m.taobao.com/search.html?q=老年人服装&pid=mm_33231688_7050284_23466709";
             [self.navigationController pushViewController:webVC animated:YES];
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            [MobClick event:@"yfClicked"];
             break;
         }
             

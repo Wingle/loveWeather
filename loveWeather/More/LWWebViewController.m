@@ -9,6 +9,7 @@
 #import "LWWebViewController.h"
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
 #import <NJKWebViewProgress/NJKWebViewProgress.h>
+#import <UMengAnalytics/MobClick.h>
 
 @interface LWWebViewController () <UIWebViewDelegate, NJKWebViewProgressDelegate> {
     NJKWebViewProgressView *_progressView;
@@ -66,6 +67,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar addSubview:_progressView];
+    [MobClick beginLogPageView:@"淘宝页面"];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -75,6 +77,7 @@
     // Remove progress view
     // because UINavigationBar is shared with other ViewControllers
     [_progressView removeFromSuperview];
+    [MobClick endLogPageView:@"淘宝页面"];
 }
 
 #pragma mark - IBAction

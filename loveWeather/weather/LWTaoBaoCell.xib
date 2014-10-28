@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,25 +15,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保健品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ibA-9M-Swi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保健品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibA-9M-Swi">
                         <rect key="frame" x="113" y="46" width="146" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3Qt-Tk-Tc4"/>
+                            <constraint firstAttribute="width" constant="146" id="LlO-Kh-duh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孝心推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hKN-qH-wRX">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孝心推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKN-qH-wRX">
                         <rect key="frame" x="238" y="10" width="69" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="69" id="KLP-Tv-P8L"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.45098039215686275" green="0.79607843137254897" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cjp-0P-Axt">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjp-0P-Axt">
                         <rect key="frame" x="20" y="10" width="70" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="67R-YV-svC"/>
+                            <constraint firstAttribute="height" constant="70" id="kEP-wk-SJw"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="ibA-9M-Swi" secondAttribute="bottom" constant="14.5" id="5rD-Re-f0t"/>
+                    <constraint firstItem="cjp-0P-Axt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="Cpp-AN-ouX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cjp-0P-Axt" secondAttribute="bottom" constant="1.5" id="DID-XB-Dey"/>
+                    <constraint firstItem="ibA-9M-Swi" firstAttribute="top" secondItem="hKN-qH-wRX" secondAttribute="bottom" constant="15" id="L8c-gf-ePj"/>
+                    <constraint firstItem="ibA-9M-Swi" firstAttribute="leading" secondItem="cjp-0P-Axt" secondAttribute="trailing" constant="23" id="Qej-rO-Uih"/>
+                    <constraint firstItem="cjp-0P-Axt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Umg-YT-9V9"/>
+                    <constraint firstItem="hKN-qH-wRX" firstAttribute="top" secondItem="cjp-0P-Axt" secondAttribute="top" id="UrT-oA-3tI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hKN-qH-wRX" secondAttribute="trailing" constant="5" id="b60-oN-Zzq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ibA-9M-Swi" secondAttribute="trailing" constant="53" id="vso-HE-vAg"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
