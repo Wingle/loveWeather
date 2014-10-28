@@ -5,7 +5,7 @@ platform :ios, "7.0"
 target "loveWeather" do
     
     pod 'MSDynamicsDrawerViewController', '~> 1.5.1'
-    pod 'SDWebImage', '~> 3.5.2'
+    pod 'SDWebImage'
     pod 'Mantle', '~> 1.3.1'
     pod 'LBBlurredImage', '~> 0.2.0'
     pod 'TSMessages', '~> 0.9.5'
@@ -15,6 +15,7 @@ target "loveWeather" do
     pod 'UMengAnalytics', '~> 2.2.1'
     pod 'InnoEGOCache', '~> 2.1'
     pod 'UMengSocial', '~> 3.3.7'
+    pod 'NJKWebViewProgress'
     
 end
 

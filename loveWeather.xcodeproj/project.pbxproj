@@ -37,6 +37,10 @@
 		98386C4C18E1A47F00F60899 /* LWCitySearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98386C4A18E1A47F00F60899 /* LWCitySearchController.xib */; };
 		98386C5118E2E49100F60899 /* LWCitiesManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98386C4F18E2E49100F60899 /* LWCitiesManagerViewController.m */; };
 		984B24CA18EE680800C9E795 /* LWReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B24C918EE680800C9E795 /* LWReminderTableViewController.m */; };
+		9857A7C319FFC0890027C9A3 /* LWTaoBaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857A7C119FFC0890027C9A3 /* LWTaoBaoCell.m */; };
+		9857A7C419FFC0890027C9A3 /* LWTaoBaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9857A7C219FFC0890027C9A3 /* LWTaoBaoCell.xib */; };
+		9866B3E019F7E20200E7144E /* LWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9866B3DE19F7E20200E7144E /* LWWebViewController.m */; };
+		9866B3E119F7E20200E7144E /* LWWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9866B3DF19F7E20200E7144E /* LWWebViewController.xib */; };
 		988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */; };
 		988089C518D814D300332C6A /* NSObject+NSJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089C418D814D300332C6A /* NSObject+NSJSONSerialization.m */; };
 		988089CB18D84C9800332C6A /* LWWeaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 988089CA18D84C9800332C6A /* LWWeaterModel.m */; };
@@ -92,7 +96,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.xcconfig"; path = "Pods/Pods-loveWeather.xcconfig"; sourceTree = "<group>"; };
 		9802650A18DFE452000A85EF /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		9802650B18DFE452000A85EF /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		9802650E18DFE628000A85EF /* LWAirTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAirTableViewCell.h; sourceTree = "<group>"; };
@@ -138,6 +141,12 @@
 		984B24C918EE680800C9E795 /* LWReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReminderTableViewController.m; sourceTree = "<group>"; };
 		984B24CE18EEA4B700C9E795 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		984B24CF18EEA4B700C9E795 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9857A7C019FFC0890027C9A3 /* LWTaoBaoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTaoBaoCell.h; sourceTree = "<group>"; };
+		9857A7C119FFC0890027C9A3 /* LWTaoBaoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTaoBaoCell.m; sourceTree = "<group>"; };
+		9857A7C219FFC0890027C9A3 /* LWTaoBaoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWTaoBaoCell.xib; sourceTree = "<group>"; };
+		9866B3DD19F7E20200E7144E /* LWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWebViewController.h; sourceTree = "<group>"; };
+		9866B3DE19F7E20200E7144E /* LWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWebViewController.m; sourceTree = "<group>"; };
+		9866B3DF19F7E20200E7144E /* LWWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWWebViewController.xib; sourceTree = "<group>"; };
 		988089BF18D7FF4600332C6A /* LWPullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPullRefreshTableViewController.h; sourceTree = "<group>"; };
 		988089C018D7FF4600332C6A /* LWPullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPullRefreshTableViewController.m; sourceTree = "<group>"; };
 		988089C318D814D300332C6A /* NSObject+NSJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSJSONSerialization.h"; sourceTree = "<group>"; };
@@ -204,6 +213,8 @@
 		A0CEFF051990AFC100D0B32E /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		A0CEFF061990AFC100D0B32E /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		A0CEFF071990AFC100D0B32E /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		B2A5D17E575D846B477B1966 /* Pods-loveWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loveWeather/Pods-loveWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		C028EED1FAB975DB1092C6BB /* Pods-loveWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loveWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-loveWeather/Pods-loveWeather.release.xcconfig"; sourceTree = "<group>"; };
 		FAEDE4865EF7424189924365 /* libPods-loveWeather.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loveWeather.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -272,6 +283,9 @@
 				989A89FA18E0303900055237 /* LWForecastTableViewCell.h */,
 				989A89FB18E0303900055237 /* LWForecastTableViewCell.m */,
 				989A89FC18E0303900055237 /* LWForecastTableViewCell.xib */,
+				9857A7C019FFC0890027C9A3 /* LWTaoBaoCell.h */,
+				9857A7C119FFC0890027C9A3 /* LWTaoBaoCell.m */,
+				9857A7C219FFC0890027C9A3 /* LWTaoBaoCell.xib */,
 			);
 			name = modelCell;
 			sourceTree = "<group>";
@@ -283,7 +297,7 @@
 				981A18ED18BE0B7500B0CF75 /* loveWeatherTests */,
 				981A18C718BE0B7400B0CF75 /* Frameworks */,
 				981A18C618BE0B7400B0CF75 /* Products */,
-				859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */,
+				D1EF083B80911E9FA8A88C12 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -389,6 +403,9 @@
 				982B17B418E3C7CD00EF9CF2 /* LWAboutViewController.h */,
 				982B17B518E3C7CD00EF9CF2 /* LWAboutViewController.m */,
 				982B17B618E3C7CD00EF9CF2 /* LWAboutViewController.xib */,
+				9866B3DD19F7E20200E7144E /* LWWebViewController.h */,
+				9866B3DE19F7E20200E7144E /* LWWebViewController.m */,
+				9866B3DF19F7E20200E7144E /* LWWebViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -529,6 +546,15 @@
 			path = XgSDK;
 			sourceTree = "<group>";
 		};
+		D1EF083B80911E9FA8A88C12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2A5D17E575D846B477B1966 /* Pods-loveWeather.debug.xcconfig */,
+				C028EED1FAB975DB1092C6BB /* Pods-loveWeather.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -621,7 +647,9 @@
 			files = (
 				981A18D518BE0B7400B0CF75 /* InfoPlist.strings in Resources */,
 				9802651218DFE628000A85EF /* LWAirTableViewCell.xib in Resources */,
+				9857A7C419FFC0890027C9A3 /* LWTaoBaoCell.xib in Resources */,
 				A0CEFF091990AFC100D0B32E /* ReleaseNotes.txt in Resources */,
+				9866B3E119F7E20200E7144E /* LWWebViewController.xib in Resources */,
 				989A89FE18E0303900055237 /* LWForecastTableViewCell.xib in Resources */,
 				98BB090E1915F16A007CBC52 /* DomobAdSDKBundle.bundle in Resources */,
 				981A18E018BE0B7500B0CF75 /* Images.xcassets in Resources */,
@@ -655,7 +683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-loveWeather-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loveWeather/Pods-loveWeather-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6FF289660144431955EDBA2 /* Check Pods Manifest.lock */ = {
@@ -697,9 +725,11 @@
 				98386C4B18E1A47F00F60899 /* LWCitySearchController.m in Sources */,
 				989A89F818E0231200055237 /* LWIndexTableViewCell.m in Sources */,
 				98B54DDB18E974B6007ECD40 /* LWTextView.m in Sources */,
+				9857A7C319FFC0890027C9A3 /* LWTaoBaoCell.m in Sources */,
 				98EE2FDD18C4A3600096D962 /* AGViewController.m in Sources */,
 				98EE2FDB18C4A3600096D962 /* AGNavigationController.m in Sources */,
 				982B17B718E3C7CD00EF9CF2 /* LWAboutViewController.m in Sources */,
+				9866B3E019F7E20200E7144E /* LWWebViewController.m in Sources */,
 				982B17BB18E422F700EF9CF2 /* LWRefreshTableHeaderView.m in Sources */,
 				988089C118D7FF4600332C6A /* LWPullRefreshTableViewController.m in Sources */,
 				981A18DB18BE0B7400B0CF75 /* LWAppDelegate.m in Sources */,
@@ -820,7 +850,7 @@
 		};
 		981A18F818BE0B7500B0CF75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */;
+			baseConfigurationReference = B2A5D17E575D846B477B1966 /* Pods-loveWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -876,6 +906,7 @@
 					UIKit,
 					"-Objc",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979D5AA5-4933-4914-AFD9-62336DCEA8AA";
@@ -886,7 +917,7 @@
 		};
 		981A18F918BE0B7500B0CF75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 859B9416D9584033BF550D7F /* Pods-loveWeather.xcconfig */;
+			baseConfigurationReference = C028EED1FAB975DB1092C6BB /* Pods-loveWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -942,6 +973,7 @@
 					UIKit,
 					"-Objc",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "41FAEB01-88F4-4F15-8198-94C0D14E697A";
@@ -952,6 +984,7 @@
 		};
 		981A18FB18BE0B7500B0CF75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2A5D17E575D846B477B1966 /* Pods-loveWeather.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/loveWeather.app/loveWeather";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -974,6 +1007,7 @@
 		};
 		981A18FC18BE0B7500B0CF75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C028EED1FAB975DB1092C6BB /* Pods-loveWeather.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/loveWeather.app/loveWeather";
 				FRAMEWORK_SEARCH_PATHS = (

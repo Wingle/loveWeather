@@ -26,6 +26,8 @@
 #import <UMengSocial/UMSocial.h>
 #import "UMSocialScreenShoter.h"
 #import "DMAdView.h"
+#import "LWWebViewController.h"
+#import "LWTaoBaoCell.h"
 
 #define LWDT        @"lwdt"
 #define LWINDEX     @"lwindex"
@@ -377,7 +379,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -396,6 +398,9 @@
         case 3:
             height = 220.f;
             break;
+        case 4:
+        case 5:
+            height = 90.f;
             
         default:
             break;
@@ -409,6 +414,7 @@
     static NSString *indexCellIdentifier = @"indexCell";
     static NSString *forecastCellIdentifier = @"forecastCell";
     static NSString *adCellIdentifier = @"adCell";
+    static NSString *taobaoCellIdentifier = @"taobaoCell";
     
     NSInteger row = [indexPath row];
     
@@ -547,6 +553,30 @@
         return cell;
         
         
+    }else if (row == 4) {
+        LWTaoBaoCell *cell = (LWTaoBaoCell *)[tableView dequeueReusableCellWithIdentifier:taobaoCellIdentifier];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LWTaoBaoCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        cell.avaterImageView.image = [UIImage imageNamed:@"bjp"];
+        cell.nameLabel.text = @"老年人保健品";
+        cell.titleLabel.hidden = NO;
+        return cell;
+        
+    }else if (row == 5) {
+        LWTaoBaoCell *cell = (LWTaoBaoCell *)[tableView dequeueReusableCellWithIdentifier:taobaoCellIdentifier];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LWTaoBaoCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        cell.avaterImageView.image = [UIImage imageNamed:@"yf"];
+        cell.nameLabel.text = @"老年人服装";
+        cell.titleLabel.hidden = YES;
+        return cell;
+        
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:adCellIdentifier];
         if (cell == nil) {
@@ -565,6 +595,28 @@
 
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = [indexPath row];
+    switch (row) {
+        case 4:
+        {
+            LWWebViewController *webVC = [[LWWebViewController alloc] initWithNibName:@"LWWebViewController" bundle:nil];
+            webVC.strURL = @"http://ai.m.taobao.com/search.html?q=老年人保健品&pid=mm_33231688_7050284_23466709";
+            [self.navigationController pushViewController:webVC animated:YES];
+            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            break;
+        }
+        case 5:
+        {
+            LWWebViewController *webVC = [[LWWebViewController alloc] initWithNibName:@"LWWebViewController" bundle:nil];
+            webVC.strURL = @"http://ai.m.taobao.com/search.html?q=老年人服装&pid=mm_33231688_7050284_23466709";
+            [self.navigationController pushViewController:webVC animated:YES];
+            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            break;
+        }
+            
+        default:
+            break;
+    }
     
 }
 
