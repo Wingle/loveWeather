@@ -118,12 +118,12 @@
     // 创建广告视图，此处使用的是测试ID，请登陆多盟官网（www.domob.cn）获取新的ID
     self.adBanner = [[DMAdView alloc] initWithPublisherId:kDomobPublisherID
                                               placementId:@"16TLuUqoAphr2NUkHQSgRM1i"
-                                                     size:DOMOB_AD_SIZE_320x50
                                               autorefresh:YES];
+    
     // 设置广告视图的位置
     self.adBanner.frame = CGRectMake(0, headerFrame.size.height,
-                                 DOMOB_AD_SIZE_320x50.width,
-                                 DOMOB_AD_SIZE_320x50.height);
+                                 FLEXIBLE_SIZE.width,
+                                 FLEXIBLE_SIZE.height);
     
     self.adBanner.delegate = self; // 设置 Delegate
     self.adBanner.rootViewController = self; // 设置 RootViewController
